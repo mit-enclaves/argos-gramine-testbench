@@ -1,0 +1,44 @@
+sudo ENCLAVES=1 SANDBOXES=1 CARVES=1 TRANSITION=1 INNER=5000 OUTER=10 ./runbench
+Selected benchmarks: transition
+Selected workloads:  enclaves sandboxes carves
+Running 10 (outer) times 5000 (inner) repetitions/run
+Pin thread to core 8
+Transition for bin/enclaves/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.992                    5.348                    
+6.865                    5.300                    
+6.715                    5.219                    
+6.712                    5.220                    
+6.713                    5.220                    
+6.712                    5.218                    
+6.710                    5.218                    
+6.713                    5.219                    
+6.724                    5.234                    
+6.717                    5.240                    
+Pin thread to core 8
+Transition for bin/sandboxes/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.723                    5.228                    
+6.719                    5.222                    
+6.709                    5.222                    
+6.708                    5.220                    
+6.708                    5.223                    
+6.707                    5.264                    
+6.813                    5.226                    
+6.701                    5.221                    
+6.702                    5.221                    
+6.699                    5.219                    
+Pin thread to core 8
+Transition for bin/carve/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.757                    5.221                    
+6.698                    5.223                    
+6.700                    5.238                    
+6.733                    5.221                    
+6.698                    5.215                    
+6.703                    5.216                    
+6.698                    5.215                    
+6.697                    5.214                    
+6.698                    5.211                    
+6.698                    5.217                    
+All done!

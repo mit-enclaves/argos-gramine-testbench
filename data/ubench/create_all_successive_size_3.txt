@@ -1,0 +1,41 @@
+Selected benchmarks: creation
+Selected sizes: [ 256k ]
+Selected workloads:  enclaves sandboxes carves
+Running 10 (outer) times 10 (inner) repetitions/run
+Creation[256k -> 256k] run on bin/enclaves/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/enclaves//256k       14779.000                154.900                  
+bin/enclaves//256k       13167.400                169.400                  
+bin/enclaves//256k       13157.900                164.500                  
+bin/enclaves//256k       13164.800                163.100                  
+bin/enclaves//256k       13303.600                168.500                  
+bin/enclaves//256k       13142.000                166.100                  
+bin/enclaves//256k       13138.100                184.900                  
+bin/enclaves//256k       13278.200                167.400                  
+bin/enclaves//256k       13142.400                174.300                  
+bin/enclaves//256k       13272.900                154.000                  
+Creation[256k -> 256k] run on bin/sandboxes/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/sandboxes//256k      979.300                  19.900                   
+bin/sandboxes//256k      71.300                   19.500                   
+bin/sandboxes//256k      70.600                   19.700                   
+bin/sandboxes//256k      70.800                   19.600                   
+bin/sandboxes//256k      71.300                   19.500                   
+bin/sandboxes//256k      71.000                   19.200                   
+bin/sandboxes//256k      71.100                   19.200                   
+bin/sandboxes//256k      70.400                   20.900                   
+bin/sandboxes//256k      69.000                   19.600                   
+bin/sandboxes//256k      69.400                   19.200                   
+Creation[256k -> 256k] run on bin/carve/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/carve//256k          369.100                  86.800                   
+bin/carve//256k          195.500                  83.600                   
+bin/carve//256k          198.900                  82.700                   
+bin/carve//256k          201.300                  80.400                   
+bin/carve//256k          205.800                  85.100                   
+bin/carve//256k          195.700                  84.000                   
+bin/carve//256k          199.000                  82.500                   
+bin/carve//256k          201.800                  81.100                   
+bin/carve//256k          206.100                  85.500                   
+bin/carve//256k          195.000                  83.900                   
+All done!
