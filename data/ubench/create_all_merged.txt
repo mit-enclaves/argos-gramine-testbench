@@ -1,180 +1,180 @@
-bin/enclaves//8k         1017.000                 81.700                   
-bin/enclaves//8k         598.900                  81.800                   
-bin/enclaves//8k         607.900                  83.800                   
-bin/enclaves//8k         589.200                  74.600                   
-bin/enclaves//8k         593.600                  79.500                   
-bin/enclaves//8k         595.500                  80.600                   
-bin/enclaves//8k         592.300                  77.400                   
-bin/enclaves//8k         604.600                  80.100                   
-bin/enclaves//8k         588.900                  72.900                   
-bin/enclaves//8k         567.000                  69.600                   
-bin/sandboxes//8k        100.600                  13.900                   
-bin/sandboxes//8k        52.400                   14.200                   
-bin/sandboxes//8k        53.400                   14.000                   
-bin/sandboxes//8k        53.300                   13.500                   
-bin/sandboxes//8k        52.800                   14.100                   
-bin/sandboxes//8k        52.900                   13.700                   
-bin/sandboxes//8k        53.400                   13.900                   
-bin/sandboxes//8k        53.000                   14.300                   
-bin/sandboxes//8k        53.400                   13.400                   
-bin/sandboxes//8k        53.300                   13.400                   
-bin/carve//8k            207.600                  65.000                   
-bin/carve//8k            173.400                  76.400                   
-bin/carve//8k            184.700                  79.700                   
-bin/carve//8k            178.700                  76.200                   
-bin/carve//8k            170.100                  81.000                   
-bin/carve//8k            185.500                  76.700                   
-bin/carve//8k            187.600                  81.300                   
-bin/carve//8k            179.300                  69.600                   
-bin/carve//8k            167.800                  69.400                   
-bin/carve//8k            172.600                  72.100                   
-bin/enclaves//12k        924.600                  111.500                  
-bin/enclaves//12k        874.400                  116.300                  
-bin/enclaves//12k        877.600                  125.600                  
-bin/enclaves//12k        882.500                  123.000                  
-bin/enclaves//12k        864.900                  108.400                  
-bin/enclaves//12k        876.000                  119.000                  
-bin/enclaves//12k        871.800                  118.400                  
-bin/enclaves//12k        823.800                  100.500                  
-bin/enclaves//12k        880.800                  111.400                  
-bin/enclaves//12k        876.100                  117.100                  
-bin/sandboxes//12k       110.800                  18.700                   
-bin/sandboxes//12k       62.200                   18.900                   
-bin/sandboxes//12k       62.100                   18.900                   
-bin/sandboxes//12k       62.700                   18.900                   
-bin/sandboxes//12k       63.000                   18.900                   
-bin/sandboxes//12k       62.800                   18.600                   
-bin/sandboxes//12k       62.500                   19.200                   
-bin/sandboxes//12k       62.300                   18.500                   
-bin/sandboxes//12k       62.500                   18.700                   
-bin/sandboxes//12k       62.600                   18.700                   
-bin/carve//12k           282.000                  106.200                  
-bin/carve//12k           229.500                  97.400                   
-bin/carve//12k           237.800                  106.200                  
-bin/carve//12k           228.100                  94.800                   
-bin/carve//12k           241.100                  106.800                  
-bin/carve//12k           236.600                  102.700                  
-bin/carve//12k           219.500                  98.800                   
-bin/carve//12k           239.200                  99.900                   
-bin/carve//12k           237.600                  106.400                  
-bin/carve//12k           229.800                  101.600                  
-bin/enclaves//128k       7123.100                 177.400                  
-bin/enclaves//128k       6923.400                 164.500                  
-bin/enclaves//128k       6919.300                 142.000                  
-bin/enclaves//128k       6946.500                 139.700                  
-bin/enclaves//128k       6928.500                 152.300                  
-bin/enclaves//128k       6924.500                 152.100                  
-bin/enclaves//128k       6963.600                 151.200                  
-bin/enclaves//128k       6915.500                 160.700                  
-bin/enclaves//128k       6944.500                 147.300                  
-bin/enclaves//128k       6944.600                 147.800                  
-bin/sandboxes//128k      942.700                  20.400                   
-bin/sandboxes//128k      66.300                   20.000                   
-bin/sandboxes//128k      66.300                   20.100                   
-bin/sandboxes//128k      66.400                   20.300                   
-bin/sandboxes//128k      66.400                   20.700                   
-bin/sandboxes//128k      65.900                   20.500                   
-bin/sandboxes//128k      65.600                   20.000                   
-bin/sandboxes//128k      66.000                   20.200                   
-bin/sandboxes//128k      66.000                   20.600                   
-bin/sandboxes//128k      66.000                   20.400                   
-bin/carve//128k          389.500                  86.600                   
-bin/carve//128k          189.700                  80.500                   
-bin/carve//128k          202.600                  81.900                   
-bin/carve//128k          192.400                  87.700                   
-bin/carve//128k          188.900                  81.000                   
-bin/carve//128k          197.500                  84.200                   
-bin/carve//128k          188.900                  80.700                   
-bin/carve//128k          190.500                  81.400                   
-bin/carve//128k          196.300                  86.000                   
-bin/carve//128k          189.800                  81.400                   
-bin/enclaves//256k       14779.000                154.900                  
-bin/enclaves//256k       13167.400                169.400                  
-bin/enclaves//256k       13157.900                164.500                  
-bin/enclaves//256k       13164.800                163.100                  
-bin/enclaves//256k       13303.600                168.500                  
-bin/enclaves//256k       13142.000                166.100                  
-bin/enclaves//256k       13138.100                184.900                  
-bin/enclaves//256k       13278.200                167.400                  
-bin/enclaves//256k       13142.400                174.300                  
-bin/enclaves//256k       13272.900                154.000                  
-bin/sandboxes//256k      979.300                  19.900                   
-bin/sandboxes//256k      71.300                   19.500                   
-bin/sandboxes//256k      70.600                   19.700                   
-bin/sandboxes//256k      70.800                   19.600                   
-bin/sandboxes//256k      71.300                   19.500                   
-bin/sandboxes//256k      71.000                   19.200                   
-bin/sandboxes//256k      71.100                   19.200                   
-bin/sandboxes//256k      70.400                   20.900                   
-bin/sandboxes//256k      69.000                   19.600                   
-bin/sandboxes//256k      69.400                   19.200                   
-bin/carve//256k          369.100                  86.800                   
-bin/carve//256k          195.500                  83.600                   
-bin/carve//256k          198.900                  82.700                   
-bin/carve//256k          201.300                  80.400                   
-bin/carve//256k          205.800                  85.100                   
-bin/carve//256k          195.700                  84.000                   
-bin/carve//256k          199.000                  82.500                   
-bin/carve//256k          201.800                  81.100                   
-bin/carve//256k          206.100                  85.500                   
-bin/carve//256k          195.000                  83.900                   
-bin/enclaves//512k       26144.600                169.400                  
-bin/enclaves//512k       25632.700                171.300                  
-bin/enclaves//512k       25623.000                173.300                  
-bin/enclaves//512k       25615.500                171.100                  
-bin/enclaves//512k       25675.600                167.200                  
-bin/enclaves//512k       25624.000                167.800                  
-bin/enclaves//512k       25615.700                165.900                  
-bin/enclaves//512k       25599.900                173.800                  
-bin/enclaves//512k       25632.200                166.300                  
-bin/enclaves//512k       25608.400                175.000                  
-bin/sandboxes//512k      984.000                  20.700                   
-bin/sandboxes//512k      80.300                   20.600                   
-bin/sandboxes//512k      81.800                   20.200                   
-bin/sandboxes//512k      79.100                   20.200                   
-bin/sandboxes//512k      78.700                   20.000                   
-bin/sandboxes//512k      78.700                   19.900                   
-bin/sandboxes//512k      79.300                   19.900                   
-bin/sandboxes//512k      78.500                   20.100                   
-bin/sandboxes//512k      78.900                   20.300                   
-bin/sandboxes//512k      78.800                   20.300                   
-bin/carve//512k          416.100                  80.900                   
-bin/carve//512k          202.900                  84.700                   
-bin/carve//512k          211.700                  80.300                   
-bin/carve//512k          202.900                  83.700                   
-bin/carve//512k          211.000                  80.200                   
-bin/carve//512k          203.300                  84.000                   
-bin/carve//512k          211.700                  80.600                   
-bin/carve//512k          202.700                  84.400                   
-bin/carve//512k          211.800                  80.300                   
-bin/carve//512k          202.900                  84.500                   
-bin/enclaves//1M         14632.800                168.600                  
-bin/enclaves//1M         13327.800                152.000                  
-bin/enclaves//1M         13214.100                163.800                  
-bin/enclaves//1M         13236.500                158.600                  
-bin/enclaves//1M         13209.600                169.200                  
-bin/enclaves//1M         13177.100                165.100                  
-bin/enclaves//1M         13170.700                172.200                  
-bin/enclaves//1M         13146.800                175.600                  
-bin/enclaves//1M         13317.100                166.700                  
-bin/enclaves//1M         13228.600                152.900                  
-bin/sandboxes//1M        985.800                  20.100                   
-bin/sandboxes//1M        71.200                   20.100                   
-bin/sandboxes//1M        70.900                   19.800                   
-bin/sandboxes//1M        70.700                   19.300                   
-bin/sandboxes//1M        71.900                   19.300                   
-bin/sandboxes//1M        71.800                   19.700                   
-bin/sandboxes//1M        72.000                   19.800                   
-bin/sandboxes//1M        71.700                   19.600                   
-bin/sandboxes//1M        71.500                   19.500                   
-bin/sandboxes//1M        71.400                   19.400                   
-bin/carve//1M            342.100                  84.600                   
-bin/carve//1M            202.200                  83.400                   
-bin/carve//1M            204.800                  81.700                   
-bin/carve//1M            207.600                  86.500                   
-bin/carve//1M            197.500                  84.700                   
-bin/carve//1M            200.200                  83.800                   
-bin/carve//1M            203.700                  81.400                   
-bin/carve//1M            208.000                  86.200                   
-bin/carve//1M            198.800                  85.000                   
-bin/carve//1M            200.000                  82.600                   
+bin/enclaves//8k,1017.000,81.700
+bin/enclaves//8k,598.900,81.800
+bin/enclaves//8k,607.900,83.800
+bin/enclaves//8k,589.200,74.600
+bin/enclaves//8k,593.600,79.500
+bin/enclaves//8k,595.500,80.600
+bin/enclaves//8k,592.300,77.400
+bin/enclaves//8k,604.600,80.100
+bin/enclaves//8k,588.900,72.900
+bin/enclaves//8k,567.000,69.600
+bin/sandboxes//8k,100.600,13.900
+bin/sandboxes//8k,52.400,14.200
+bin/sandboxes//8k,53.400,14.000
+bin/sandboxes//8k,53.300,13.500
+bin/sandboxes//8k,52.800,14.100
+bin/sandboxes//8k,52.900,13.700
+bin/sandboxes//8k,53.400,13.900
+bin/sandboxes//8k,53.000,14.300
+bin/sandboxes//8k,53.400,13.400
+bin/sandboxes//8k,53.300,13.400
+bin/carve//8k,207.600,65.000
+bin/carve//8k,173.400,76.400
+bin/carve//8k,184.700,79.700
+bin/carve//8k,178.700,76.200
+bin/carve//8k,170.100,81.000
+bin/carve//8k,185.500,76.700
+bin/carve//8k,187.600,81.300
+bin/carve//8k,179.300,69.600
+bin/carve//8k,167.800,69.400
+bin/carve//8k,172.600,72.100
+bin/enclaves//12k,924.600,111.500
+bin/enclaves//12k,874.400,116.300
+bin/enclaves//12k,877.600,125.600
+bin/enclaves//12k,882.500,123.000
+bin/enclaves//12k,864.900,108.400
+bin/enclaves//12k,876.000,119.000
+bin/enclaves//12k,871.800,118.400
+bin/enclaves//12k,823.800,100.500
+bin/enclaves//12k,880.800,111.400
+bin/enclaves//12k,876.100,117.100
+bin/sandboxes//12k,110.800,18.700
+bin/sandboxes//12k,62.200,18.900
+bin/sandboxes//12k,62.100,18.900
+bin/sandboxes//12k,62.700,18.900
+bin/sandboxes//12k,63.000,18.900
+bin/sandboxes//12k,62.800,18.600
+bin/sandboxes//12k,62.500,19.200
+bin/sandboxes//12k,62.300,18.500
+bin/sandboxes//12k,62.500,18.700
+bin/sandboxes//12k,62.600,18.700
+bin/carve//12k,282.000,106.200
+bin/carve//12k,229.500,97.400
+bin/carve//12k,237.800,106.200
+bin/carve//12k,228.100,94.800
+bin/carve//12k,241.100,106.800
+bin/carve//12k,236.600,102.700
+bin/carve//12k,219.500,98.800
+bin/carve//12k,239.200,99.900
+bin/carve//12k,237.600,106.400
+bin/carve//12k,229.800,101.600
+bin/enclaves//128k,7123.100,177.400
+bin/enclaves//128k,6923.400,164.500
+bin/enclaves//128k,6919.300,142.000
+bin/enclaves//128k,6946.500,139.700
+bin/enclaves//128k,6928.500,152.300
+bin/enclaves//128k,6924.500,152.100
+bin/enclaves//128k,6963.600,151.200
+bin/enclaves//128k,6915.500,160.700
+bin/enclaves//128k,6944.500,147.300
+bin/enclaves//128k,6944.600,147.800
+bin/sandboxes//128k,942.700,20.400
+bin/sandboxes//128k,66.300,20.000
+bin/sandboxes//128k,66.300,20.100
+bin/sandboxes//128k,66.400,20.300
+bin/sandboxes//128k,66.400,20.700
+bin/sandboxes//128k,65.900,20.500
+bin/sandboxes//128k,65.600,20.000
+bin/sandboxes//128k,66.000,20.200
+bin/sandboxes//128k,66.000,20.600
+bin/sandboxes//128k,66.000,20.400
+bin/carve//128k,389.500,86.600
+bin/carve//128k,189.700,80.500
+bin/carve//128k,202.600,81.900
+bin/carve//128k,192.400,87.700
+bin/carve//128k,188.900,81.000
+bin/carve//128k,197.500,84.200
+bin/carve//128k,188.900,80.700
+bin/carve//128k,190.500,81.400
+bin/carve//128k,196.300,86.000
+bin/carve//128k,189.800,81.400
+bin/enclaves//256k,14779.000,154.900
+bin/enclaves//256k,13167.400,169.400
+bin/enclaves//256k,13157.900,164.500
+bin/enclaves//256k,13164.800,163.100
+bin/enclaves//256k,13303.600,168.500
+bin/enclaves//256k,13142.000,166.100
+bin/enclaves//256k,13138.100,184.900
+bin/enclaves//256k,13278.200,167.400
+bin/enclaves//256k,13142.400,174.300
+bin/enclaves//256k,13272.900,154.000
+bin/sandboxes//256k,979.300,19.900
+bin/sandboxes//256k,71.300,19.500
+bin/sandboxes//256k,70.600,19.700
+bin/sandboxes//256k,70.800,19.600
+bin/sandboxes//256k,71.300,19.500
+bin/sandboxes//256k,71.000,19.200
+bin/sandboxes//256k,71.100,19.200
+bin/sandboxes//256k,70.400,20.900
+bin/sandboxes//256k,69.000,19.600
+bin/sandboxes//256k,69.400,19.200
+bin/carve//256k,369.100,86.800
+bin/carve//256k,195.500,83.600
+bin/carve//256k,198.900,82.700
+bin/carve//256k,201.300,80.400
+bin/carve//256k,205.800,85.100
+bin/carve//256k,195.700,84.000
+bin/carve//256k,199.000,82.500
+bin/carve//256k,201.800,81.100
+bin/carve//256k,206.100,85.500
+bin/carve//256k,195.000,83.900
+bin/enclaves//512k,26144.600,169.400
+bin/enclaves//512k,25632.700,171.300
+bin/enclaves//512k,25623.000,173.300
+bin/enclaves//512k,25615.500,171.100
+bin/enclaves//512k,25675.600,167.200
+bin/enclaves//512k,25624.000,167.800
+bin/enclaves//512k,25615.700,165.900
+bin/enclaves//512k,25599.900,173.800
+bin/enclaves//512k,25632.200,166.300
+bin/enclaves//512k,25608.400,175.000
+bin/sandboxes//512k,984.000,20.700
+bin/sandboxes//512k,80.300,20.600
+bin/sandboxes//512k,81.800,20.200
+bin/sandboxes//512k,79.100,20.200
+bin/sandboxes//512k,78.700,20.000
+bin/sandboxes//512k,78.700,19.900
+bin/sandboxes//512k,79.300,19.900
+bin/sandboxes//512k,78.500,20.100
+bin/sandboxes//512k,78.900,20.300
+bin/sandboxes//512k,78.800,20.300
+bin/carve//512k,416.100,80.900
+bin/carve//512k,202.900,84.700
+bin/carve//512k,211.700,80.300
+bin/carve//512k,202.900,83.700
+bin/carve//512k,211.000,80.200
+bin/carve//512k,203.300,84.000
+bin/carve//512k,211.700,80.600
+bin/carve//512k,202.700,84.400
+bin/carve//512k,211.800,80.300
+bin/carve//512k,202.900,84.500
+bin/enclaves//1M,14632.800,168.600
+bin/enclaves//1M,13327.800,152.000
+bin/enclaves//1M,13214.100,163.800
+bin/enclaves//1M,13236.500,158.600
+bin/enclaves//1M,13209.600,169.200
+bin/enclaves//1M,13177.100,165.100
+bin/enclaves//1M,13170.700,172.200
+bin/enclaves//1M,13146.800,175.600
+bin/enclaves//1M,13317.100,166.700
+bin/enclaves//1M,13228.600,152.900
+bin/sandboxes//1M,985.800,20.100
+bin/sandboxes//1M,71.200,20.100
+bin/sandboxes//1M,70.900,19.800
+bin/sandboxes//1M,70.700,19.300
+bin/sandboxes//1M,71.900,19.300
+bin/sandboxes//1M,71.800,19.700
+bin/sandboxes//1M,72.000,19.800
+bin/sandboxes//1M,71.700,19.600
+bin/sandboxes//1M,71.500,19.500
+bin/sandboxes//1M,71.400,19.400
+bin/carve//1M,342.100,84.600
+bin/carve//1M,202.200,83.400
+bin/carve//1M,204.800,81.700
+bin/carve//1M,207.600,86.500
+bin/carve//1M,197.500,84.700
+bin/carve//1M,200.200,83.800
+bin/carve//1M,203.700,81.400
+bin/carve//1M,208.000,86.200
+bin/carve//1M,198.800,85.000
+bin/carve//1M,200.000,82.600
