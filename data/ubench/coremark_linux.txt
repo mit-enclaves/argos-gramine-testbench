@@ -1,0 +1,98 @@
+ make TARGET=linux64 XCMD='-c16' certify-all
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 2500.00     243.90      10.25
+core                                                 29.30       3.01       9.73
+linear_alg-mid-100x100-sp                          1851.85     239.23       7.74
+loops-all-mid-10k-sp                                 81.04       9.92       8.17
+nnet_test                                           131.15      13.79       9.51
+parser-125k                                         250.00      22.22      11.25
+radix2-big-64k                                     7194.24     768.05       9.37
+sha-test                                           1600.00     285.71       5.60
+zip-test                                           1777.78     200.00       8.89
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      66676.19    7581.30       8.79
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 1666.67     243.90       6.83
+core                                                 30.36       3.01      10.09
+linear_alg-mid-100x100-sp                          1020.41     239.23       4.27
+loops-all-mid-10k-sp                                 80.91       9.93       8.15
+nnet_test                                           132.23      13.91       9.51
+parser-125k                                         250.00      23.81      10.50
+radix2-big-64k                                     7246.38     742.39       9.76
+sha-test                                            516.13     285.71       1.81
+zip-test                                           1777.78     200.00       8.89
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      52897.13    7619.13       6.94
+
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 2000.00     232.56       8.60
+core                                                 30.65       3.03      10.12
+linear_alg-mid-100x100-sp                          1851.85     239.23       7.74
+loops-all-mid-10k-sp                                 80.78      10.01       8.07
+nnet_test                                           131.15      13.91       9.43
+parser-125k                                         250.00      22.73      11.00
+radix2-big-64k                                     7194.24     709.22      10.14
+sha-test                                           2000.00     285.71       7.00
+zip-test                                           1777.78     200.00       8.89
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      66986.82    7513.97       8.91
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 2500.00     250.00      10.00
+core                                                 27.92       3.02       9.25
+linear_alg-mid-100x100-sp                           806.45     240.38       3.35
+loops-all-mid-10k-sp                                 80.91       9.94       8.14
+nnet_test                                           131.15      13.93       9.41
+parser-125k                                         250.00      26.32       9.50
+radix2-big-64k                                     7042.25     769.23       9.15
+sha-test                                           1333.33     277.78       4.80
+zip-test                                           1777.78     200.00       8.89
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      59104.78    7741.03       7.64
+
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 2500.00     256.41       9.75
+core                                                 27.59       3.02       9.14
+linear_alg-mid-100x100-sp                          1162.79     241.55       4.81
+loops-all-mid-10k-sp                                 81.04       9.97       8.13
+nnet_test                                           132.23      13.93       9.49
+parser-125k                                         231.88      23.26       9.97
+radix2-big-64k                                     6172.84     760.46       8.12
+sha-test                                            533.33     285.71       1.87
+zip-test                                           1777.78     200.00       8.89
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      54321.94    7677.88       7.08

@@ -65,7 +65,7 @@ ax0.errorbar(sizes, san, yerr=san_err, label="Sandboxes")
 ax0.set_xscale('log', base=2)
 ax0.set_yscale('log', base=10)
 ax0.legend()
-ax0.set_title("Creation time")
+ax0.set_title("Creation time (μs)")
 
 (enc, enc_err) = get_val_err_destroy(data["enclaves"])
 (car, car_err) = get_val_err_destroy(data["carve"])
@@ -76,7 +76,7 @@ ax1.errorbar(sizes, car, yerr=car_err, label="Carved")
 ax1.errorbar(sizes, san, yerr=san_err, label="Sandboxes")
 ax1.set_xscale('log', base=2)
 ax1.set_yscale('log', base=10)
-ax1.set_title("Destruction time")
+ax1.set_title("Destruction time (μs)")
 
 pow_min = 3
 pow_max = 10

@@ -1,0 +1,97 @@
+make TARGET=linux64 XCMD='-c1' certify-all
+
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                  227.27     222.22       1.02
+core                                                  2.89       2.88       1.00
+linear_alg-mid-100x100-sp                           255.10     255.10       1.00
+loops-all-mid-10k-sp                                  9.60       9.73       0.99
+nnet_test                                            12.66      12.80       0.99
+parser-125k                                          30.30      31.25       0.97
+radix2-big-64k                                      775.19     766.87       1.01
+sha-test                                            294.12     294.12       1.00
+zip-test                                            200.00     200.00       1.00
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                       7737.08    7753.08       1.00
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                  227.27     227.27       1.00
+core                                                  2.84       2.84       1.00
+linear_alg-mid-100x100-sp                           251.26     251.26       1.00
+loops-all-mid-10k-sp                                  9.77       9.74       1.00
+nnet_test                                            12.67      12.71       1.00
+parser-125k                                          30.30      30.30       1.00
+radix2-big-64k                                      793.02     777.60       1.02
+sha-test                                            294.12     294.12       1.00
+zip-test                                            200.00     200.00       1.00
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                       7744.36    7727.55       1.00
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                  227.27     227.27       1.00
+core                                                  2.84       2.84       1.00
+linear_alg-mid-100x100-sp                           250.00     250.00       1.00
+loops-all-mid-10k-sp                                  9.74       9.74       1.00
+nnet_test                                            12.69      12.72       1.00
+parser-125k                                          30.30      30.30       1.00
+radix2-big-64k                                      792.39     793.02       1.00
+sha-test                                            285.71     294.12       0.97
+zip-test                                            200.00     200.00       1.00
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                       7713.16    7740.78       1.00
+
+
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                  227.27     227.27       1.00
+core                                                  2.83       2.84       1.00
+linear_alg-mid-100x100-sp                           250.00     250.00       1.00
+loops-all-mid-10k-sp                                  9.71       9.73       1.00
+nnet_test                                            12.69      12.69       1.00
+parser-125k                                          30.30      31.25       0.97
+radix2-big-64k                                      788.02     791.14       1.00
+sha-test                                            294.12     294.12       1.00
+zip-test                                            200.00     200.00       1.00
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                       7727.63    7762.40       1.00
+
+                                                 MultiCore SingleCore
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                  227.27     222.22       1.02
+core                                                  2.85       2.84       1.00
+linear_alg-mid-100x100-sp                           251.26     250.00       1.01
+loops-all-mid-10k-sp                                  9.69       9.70       1.00
+nnet_test                                            12.69      12.69       1.00
+parser-125k                                          30.30      30.30       1.00
+radix2-big-64k                                      783.70     778.82       1.01
+sha-test                                            294.12     294.12       1.00
+zip-test                                            200.00     200.00       1.00
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                       7731.50    7700.44       1.00

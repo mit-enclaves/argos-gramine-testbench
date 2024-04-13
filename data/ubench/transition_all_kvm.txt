@@ -1,0 +1,45 @@
+sudo ENCLAVES=1 SANDBOXES=1 CARVES=1 TRANSITION=1 INNER=5000 OUTER=10 ./runbench
+Running with sdk-kvm
+Selected benchmarks: transition
+Selected workloads:  enclaves sandboxes carves
+Running 10 (outer) times 5000 (inner) repetitions/run
+Pin thread to core 7
+Transition for bin/enclaves/ showing 10 (outer) averages of 5000 (inner) w/ sdk-kvm
+call sdk-kvm (us)        call raw (us)            
+11.505                   NA                       
+11.496                   NA                       
+11.321                   NA                       
+11.250                   NA                       
+11.244                   NA                       
+11.261                   NA                       
+11.276                   NA                       
+11.251                   NA                       
+11.255                   NA                       
+11.237                   NA                       
+Pin thread to core 7
+Transition for bin/sandboxes/ showing 10 (outer) averages of 5000 (inner) w/ sdk-kvm
+call sdk-kvm (us)        call raw (us)            
+11.418                   NA                       
+11.321                   NA                       
+11.327                   NA                       
+11.339                   NA                       
+11.319                   NA                       
+11.322                   NA                       
+11.319                   NA                       
+11.569                   NA                       
+11.582                   NA                       
+11.312                   NA                       
+Pin thread to core 7
+Transition for bin/carve/ showing 10 (outer) averages of 5000 (inner) w/ sdk-kvm
+call sdk-kvm (us)        call raw (us)            
+11.527                   NA                       
+11.391                   NA                       
+11.400                   NA                       
+11.422                   NA                       
+11.474                   NA                       
+11.404                   NA                       
+11.427                   NA                       
+11.399                   NA                       
+11.423                   NA                       
+11.407                   NA                       
+All done!
