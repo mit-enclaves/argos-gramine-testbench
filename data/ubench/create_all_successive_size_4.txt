@@ -1,41 +1,42 @@
+Running with sdk-tyche
 Selected benchmarks: creation
-Selected sizes: [ 512k ]
+Selected sizes: [ 128k ]
 Selected workloads:  enclaves sandboxes carves
 Running 10 (outer) times 10 (inner) repetitions/run
-Creation[512k -> 512k] run on bin/enclaves/ showing 10 (outer) averages of 10 (inner) create/delete
+Creation[128k -> 128k] run on bin/enclaves/ showing 10 (outer) averages of 10 (inner) create/delete
 name[iter #]             creation (us)            deletion (us)            
-bin/enclaves//512k       26144.600                169.400                  
-bin/enclaves//512k       25632.700                171.300                  
-bin/enclaves//512k       25623.000                173.300                  
-bin/enclaves//512k       25615.500                171.100                  
-bin/enclaves//512k       25675.600                167.200                  
-bin/enclaves//512k       25624.000                167.800                  
-bin/enclaves//512k       25615.700                165.900                  
-bin/enclaves//512k       25599.900                173.800                  
-bin/enclaves//512k       25632.200                166.300                  
-bin/enclaves//512k       25608.400                175.000                  
-Creation[512k -> 512k] run on bin/sandboxes/ showing 10 (outer) averages of 10 (inner) create/delete
+bin/enclaves//128k       7109.200                 172.100                  
+bin/enclaves//128k       6900.500                 145.400                  
+bin/enclaves//128k       6927.900                 158.400                  
+bin/enclaves//128k       6920.500                 163.700                  
+bin/enclaves//128k       6927.900                 147.200                  
+bin/enclaves//128k       6931.400                 152.100                  
+bin/enclaves//128k       6927.300                 147.400                  
+bin/enclaves//128k       6952.200                 143.900                  
+bin/enclaves//128k       6950.200                 148.500                  
+bin/enclaves//128k       6922.400                 157.300                  
+Creation[128k -> 128k] run on bin/sandboxes/ showing 10 (outer) averages of 10 (inner) create/delete
 name[iter #]             creation (us)            deletion (us)            
-bin/sandboxes//512k      984.000                  20.700                   
-bin/sandboxes//512k      80.300                   20.600                   
-bin/sandboxes//512k      81.800                   20.200                   
-bin/sandboxes//512k      79.100                   20.200                   
-bin/sandboxes//512k      78.700                   20.000                   
-bin/sandboxes//512k      78.700                   19.900                   
-bin/sandboxes//512k      79.300                   19.900                   
-bin/sandboxes//512k      78.500                   20.100                   
-bin/sandboxes//512k      78.900                   20.300                   
-bin/sandboxes//512k      78.800                   20.300                   
-Creation[512k -> 512k] run on bin/carve/ showing 10 (outer) averages of 10 (inner) create/delete
+bin/sandboxes//128k      952.100                  20.200                   
+bin/sandboxes//128k      67.000                   20.000                   
+bin/sandboxes//128k      66.600                   20.800                   
+bin/sandboxes//128k      66.500                   20.100                   
+bin/sandboxes//128k      67.300                   20.400                   
+bin/sandboxes//128k      66.500                   19.900                   
+bin/sandboxes//128k      66.900                   20.100                   
+bin/sandboxes//128k      66.400                   20.000                   
+bin/sandboxes//128k      66.800                   20.200                   
+bin/sandboxes//128k      66.300                   21.100                   
+Creation[128k -> 128k] run on bin/carve/ showing 10 (outer) averages of 10 (inner) create/delete
 name[iter #]             creation (us)            deletion (us)            
-bin/carve//512k          416.100                  80.900                   
-bin/carve//512k          202.900                  84.700                   
-bin/carve//512k          211.700                  80.300                   
-bin/carve//512k          202.900                  83.700                   
-bin/carve//512k          211.000                  80.200                   
-bin/carve//512k          203.300                  84.000                   
-bin/carve//512k          211.700                  80.600                   
-bin/carve//512k          202.700                  84.400                   
-bin/carve//512k          211.800                  80.300                   
-bin/carve//512k          202.900                  84.500                   
+bin/carve//128k          345.200                  81.300                   
+bin/carve//128k          201.100                  83.200                   
+bin/carve//128k          191.600                  88.500                   
+bin/carve//128k          189.300                  80.600                   
+bin/carve//128k          197.200                  85.300                   
+bin/carve//128k          188.900                  81.000                   
+bin/carve//128k          203.700                  81.700                   
+bin/carve//128k          193.700                  86.500                   
+bin/carve//128k          188.900                  81.000                   
+bin/carve//128k          211.600                  86.000                   
 All done!

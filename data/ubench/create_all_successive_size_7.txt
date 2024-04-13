@@ -1,0 +1,42 @@
+Running with sdk-tyche
+Selected benchmarks: creation
+Selected sizes: [ 1M ]
+Selected workloads:  enclaves sandboxes carves
+Running 10 (outer) times 10 (inner) repetitions/run
+Creation[1M -> 1M] run on bin/enclaves/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/enclaves//1M         48607.600                204.300                  
+bin/enclaves//1M         48052.700                197.100                  
+bin/enclaves//1M         48164.200                180.300                  
+bin/enclaves//1M         48181.600                188.700                  
+bin/enclaves//1M         48320.700                201.400                  
+bin/enclaves//1M         47966.500                193.600                  
+bin/enclaves//1M         48000.100                199.000                  
+bin/enclaves//1M         48102.200                195.300                  
+bin/enclaves//1M         48000.200                192.300                  
+bin/enclaves//1M         48270.600                209.000                  
+Creation[1M -> 1M] run on bin/sandboxes/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/sandboxes//1M        98.400                   22.900                   
+bin/sandboxes//1M        95.900                   22.500                   
+bin/sandboxes//1M        96.400                   22.400                   
+bin/sandboxes//1M        95.900                   22.600                   
+bin/sandboxes//1M        95.900                   22.600                   
+bin/sandboxes//1M        96.300                   22.200                   
+bin/sandboxes//1M        96.800                   21.800                   
+bin/sandboxes//1M        94.400                   21.100                   
+bin/sandboxes//1M        92.900                   21.400                   
+bin/sandboxes//1M        95.800                   21.600                   
+Creation[1M -> 1M] run on bin/carve/ showing 10 (outer) averages of 10 (inner) create/delete
+name[iter #]             creation (us)            deletion (us)            
+bin/carve//1M            311.600                  87.900                   
+bin/carve//1M            233.700                  88.200                   
+bin/carve//1M            234.600                  88.500                   
+bin/carve//1M            233.100                  88.100                   
+bin/carve//1M            233.500                  88.400                   
+bin/carve//1M            234.600                  87.600                   
+bin/carve//1M            233.300                  88.300                   
+bin/carve//1M            233.200                  88.000                   
+bin/carve//1M            233.700                  88.200                   
+bin/carve//1M            234.100                  87.600                   
+All done!

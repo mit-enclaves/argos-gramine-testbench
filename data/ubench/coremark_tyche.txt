@@ -1,0 +1,20 @@
+make TARGET=linux64 XCMD='-c16' certify-all
+                                                 MultiCore SingleCore           
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 2500.00     256.41       9.75
+core                                                 27.92       3.01       9.28
+linear_alg-mid-100x100-sp                          1851.85     239.23       7.74
+loops-all-mid-10k-sp                                 85.76       9.84       8.72
+nnet_test                                           129.03      13.81       9.34
+parser-125k                                         242.42      23.81      10.18
+radix2-big-64k                                     5780.35     765.11       7.55
+sha-test                                           1454.55     285.71       5.09
+zip-test                                           1454.55     200.00       7.27
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      62699.06    7673.37       8.17
+
