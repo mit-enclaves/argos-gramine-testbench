@@ -1,4 +1,3 @@
-import os
 import json
 import matplotlib.pyplot as plt
 
@@ -9,7 +8,9 @@ save_as_png = "../figs/redis.png"
 # Get all Redis benchmark files
 experiments = [
     "tcp-vanilla",
+    "tcp-vanilla-vm",
     "tcp-tyche",
+    "tcp-tyche-vm",
     "tcp-enclave",
     "tcp-encr",
     "tcp-ssl",
@@ -66,6 +67,6 @@ ax2.set_ylabel('Get ops/s')
 
 # Adjust layout for better spacing
 plt.tight_layout()
-# plt.show()
-plt.savefig(save_as_pdf)
-plt.savefig(save_as_png)
+plt.show()
+# plt.savefig(save_as_pdf)
+# plt.savefig(save_as_png)
