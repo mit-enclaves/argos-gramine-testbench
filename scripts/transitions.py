@@ -44,9 +44,9 @@ tyche_rv = np.average(tyche_rv)
 kvm_x86 = np.average(kvm)
 
 sdk = (
-    "SDK\nx86_64",
-    "KVM\nx86_64",
-    "SDK\nRISC-V",
+    "Anon-capa\nx86_64",
+    "KVM-Anon\nx86_64",
+    "Anon-capa\nRISC-V",
 )
 
 switch_x86 = switch_x86 - null_x86
@@ -58,7 +58,7 @@ kvm_x86 = kvm_x86 - switch_x86
 data = {
     "Call to Anon": np.array([null_x86, null_x86, null_rv]),
     "Save & restore": np.array([switch_x86, switch_x86, switch_rv]),
-    "Framework": np.array([tyche_x86, kvm_x86, tyche_rv]),
+    "SDK + Driver": np.array([tyche_x86, kvm_x86, tyche_rv]),
 }
 width = 0.5
 

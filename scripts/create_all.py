@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 X86_PATH = "../data/ubench/create_all_merged.txt"
-RISCV_PATH = "../data/ubench/create_all_merged_riscv.txt"
+RISCV_PATH = "../data/ubench/create_all_merged_riscv_2.txt"
+
+save_as_pdf = "../figs/create-revoke.pdf"
+save_as_png = "../figs/create-revoke.png"
 
 color_enclave = "royalblue"
 color_carve = "darkorange"
@@ -74,17 +77,17 @@ sizes = get_sizes(x86_data["enclaves"])
 (card, card_err) = get_val_err_destroy(x86_data["carve"])
 (sand, sand_err) = get_val_err_destroy(x86_data["sandboxes"])
 
-ax0.errorbar(sizes, enc, yerr=enc_err, label="Enclaves", color=color_enclave)
-ax0.errorbar(sizes, car, yerr=car_err, label="Carved", color=color_carve)
-ax0.errorbar(sizes, san, yerr=san_err, label="Sandboxes", color=color_alias)
-ax0.errorbar(sizes, encd, fmt='--', yerr=encd_err, label="Enclaves", color=color_enclave)
-ax0.errorbar(sizes, card, fmt='--', yerr=card_err, label="Carved", color=color_carve)
-ax0.errorbar(sizes, sand, fmt='--', yerr=sand_err, label="Sandboxes", color=color_alias)
+ax0.errorbar(sizes, enc, label="Enclaves", color=color_enclave)
+ax0.errorbar(sizes, car, label="Carved", color=color_carve)
+ax0.errorbar(sizes, san, label="Sandboxes", color=color_alias)
+ax0.errorbar(sizes, encd, fmt='--', label="Enclaves", color=color_enclave)
+ax0.errorbar(sizes, card, fmt='--', label="Carved", color=color_carve)
+ax0.errorbar(sizes, sand, fmt='--', label="Sandboxes", color=color_alias)
 ax0.set_xscale('log', base=2)
 ax0.set_yscale('log', base=10)
-ax0.set_ylabel('µs')
+ax0.set_ylabel('Elapsed time (µs)')
 # ax0.legend()
-ax0.set_title("TD creation and destruction on x86_64")
+ax0.set_title("TD creation and revocation on x86_64")
 
 # RISC-V
 
@@ -95,16 +98,16 @@ ax0.set_title("TD creation and destruction on x86_64")
 (card, card_err) = get_val_err_destroy(rv_data["carve"])
 (sand, sand_err) = get_val_err_destroy(rv_data["sandboxes"])
 
-ax1.errorbar(sizes, enc, yerr=enc_err, label="Enclaves", color=color_enclave)
-ax1.errorbar(sizes, car, yerr=car_err, label="Carved", color=color_carve)
-ax1.errorbar(sizes, san, yerr=san_err, label="Sandboxes", color=color_alias)
-ax1.errorbar(sizes, encd, fmt='--', yerr=encd_err, label="Enclaves", color=color_enclave)
-ax1.errorbar(sizes, card, fmt='--', yerr=card_err, label="Carved", color=color_carve)
-ax1.errorbar(sizes, sand, fmt='--', yerr=sand_err, label="Sandboxes", color=color_alias)
+ax1.errorbar(sizes, enc, label="Enclaves", color=color_enclave)
+ax1.errorbar(sizes, car, label="Carved", color=color_carve)
+ax1.errorbar(sizes, san, label="Sandboxes", color=color_alias)
+ax1.errorbar(sizes, encd, fmt='--', label="Enclaves", color=color_enclave)
+ax1.errorbar(sizes, card, fmt='--', label="Carved", color=color_carve)
+ax1.errorbar(sizes, sand, fmt='--', label="Sandboxes", color=color_alias)
 ax1.set_xscale('log', base=2)
 ax1.set_yscale('log', base=10)
-ax1.set_ylabel('µs')
-ax1.set_title("TD creation and destruction on RISC-V")
+ax1.set_ylabel('Elapsed time (µs)')
+ax1.set_title("TD creation and revocation on RISC-V")
 
 # Set legend
 lines = [
@@ -117,11 +120,11 @@ lines = [
 ]
 labels = [
     "Enclave creation",
-    "Enclave desctruction",
+    "Enclave revocation",
     "Carved creation",
-    "Carved destruction",
+    "Carved revocation",
     "Sandbox creation",
-    "Sandbox destruction"
+    "Sandbox revocation"
 ]
 ax1.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
 
@@ -142,5 +145,6 @@ for i in range(pow_min-1, pow_max+1):
 # print(labels)
 ax1.set_xticklabels(labels)
 plt.tight_layout()
-plt.show()
-
+# plt.show()
+plt.savefig(save_as_pdf)
+plt.savefig(save_as_png)
