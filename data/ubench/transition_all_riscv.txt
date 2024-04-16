@@ -1,0 +1,68 @@
+Selected workloads:  enclaves
+Running 10 (outer) times 5000 (inner) repetitions/run
+Transition for bin/enclaves/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.521                    3.902                    
+6.471                    3.899                    
+6.469                    3.899                    
+6.617                    3.899                    
+6.479                    3.885                    
+6.478                    3.905                    
+6.478                    3.916                    
+6.483                    3.901                    
+6.476                    3.895                    
+6.479                    3.903                    
+All done!
+Running with sdk-tyche
+Selected benchmarks: transition
+Selected workloads:  sandboxes
+Running 10 (outer) times 5000 (inner) repetitions/run
+Transition for bin/sandboxes/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.572                    3.893                    
+6.556                    3.875                    
+6.562                    3.896                    
+6.557                    3.897                    
+6.552                    3.896                    
+6.554                    3.897                    
+6.554                    3.897                    
+6.552                    3.896                    
+6.558                    3.896                    
+6.552                    3.896                    
+All done!
+Running with sdk-tyche
+Selected benchmarks: transition
+Selected workloads:  carves
+Running 10 (outer) times 5000 (inner) repetitions/run
+Transition for bin/carve/ showing 10 (outer) averages of 5000 (inner) w/ sdk-tyche
+call sdk-tyche (us)      call raw (us)            
+6.573                    3.895                    
+6.560                    3.882                    
+6.571                    3.897                    
+6.572                    3.897                    
+6.555                    3.897                    
+6.557                    3.897                    
+6.558                    3.892                    
+6.565                    3.897                    
+6.564                    3.896                    
+6.555                    3.911                    
+All done!
+Running with sdk-tyche
+Selected benchmarks: YOU HAVE NOT SELECTED ANY BENCHMARK
+Selected workloads: 
+Running 10 (outer) times 5000 (inner) repetitions/run
+Hardware communication showing 10 (outer) averages of 5000 (inner)
+outer #                  call-return (us)         
+iter 0                   0.246                    
+iter 1                   0.246                    
+iter 2                   0.246                    
+iter 3                   0.246                    
+iter 4                   0.246                    
+iter 5                   0.246                    
+iter 6                   0.246                    
+iter 7                   0.245                    
+iter 8                   0.246                    
+iter 9                   0.246                    
+All done!
+
+
