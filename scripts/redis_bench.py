@@ -13,7 +13,7 @@ experiments = [
     "tcp-vanilla-vm",
     "tcp-tyche-vm",
     "tcp-encr",
-    # "tcp-ssl",
+    "tcp-ssl",
 ]
 
 labels = [
@@ -23,7 +23,7 @@ labels = [
     "Linux VM",
     "Anon VM",
     "Nested enclaves",
-    # "SSL",
+    "SSL",
 ]
 
 color_vanilla = "lightgreen"
@@ -68,18 +68,19 @@ ops = [data[p]['ops'] for p in exps]
 lat = [data[p]['latency'] for p in exps]
 
 # Create two subplots for set and get operations
-fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)  # Share x-axis for alignment
+# fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)  # Share x-axis for alignment
+fig, ax1 = plt.subplots(1, 1, sharex=True, figsize=(6, 2.5))  # Share x-axis for alignment
 
 # Plot set operations on first subplot
 ax1.bar(labels, ops, color=colors)
 ax1.set_ylabel('Requests/s')
 ax1.set_title('Requests per seconds for different Redis configurations')
-# ax1.legend()
+ax1.legend()
 
 # Plot get operations on second subplot
-ax2.bar(labels, lat, color=colors)
+# ax2.bar(labels, lat, color=colors)
+# ax2.set_ylabel('p99 Latency (μs)')
 # ax2.set_xlabel('Expriments')
-ax2.set_ylabel('p99 Latency (μs)')
 # ax2.set_title('Get Operations per Second for Different Protocols')
 # ax2.legend()
 

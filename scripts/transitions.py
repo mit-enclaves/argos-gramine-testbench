@@ -44,9 +44,9 @@ tyche_rv = np.average(tyche_rv)
 kvm_x86 = np.average(kvm)
 
 sdk = (
-    "Anon-capa\nx86_64",
-    "KVM-Anon\nx86_64",
-    "Anon-capa\nRISC-V",
+    "x86_64",
+    "x86_64\n(KVM)",
+    "RISC-V",
 )
 
 switch_x86 = switch_x86 - null_x86
