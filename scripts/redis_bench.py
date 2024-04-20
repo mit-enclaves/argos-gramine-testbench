@@ -1,5 +1,7 @@
 import json
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
 
 path = "../data/"
 save_as_pdf = "../figs/redis.pdf"
@@ -13,6 +15,7 @@ experiments = [
     "tcp-vanilla-vm",
     "tcp-tyche-vm",
     "tcp-encr",
+    "tcp-linux-vm-tls",
     "tcp-ssl",
 ]
 
@@ -22,12 +25,15 @@ labels = [
     "Anon enclave",
     "Linux VM",
     "Anon VM",
-    "Nested enclaves",
-    "SSL",
+    "Controlled sharing",
+    "Linux VM with TLS",
+    "Controlled sharing with TLS",
 ]
 
-color_vanilla = "lightgreen"
-color_tyche = "royalblue"
+cmap = mpl.colormaps['Set2']
+colors = cmap(np.linspace(0, 1, 9))
+color_vanilla = colors[0] # "lightgreen"
+color_tyche = colors[1] # "royalblue"
 
 colors = [
     color_vanilla,
@@ -36,7 +42,8 @@ colors = [
     color_vanilla,
     color_tyche,
     color_tyche,
-    # color_tyche,
+    color_vanilla,
+    color_tyche,
 ]
 
 data = {}
@@ -59,7 +66,6 @@ for exp in experiments:
 print(f"{'experiment': <16}, {'ops': <9}")
 for (key, item) in data.items():
     print(f"{key: <16}, {item['ops']: <9}")
-
 
 print(data)
 
@@ -89,9 +95,9 @@ handles = [
     plt.Rectangle((0,0),1,1, color=color_vanilla),
     plt.Rectangle((0,0),1,1, color=color_tyche),
 ]
-legends = ["Stock Linux", "With Anon"]
+legends = ["Linux baremetal", "Linux with Anon"]
 plt.legend(handles, legends)
-plt.xticks(rotation=25, ha='right')
+plt.xticks(rotation=15, ha='right')
 plt.tight_layout()
 # plt.show()
 plt.savefig(save_as_pdf)

@@ -44,9 +44,9 @@ tyche_rv = np.average(tyche_rv)
 kvm_x86 = np.average(kvm)
 
 sdk = (
-    "x86_64",
-    "x86_64\n(KVM)",
     "RISC-V",
+    "x86_64\n(KVM)",
+    "x86_64",
 )
 
 switch_x86 = switch_x86 - null_x86
@@ -56,24 +56,24 @@ tyche_rv = tyche_rv - switch_rv
 kvm_x86 = kvm_x86 - switch_x86
 
 data = {
-    "Call to Anon": np.array([null_x86, null_x86, null_rv]),
-    "Save & restore": np.array([switch_x86, switch_x86, switch_rv]),
-    "SDK + Driver": np.array([tyche_x86, kvm_x86, tyche_rv]),
+    "Call to Anon": np.array([null_rv, null_x86, null_x86]),
+    "Save & restore": np.array([switch_rv, switch_x86, switch_x86]),
+    "SDK + Driver": np.array([tyche_rv, kvm_x86, tyche_x86]),
 }
 width = 0.5
 
-fig, ax = plt.subplots(figsize=(5, 2))
+fig, ax = plt.subplots(figsize=(5, 1.7))
 # fig, ax = plt.subplots()
 bottom = np.zeros(3)
 
 for label, val in data.items():
-    p = ax.bar(sdk, val, width, label=label, bottom=bottom)
+    p = ax.barh(sdk, val, width, label=label, left=bottom)
     bottom += val
 
 ax.set_title("TD context switch")
 ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
-ax.set_ylabel("Elapsed time (µs)")
+ax.set_xlabel("Elapsed time (µs)")
 # plt.xticks(rotation=25, ha='right')
 plt.tight_layout()
 # plt.show()

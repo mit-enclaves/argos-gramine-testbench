@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from matplotlib.lines import Line2D
 
 X86_PATH = "../data/ubench/create_all_merged.txt"
@@ -9,9 +10,11 @@ RISCV_PATH = "../data/ubench/create_all_merged_riscv_2.txt"
 save_as_pdf = "../figs/create-revoke.pdf"
 save_as_png = "../figs/create-revoke.png"
 
-color_enclave = "royalblue"
-color_carve = "darkorange"
-color_alias = "darkorchid"
+cmap = mpl.colormaps['Set2']
+colors = cmap(np.linspace(0, 1, 9))
+color_enclave = colors[0] #"royalblue"
+color_carve = colors[1] #"darkorange"
+color_alias = colors[2] # "darkorchid"
 
 
 def process(path: str):
@@ -65,7 +68,8 @@ def get_val_err_destroy(exp):
     return ([x["destroy_mean"] for x in exp], [x["destroy_std"] for x in exp])
 
 
-fig, (ax0, ax1) = plt.subplots(nrows=2, sharex=True)
+# fig, (ax0, ax1) = plt.subplots(nrows=2, sharex=True)
+fig, (ax0, ax1) = plt.subplots(ncols=2, sharey=True, figsize=(6.0, 2.2))
 
 # x86_64
 
@@ -77,17 +81,17 @@ sizes = get_sizes(x86_data["enclaves"])
 (card, card_err) = get_val_err_destroy(x86_data["carve"])
 (sand, sand_err) = get_val_err_destroy(x86_data["sandboxes"])
 
-ax0.errorbar(sizes, enc, label="Enclaves", color=color_enclave)
-ax0.errorbar(sizes, car, label="Carved", color=color_carve)
-ax0.errorbar(sizes, san, label="Sandboxes", color=color_alias)
-ax0.errorbar(sizes, encd, fmt='--', label="Enclaves", color=color_enclave)
-ax0.errorbar(sizes, card, fmt='--', label="Carved", color=color_carve)
-ax0.errorbar(sizes, sand, fmt='--', label="Sandboxes", color=color_alias)
+ax0.errorbar(sizes, enc, marker="1", label="Enclaves", color=color_enclave)
+ax0.errorbar(sizes, car, marker="2", label="Carved", color=color_carve)
+ax0.errorbar(sizes, san, marker="3", label="Sandboxes", color=color_alias)
+ax0.errorbar(sizes, encd, fmt='--', marker="1", label="Enclaves", color=color_enclave)
+ax0.errorbar(sizes, card, fmt='--', marker="2", label="Carved", color=color_carve)
+ax0.errorbar(sizes, sand, fmt='--', marker="3", label="Sandboxes", color=color_alias)
 ax0.set_xscale('log', base=2)
 ax0.set_yscale('log', base=10)
 ax0.set_ylabel('Elapsed time (µs)')
 # ax0.legend()
-ax0.set_title("TD creation and revocation on x86_64")
+ax0.set_title("x86_64")
 
 # RISC-V
 
@@ -98,25 +102,25 @@ ax0.set_title("TD creation and revocation on x86_64")
 (card, card_err) = get_val_err_destroy(rv_data["carve"])
 (sand, sand_err) = get_val_err_destroy(rv_data["sandboxes"])
 
-ax1.errorbar(sizes, enc, label="Enclaves", color=color_enclave)
-ax1.errorbar(sizes, car, label="Carved", color=color_carve)
-ax1.errorbar(sizes, san, label="Sandboxes", color=color_alias)
-ax1.errorbar(sizes, encd, fmt='--', label="Enclaves", color=color_enclave)
-ax1.errorbar(sizes, card, fmt='--', label="Carved", color=color_carve)
-ax1.errorbar(sizes, sand, fmt='--', label="Sandboxes", color=color_alias)
+ax1.errorbar(sizes, enc, marker="1", label="Enclaves", color=color_enclave)
+ax1.errorbar(sizes, car, marker="2", label="Carved", color=color_carve)
+ax1.errorbar(sizes, san, marker="3", label="Sandboxes", color=color_alias)
+ax1.errorbar(sizes, encd, fmt='--', marker="1", label="Enclaves", color=color_enclave)
+ax1.errorbar(sizes, card, fmt='--', marker="2", label="Carved", color=color_carve)
+ax1.errorbar(sizes, sand, fmt='--', marker="3", label="Sandboxes", color=color_alias)
 ax1.set_xscale('log', base=2)
 ax1.set_yscale('log', base=10)
-ax1.set_ylabel('Elapsed time (µs)')
-ax1.set_title("TD creation and revocation on RISC-V")
+# ax1.set_ylabel('Elapsed time (µs)')
+ax1.set_title("RISC-V")
 
 # Set legend
 lines = [
-    Line2D([0], [0], label='manual line', color=color_enclave),
-    Line2D([0], [0], label='manual line', color=color_enclave, linestyle='--'),
-    Line2D([0], [0], label='manual line', color=color_carve),
-    Line2D([0], [0], label='manual line', color=color_carve, linestyle='--'),
-    Line2D([0], [0], label='manual line', color=color_alias),
-    Line2D([0], [0], label='manual line', color=color_alias, linestyle='--'),
+    Line2D([0], [0], label='manual line', marker="1", color=color_enclave),
+    Line2D([0], [0], label='manual line', marker="1", color=color_enclave, linestyle='--'),
+    Line2D([0], [0], label='manual line', marker="2", color=color_carve),
+    Line2D([0], [0], label='manual line', marker="2", color=color_carve, linestyle='--'),
+    Line2D([0], [0], label='manual line', marker="3", color=color_alias),
+    Line2D([0], [0], label='manual line', marker="3", color=color_alias, linestyle='--'),
 ]
 labels = [
     "Enclave creation",
@@ -126,7 +130,10 @@ labels = [
     "Sandbox creation",
     "Sandbox revocation"
 ]
-ax1.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
+# ax1.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
+plt.legend(lines, labels, loc='lower center', bbox_to_anchor=(-0.15, -0.47), fancybox=False, ncol=3, labelspacing=-0.06, columnspacing=0.8, frameon=False)
+fig.subplots_adjust(bottom=0.25)
+plt.rc("legend", fontsize=20)
 
 pow_min = 3
 pow_max = 10
@@ -134,7 +141,7 @@ ax0.set_xlim([2**pow_min, 2**pow_max])
 ax1.set_xlim([2**pow_min, 2**pow_max])
 
 labels = []
-for i in range(pow_min-1, pow_max+1):
+for i in range(pow_min-2, pow_max+1, 2):
     print(i)
     val = 2**i 
     if val >= 1024:
@@ -143,8 +150,9 @@ for i in range(pow_min-1, pow_max+1):
         labels.append(f"{val}KB")
 # print(ax1.get_xticklabels())
 # print(labels)
+ax0.set_xticklabels(labels)
 ax1.set_xticklabels(labels)
-plt.tight_layout()
+# plt.tight_layout()
 # plt.show()
-plt.savefig(save_as_pdf)
-plt.savefig(save_as_png)
+plt.savefig(save_as_pdf, bbox_inches='tight')
+plt.savefig(save_as_png, bbox_inches='tight')
