@@ -1,2 +1,4 @@
 tmp/*
 !tmp/.gitkeep
+to-copy/*
+git-repos/*
