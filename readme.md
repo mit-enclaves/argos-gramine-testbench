@@ -19,6 +19,34 @@ args: TYCHE_DEVEL=path/to/tyche_devel/folder
 
 Download, compile, and copy gramine and its benchmarks.
 Download, compile, and copy executable for the modified lkvm.
+Download, compile, and copy memtier_benchmark and wrk2.
+
+If everything goes well, you should have the following content in `to-copy`:
+
+```
+to-copy
+├── gramine
+│   ├── gramine-argv-serializer
+│   ├── gramine-direct
+│   ├── gramine-gen-depend
+│   ├── gramine-manifest
+│   ├── gramine-manifest-check
+│   ├── gramine-tyche
+│   ├── include
+│   ├── lib
+│   └── utils
+├── gramine-benchmarks
+│   ├── common_tools
+│   ├── helloworld
+│   ├── lighttpd
+│   ├── redis
+│   ├── rust
+│   └── sqlite
+└── my_bin
+    ├── lkvm
+    ├── memtier_benchmark
+    └── wrk
+```
 
 # Gramine Benchmarks
 
@@ -51,5 +79,20 @@ This avoids struggling to generate a portable manifest for the application.
 
 The [lkvm fork](git@github.com:epfl-dcsl/tyche-kvmtool.git) is a modified version of lkvm.
 The justfile clones the repository inside `git-repos`, compiles it and copies the resulting
-binary into `to-copy/lkvm-bin`.
+binary into `to-copy/my_bin`.
 
+`just setup-lkvm` is called by `just setup-all`
+
+# Memtier
+
+The [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) installed from source.
+As for other binaries, the repository is cloned into `git-repos` and compiled from source.
+The finally binary is then copied into `to-copy/my_bin/`, similar to lkvm above.
+
+`just setup-memtier` is called by `just setup-all`
+
+# Wrk2
+
+The [wrk2](https://github.com/giltene/wrk2) is used by some of the `common_tools` for benchmarks in gramine.
+
+`just setup-wrk` is called by `just setup-all`

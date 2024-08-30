@@ -9,6 +9,7 @@ INSTALL_FOLDER := "to-copy"
 GRAMINE_INSTALL := "/gramine/"
 GRAMINE_UTILS := "/gramine/utils/"
 GRAMINE_BENCHMARKS := "to-copy/gramine-benchmarks/"
+CUSTOM_BINARIES := "to-copy/my_bin/"
 
 
 ## ————————————————————————————— Setup for all —————————————————————————————— //
@@ -19,6 +20,8 @@ setup-all TYCHE_DEVEL:
   @just install-dependencies
   @just setup-gramine {{TYCHE_DEVEL}}
   @just setup-lkvm
+  @just setup-memtier
+  @just setup-wrk
 
 ## ————————————————————————————— Gramine setup —————————————————————————————— //
 setup-gramine TYCHE_DEVEL:
@@ -32,7 +35,7 @@ download-gramine:
   #!/usr/bin/env bash
   mkdir -p {{ROOT_CLONES}} 
   rm -rf {{ROOT_CLONES}}/gramine 2>/dev/null
-  git clone git@github.com:epfl-dcsl/gramine.git --branch tyche {{ROOT_CLONES}}/gramine || exit 1
+  git clone git@github.com:epfl-dcsl/gramine.git --branch tyche {{ROOT_CLONES}}/gramine
   
 compile-gramine TYCHE_DEVEL:
   #!/usr/bin/env bash
@@ -64,7 +67,7 @@ compile-gramine-benchmark BENCHMARK:
 copy-gramine-binaries:
   #!/usr/bin/env bash
   sudo cp -r {{GRAMINE_INSTALL}} {{INSTALL_FOLDER}}/gramine
-
+  sudo cp -r {{ROOT_CLONES}}/gramine/CI-Examples/common_tools {{GRAMINE_BENCHMARKS}}/common_tools
 
 ## ——————————————————————————————— lkvm setup ——————————————————————————————— //
 
@@ -75,14 +78,56 @@ setup-lkvm:
 
 download-lkvm:
   #!/usr/bin/env bash
-  git clone git@github.com:epfl-dcsl/tyche-kvmtool.git {{ROOT_CLONES}}/lkvm || exit 1
+  git clone git@github.com:epfl-dcsl/tyche-kvmtool.git {{ROOT_CLONES}}/lkvm
 
 compile-lkvm:
   #!/usr/bin/env bash
   make -C {{ROOT_CLONES}}/lkvm
-  mkdir -p {{INSTALL_FOLDER}}/lkvm-bin
-  cp {{ROOT_CLONES}}/lkvm/lkvm {{INSTALL_FOLDER}}/lkvm-bin/
+  mkdir -p {{CUSTOM_BINARIES}}
+  cp {{ROOT_CLONES}}/lkvm/lkvm {{CUSTOM_BINARIES}} 
 
+## ————————————————————————————— Memtier setup —————————————————————————————— //
+
+setup-memtier:
+  @just download-memtier
+  @just compile-memtier
+  @just install-memtier
+
+download-memtier:
+  #!/usr/bin/env bash
+  git clone git@github.com:RedisLabs/memtier_benchmark.git --branch 2.1.1 {{ROOT_CLONES}}/memtier_benchmark
+
+compile-memtier:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/memtier_benchmark
+  autoreconf -ivf
+  ./configure
+  make
+
+install-memtier:
+  #!/usr/bin/env bash
+  mkdir -p {{CUSTOM_BINARIES}}
+  cp {{ROOT_CLONES}}/memtier_benchmark/memtier_benchmark {{CUSTOM_BINARIES}}
+
+## —————————————————————————————————— Wrk2 —————————————————————————————————— //
+
+setup-wrk:
+  @just download-wrk
+  @just compile-wrk
+  @just install-wrk
+
+download-wrk:
+  #!/usr/bin/env bash
+  git clone git@github.com:giltene/wrk2.git {{ROOT_CLONES}}/wrk2
+
+compile-wrk:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/wrk2
+  make
+
+install-wrk:
+  #!/usr/bin/env bash
+  cp {{ROOT_CLONES}}/wrk2/wrk {{CUSTOM_BINARIES}}/wrk
 
 ## —————————————————————————————— Dependencies —————————————————————————————— //
 
@@ -98,12 +143,16 @@ install-dependencies:
     libunwind8 musl-tools python3-pytest libgmp-dev libmpfr-dev libmpc-dev \
     libisl-dev cmake libprotobuf-c-dev protobuf-c-compiler \
     protobuf-compiler python3-cryptography python3-pip python3-protobuf \
-    sqlite3
+    sqlite3 automake libpcre3-dev libevent-dev zlib1g-dev libssl-dev wget
   sudo python3 -m pip install 'meson>=0.56' 'tomli>=1.1.0' 'tomli-w>=0.4.0'
+
+## ————————————————————————————————— Helper ————————————————————————————————— //
 
 # Print the list of commands
 help:
 	@just --list --unsorted
+
+## ——————————————————————————— Running benchmarks ——————————————————————————— //
 
 # Run redis benchmark
 redis-benchmark:
@@ -116,7 +165,6 @@ memtier-benchmark-tls:
 # Run memtier_benchmark
 memtier-benchmark:
     memtier_benchmark --host {{ip-addr}} -p {{tcp-port}} --threads=1 --clients=1 --requests={{n_reqs}} --json-out-file=tmp/memtier-benchmark.json
-
 
 # The following line gives highlighting on vim
 # vim: set ft=make :
