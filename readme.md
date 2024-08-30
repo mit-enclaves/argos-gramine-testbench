@@ -26,6 +26,7 @@ If everything goes well, you should have the following content in `to-copy`:
 ```
 to-copy
 ├── gramine
+│   ├── gramine
 │   ├── gramine-argv-serializer
 │   ├── gramine-direct
 │   ├── gramine-gen-depend
@@ -39,6 +40,7 @@ to-copy
 │   ├── common_tools
 │   ├── helloworld
 │   ├── lighttpd
+│   ├── Makefile
 │   ├── redis
 │   ├── rust
 │   └── sqlite
@@ -47,6 +49,21 @@ to-copy
     ├── memtier_benchmark
     └── wrk
 ```
+
+The `my_bin` folder content can be copied anywhere on the machine as long as
+it is in the `$PATH`.
+
+The `gramine` folder needs to be copied at `/` on the machine.
+
+The `gramine-benchmark` can be placed anywhere.
+
+# Running benchmarks
+
+The `to-copy/gramine-benchmarks/Makefile` is copied from config/Makefile.gramine.
+It allows to run gramine benchmarks easily by spawning both client and server.
+It stores the results in the same folder under `results/NAME_OF_THE_APP/`.
+If the `TYCHE=1` environment variable is set, it runs with `gramine-tyche`.
+Otherwise, it runs the benchmarks with `gramine-direct` (linux version).
 
 # Gramine Benchmarks
 

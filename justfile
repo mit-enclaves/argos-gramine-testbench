@@ -44,7 +44,6 @@ compile-gramine TYCHE_DEVEL:
   sudo chown $USER:$USER {{GRAMINE_INSTALL}}
   sudo chmod 777 {{GRAMINE_INSTALL}}
   TYCHE_ROOT=$ABSOLUTE TARGET={{GRAMINE_INSTALL}} make -C {{ROOT_CLONES}}/gramine 
-  #sudo cp -r {{GRAMINE_INSTALL}} {{INSTALL_FOLDER}}/gramine
 
 compile-gramine-benchmarks:
   @just compile-gramine-benchmark helloworld
@@ -68,6 +67,7 @@ copy-gramine-binaries:
   #!/usr/bin/env bash
   sudo cp -r {{GRAMINE_INSTALL}} {{INSTALL_FOLDER}}/gramine
   sudo cp -r {{ROOT_CLONES}}/gramine/CI-Examples/common_tools {{GRAMINE_BENCHMARKS}}/common_tools
+  cp config/Makefile.gramine {{GRAMINE_BENCHMARKS}}/Makefile
 
 ## ——————————————————————————————— lkvm setup ——————————————————————————————— //
 
