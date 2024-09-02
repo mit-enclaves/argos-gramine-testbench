@@ -1,9 +1,10 @@
 TYCHE?=0
 
 wrk_exists = $(shell command -v wrk > /dev/null 2>&1 && echo yes || echo no)
+sqlite_exists = $(shell command -v sqlite3 > /dev/null 2>&1 && echo yes || echo no)
 
 ifeq ($(TYCHE), 1)
-	GRAMINE=/gramine/gramine-tyche
+	GRAMINE=sudo /gramine/gramine-tyche
 else
 	GRAMINE=/gramine/gramine-direct
 endif
@@ -29,7 +30,7 @@ endif
 	sleep 2
 	cd results/lighttpd && ../../common_tools/benchmark-http.sh http://127.0.0.1:8003
 	# terminate the gramine instance.
-	kill -9 `pidof loader`
+	sudo kill -9 `pidof loader`
 
 .PHONY: rust
 rust:
@@ -45,7 +46,7 @@ endif
 	sleep 2
 	cd results/rust && ../../common_tools/benchmark-http.sh http://127.0.0.1:3000
 	# terminate the gramine instance.
-	kill -9 `pidof loader`
+	sudo kill -9 `pidof loader`
 
 .PHONY: redis
 redis:
@@ -55,12 +56,21 @@ redis:
 	sleep 2
 	@echo "Starting, this may take a bit of time..."
 	redis/src/src/redis-benchmark > results/redis/redis-`date +"%Y-%M-%H-%M"`.txt
-	kill -9 `pidof loader`
+	sudo kill -9 `pidof loader`
 
 .PHONY: sqlite
 sqlite:
-	@echo "We need to figure out a workload for sqlite!"
+ifeq ($(sqlite_exists), yes)
+	@echo "sqlite3 is available!"
+else
+	@echo "sqlite3 not found! please install with:"
+	@echo "sudo apt install sqlite3"
+	@exit 1
+endif
+	cd sqlite && $(GRAMINE) sqlite3 < scripts/create.sql 
+	cd sqlite && $(GRAMINE) sqlite3 < scripts/update.sql
+	cd sqlite && $(GRAMINE) sqlite3 < scripts/select.sql
 
 .PHONY: stop-server
 stop-server:
-	kill -9 `pidof loader`
+	sudo kill -9 `pidof loader`

@@ -51,6 +51,7 @@ compile-gramine-benchmarks:
   @just compile-gramine-benchmark lighttpd
   @just compile-gramine-benchmark rust
   @just compile-gramine-benchmark sqlite
+  @just disable-debug-gramine-benchmarks
 
 # Compile a specific BENCHMARK
 compile-gramine-benchmark BENCHMARK:
@@ -61,6 +62,11 @@ compile-gramine-benchmark BENCHMARK:
   make -C {{ROOT_CLONES}}/gramine/CI-Examples/{{BENCHMARK}}
   mkdir -p {{GRAMINE_BENCHMARKS}} 
   cp -r {{ROOT_CLONES}}/gramine/CI-Examples/{{BENCHMARK}} {{GRAMINE_BENCHMARKS}}/
+
+disable-debug-gramine-benchmarks:
+  #!/usr/bin/env bash
+  find {{GRAMINE_BENCHMARKS}} -type f -name "*.manifest" -exec sed -i 's/sgx\.debug = true/sgx\.debug = false/g' {} +
+  find {{GRAMINE_BENCHMARKS}} -type f -name "*.manifest" -exec sed -i 's/debug = true/debug = false/g' {} +
 
 
 copy-gramine-binaries:
