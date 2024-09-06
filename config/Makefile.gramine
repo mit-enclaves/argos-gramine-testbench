@@ -11,9 +11,16 @@ endif
 
 all:
 
+.PHONY: print_env
+print_env:
+ifeq ($(TYCHE), 1)
+	@echo "\n[Running gramine-tyche. Make sure you have sudo access for drivers]\n"
+else
+	@echo "\n[Running gramine-linux. To run with Tyche, declare TYCHE=1 in the environment]\n"
+endif
 
 .PHONY: helloworld
-helloworld:
+helloworld: print_env
 	cd helloworld && $(GRAMINE) helloworld 
 
 .PHONY: lighttpd
@@ -33,7 +40,7 @@ endif
 	sudo kill -9 `pidof loader`
 
 .PHONY: rust
-rust:
+rust: print_env
 ifeq ($(wrk_exists), yes)
 	@echo "Wrk checked is available"
 else 
@@ -49,17 +56,17 @@ endif
 	sudo kill -9 `pidof loader`
 
 .PHONY: redis
-redis:
+redis: print_env
 	mkdir -p results/redis
 	cd redis && $(GRAMINE) redis-server &
 	# give it time to start.
 	sleep 2
 	@echo "Starting, this may take a bit of time..."
-	redis/src/src/redis-benchmark > results/redis/redis-`date +"%Y-%M-%H-%M"`.txt
+	redis/src/src/redis-benchmark > results/redis/redis-`date +"%Y-%d-%b-%H-%M"`.txt
 	sudo kill -9 `pidof loader`
 
 .PHONY: sqlite
-sqlite:
+sqlite: print_env
 ifeq ($(sqlite_exists), yes)
 	@echo "sqlite3 is available!"
 else
