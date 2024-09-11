@@ -1,4 +1,4 @@
-ip-addr  := "128.178.116.181"
+ip-addr  := "128.178.116.124"
 tcp-port := "1234"
 tls-port := "1234"
 n_reqs   := "10000"
@@ -171,6 +171,9 @@ memtier-benchmark-tls:
 # Run memtier_benchmark
 memtier-benchmark:
     memtier_benchmark --host {{ip-addr}} -p {{tcp-port}} --threads=1 --clients=1 --requests={{n_reqs}} --json-out-file=tmp/memtier-benchmark.json
+
+tokio-benchmark:
+	wrk -t12 -c400 -d30s http://{{ip-addr}}:8000
 
 # The following line gives highlighting on vim
 # vim: set ft=make :
