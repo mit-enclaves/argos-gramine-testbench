@@ -173,7 +173,10 @@ memtier-benchmark:
     memtier_benchmark --host {{ip-addr}} -p {{tcp-port}} --threads=1 --clients=1 --requests={{n_reqs}} --json-out-file=tmp/memtier-benchmark.json
 
 tokio-benchmark:
-	wrk -t12 -c400 -d30s http://{{ip-addr}}:8000
+	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000
+
+lighttpd-benchmark:
+	wrk -t12 -c400 -d120s http://{{ip-addr}}:8003
 
 # The following line gives highlighting on vim
 # vim: set ft=make :

@@ -1,0 +1,9 @@
+Running 2m test @ http://128.178.116.124:8003
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.60ms    2.09ms  32.73ms   95.06%
+    Req/Sec     2.44k   155.24    14.94k    82.38%
+  3494234 requests in 2.00m, 1.55GB read
+  Non-2xx or 3xx responses: 3494234
+Requests/sec:  29094.76
+Transfer/sec:     13.18MB
