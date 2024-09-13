@@ -1,0 +1,21 @@
+
+                                                 MultiCore SingleCore           
+Workload Name                                     (iter/s)   (iter/s)    Scaling
+----------------------------------------------- ---------- ---------- ----------
+cjpeg-rose7-preset                                 1666.67     227.27       7.33
+core                                                 29.14       2.81      10.37
+linear_alg-mid-100x100-sp                           819.67     248.76       3.30
+loops-all-mid-10k-sp                                 81.97       9.92       8.26
+nnet_test                                           122.14      13.19       9.26
+parser-125k                                         225.35      28.57       7.89
+radix2-big-64k                                     6451.61     734.75       8.78
+sha-test                                           1066.67     294.12       3.63
+zip-test                                           1454.55     200.00       7.27
+
+MARK RESULTS TABLE
+
+Mark Name                                        MultiCore SingleCore    Scaling
+----------------------------------------------- ---------- ---------- ----------
+CoreMark-PRO                                      52773.03    7658.56       6.89
+make[2]: Leaving directory '/tyche/coremark-pro'
+make[1]: Leaving directory '/tyche/coremark-pro'
