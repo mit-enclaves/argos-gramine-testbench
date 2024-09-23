@@ -27,6 +27,9 @@ setup-all TYCHE_DEVEL:
 setup-gramine TYCHE_DEVEL:
   @just create-setup-target
   @just download-gramine
+  @just recompile-gramine {{TYCHE_DEVEL}}
+
+recompile-gramine TYCHE_DEVEL:
   @just compile-gramine {{TYCHE_DEVEL}}
   @just compile-gramine-benchmarks
   @just copy-gramine-binaries
@@ -46,12 +49,19 @@ compile-gramine TYCHE_DEVEL:
   TYCHE_ROOT=$ABSOLUTE TARGET={{GRAMINE_INSTALL}} make -C {{ROOT_CLONES}}/gramine 
 
 compile-gramine-benchmarks:
+  @just delete-gramine-benchmarks
   @just compile-gramine-benchmark helloworld
   @just compile-gramine-benchmark redis
   @just compile-gramine-benchmark lighttpd
   @just compile-gramine-benchmark rust
   @just compile-gramine-benchmark sqlite
   @just disable-debug-gramine-benchmarks
+
+delete-gramine-benchmarks:
+  #!/usr/bin/env bash
+  if [ -e {{GRAMINE_BENCHMARKS}} ]; then
+    sudo rm -rf {{GRAMINE_BENCHMARKS}};
+  fi
 
 # Compile a specific BENCHMARK
 compile-gramine-benchmark BENCHMARK:
@@ -71,6 +81,7 @@ disable-debug-gramine-benchmarks:
 
 copy-gramine-binaries:
   #!/usr/bin/env bash
+  sudo rm -rf {{INSTALL_FOLDER}}/gramine
   sudo cp -r {{GRAMINE_INSTALL}} {{INSTALL_FOLDER}}/gramine
   sudo cp -r {{ROOT_CLONES}}/gramine/CI-Examples/common_tools {{GRAMINE_BENCHMARKS}}/common_tools
   cp config/Makefile.gramine {{GRAMINE_BENCHMARKS}}/Makefile
