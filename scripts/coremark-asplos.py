@@ -36,6 +36,24 @@ parse_data(THEMIS, THEMIS_PATH)
 
 print(raw_data)
 
+def compare(referece, exp):
+    for (nb_cores, score) in exp:
+        # Find the reference score for the same number of cores
+        ref = None
+        for (n, s) in referece:
+            if n == nb_cores:
+                ref = s
+                break
+
+        # If no reference value, skip it
+        if ref == None:
+            continue
+
+        relative_score = score / ref
+        print(f"Scores {relative_score:.3f} for {nb_cores} cores")
+
+compare(raw_data[NATIVE], raw_data[THEMIS])
+
 fig, ax = plt.subplots()
 
 x = [elt[0] for elt in raw_data[NATIVE]]
