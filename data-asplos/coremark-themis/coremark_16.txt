@@ -1,21 +1,18 @@
-
-                                                 MultiCore SingleCore           
+                                                 MultiCore SingleCore
 Workload Name                                     (iter/s)   (iter/s)    Scaling
 ----------------------------------------------- ---------- ---------- ----------
-cjpeg-rose7-preset                                  500.00     200.00       2.50
-core                                                 27.59       2.70      10.22
-linear_alg-mid-100x100-sp                          1666.67     238.10       7.00
-loops-all-mid-10k-sp                                 81.97       9.40       8.72
-nnet_test                                           106.67      12.82       8.32
-parser-125k                                         177.78      33.33       5.33
-radix2-big-64k                                     7142.86     699.30      10.21
-sha-test                                           1600.00     250.00       6.40
-zip-test                                            800.00     100.00       8.00
+cjpeg-rose7-preset                                 1806.68     225.02       8.03
+core                                                 21.51       2.79       7.71
+linear_alg-mid-100x100-sp                          1598.40     246.15       6.49
+loops-all-mid-10k-sp                                 72.03       9.41       7.65
+nnet_test                                            84.39      12.49       6.76
+parser-125k                                         226.97      24.57       9.24
+radix2-big-64k                                     5296.61     698.23       7.59
+sha-test                                           1767.30     287.56       6.15
+zip-test                                           1408.45     198.45       7.10
 
 MARK RESULTS TABLE
 
 Mark Name                                        MultiCore SingleCore    Scaling
 ----------------------------------------------- ---------- ---------- ----------
-CoreMark-PRO                                      47160.03    6819.10       6.92
-make[2]: Leaving directory '/tyche/coremark-pro'
-make[1]: Leaving directory '/tyche/coremark-pro'
+CoreMark-PRO                                      54130.28    7352.46       7.36
