@@ -1,0 +1,104 @@
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.73ms  773.17us  18.46ms   66.27%
+    Req/Sec    19.09k     2.32k   54.35k    65.83%
+  27369789 requests in 2.00m, 2.24GB read
+Requests/sec: 227892.94
+Transfer/sec:     19.13MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.80ms    0.86ms 209.46ms   68.63%
+    Req/Sec    18.37k     2.25k   44.75k    58.43%
+  26337893 requests in 2.00m, 2.16GB read
+Requests/sec: 219300.64
+Transfer/sec:     18.40MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.81ms  817.41us  18.37ms   66.27%
+    Req/Sec    18.30k     2.14k   28.83k    61.95%
+  26233418 requests in 2.00m, 2.15GB read
+Requests/sec: 218429.72
+Transfer/sec:     18.33MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.81ms  815.68us  15.63ms   66.15%
+    Req/Sec    18.31k     2.22k   46.91k    62.76%
+  26253413 requests in 2.00m, 2.15GB read
+Requests/sec: 218595.82
+Transfer/sec:     18.35MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.21ms   15.20ms 420.60ms   98.87%
+    Req/Sec    18.12k     2.89k   55.54k    69.38%
+  25956571 requests in 2.00m, 2.13GB read
+Requests/sec: 216124.88
+Transfer/sec:     18.14MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.81ms  817.77us  17.89ms   66.15%
+    Req/Sec    18.28k     2.32k   57.07k    58.02%
+  26214556 requests in 2.00m, 2.15GB read
+Requests/sec: 218273.00
+Transfer/sec:     18.32MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.82ms  826.75us  17.88ms   66.19%
+    Req/Sec    18.23k     2.23k   66.36k    62.77%
+  26140849 requests in 2.00m, 2.14GB read
+Requests/sec: 217658.76
+Transfer/sec:     18.27MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.81ms  816.11us  18.05ms   66.18%
+    Req/Sec    18.25k     2.46k   64.84k    60.19%
+  26170359 requests in 2.00m, 2.14GB read
+Requests/sec: 217905.03
+Transfer/sec:     18.29MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.81ms  821.22us  17.18ms   66.14%
+    Req/Sec    18.29k     2.28k   54.82k    65.56%
+  26206220 requests in 2.00m, 2.15GB read
+Requests/sec: 218204.04
+Transfer/sec:     18.31MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.75ms  775.98us  14.20ms   66.02%
+    Req/Sec    18.87k     2.35k   55.04k    60.33%
+  27050605 requests in 2.00m, 2.22GB read
+Requests/sec: 225233.87
+Transfer/sec:     18.90MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.82ms  822.47us  19.33ms   65.91%
+    Req/Sec    18.22k     2.35k   57.76k    57.65%
+  26113247 requests in 2.00m, 2.14GB read
+Requests/sec: 217430.36
+Transfer/sec:     18.25MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.83ms  825.84us   7.39ms   65.86%
+    Req/Sec    18.09k     2.26k   52.77k    65.34%
+  25932890 requests in 2.00m, 2.13GB read
+Requests/sec: 215928.34
+Transfer/sec:     18.12MB
+Running 2m test @ http://128.178.116.130:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.83ms  832.00us  16.53ms   65.97%
+    Req/Sec    18.03k     2.34k   58.86k    59.94%
+  25845716 requests in 2.00m, 2.12GB read
+Requests/sec: 215201.74
+Transfer/sec:     18.06MB

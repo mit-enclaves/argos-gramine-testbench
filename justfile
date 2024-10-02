@@ -1,4 +1,4 @@
-ip-addr  := "128.178.116.124"
+ip-addr  := "128.178.116.130"
 tcp-port := "1234"
 tls-port := "1234"
 n_reqs   := "10000"
@@ -187,7 +187,7 @@ tokio-benchmark:
 	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000
 
 lighttpd-benchmark:
-	wrk -t12 -c400 -d120s http://{{ip-addr}}:8003
+	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000/random/100K.1.html
 
 # The following line gives highlighting on vim
 # vim: set ft=make :
