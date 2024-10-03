@@ -6,14 +6,27 @@ SGX_PATH = "data-asplos/gramine-sgx/"
 TYCHE_PATH = "data-asplos/gramine-tyche/"
 HYPER = "hyper.txt"
 
-def parse_wrk(path: str):
+REQUESTS_SECS = "Requests/sec:"
+BYTES_SECS = "Transfer/sec:"
+
+def as_bytes(data: str):
+    if data.endswith("MB"):
+        return data[:-2]
+    else:
+        print(f"ERROR: format not yet handled '{data}'")
+
+def parse_wrk(path: str, label: str):
     data = []
     with open(path, 'r') as file:
         for line in file:
-            if not line.startswith("Requests/sec:"):
+            if not line.startswith(label):
                 continue
 
-            req_per_sec = float(line.split()[1])
+            raw_data = line.split()[1]
+            if label == BYTES_SECS:
+                raw_data = as_bytes(raw_data)
+
+            req_per_sec = float(raw_data)
             data.append(req_per_sec)
 
             # We keep at most 10 samples
@@ -23,8 +36,8 @@ def parse_wrk(path: str):
         print(f"WARNING: less than 10 samples in {path}")
     return data
 
-sgx_hyper = parse_wrk(SGX_PATH + HYPER)
-tyche_hyper = parse_wrk(TYCHE_PATH + HYPER)
+sgx_hyper = parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS)
+tyche_hyper = parse_wrk(TYCHE_PATH + HYPER, REQUESTS_SECS)
 
 print(f"SGX:   {np.mean(sgx_hyper):.2f} +/- {np.std(sgx_hyper):.2f} Req/Sec")
 print(f"Tyche: {np.mean(tyche_hyper):.2f} +/- {np.std(tyche_hyper):.2f} Req/Sec")
@@ -32,10 +45,10 @@ print(f"  Tyche is {np.mean(tyche_hyper) / np.mean(sgx_hyper):.2f}x faster than 
 
 
 lighttpd_sizes = ["100", "1K", "10K", "100K", "1M", "10M"]
-def get_lighttpd_data(folder_path: str):
+def get_lighttpd_data(folder_path: str, label: str):
     lighttpd_data = []
     for size in lighttpd_sizes:
-        data = parse_wrk(SGX_PATH + "lighttpd-" + size + ".txt")
+        data = parse_wrk(folder_path + "lighttpd-" + size + ".txt", label)
         lighttpd_data.append(data)
     return lighttpd_data
 
@@ -51,12 +64,18 @@ def normalize_lighttpd(reference, data):
         ))
     return normalized_list
 
-def plot_bar():
-    lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH)
-    lighttpd_gramine_tyche = get_lighttpd_data(TYCHE_PATH)
+def get_mean_std(data):
+    cleaned = []
+    for item in data:
+        cleaned.append((float(np.mean(item)), float(np.std(item))))
+    return cleaned
+
+def plot_relative_reqsec_bar():
+    lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, REQUESTS_SECS)
+    lighttpd_gramine_tyche = get_lighttpd_data(TYCHE_PATH, REQUESTS_SECS)
     
     gramine_sgx = normalize_lighttpd(lighttpd_gramine_sgx, lighttpd_gramine_sgx)
-    gramine_tyche = normalize_lighttpd(lighttpd_gramine_sgx, lighttpd_gramine_sgx)
+    gramine_tyche = normalize_lighttpd(lighttpd_gramine_sgx, lighttpd_gramine_tyche)
     print(gramine_sgx)
 
     fig, ax = plt.subplots()
@@ -89,4 +108,37 @@ def plot_bar():
     
     plt.show()
 
-plot_bar()
+def plot_throughput_bars():
+    lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, BYTES_SECS)
+    lighttpd_gramine_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
+    
+    gramine_sgx = get_mean_std(lighttpd_gramine_sgx)
+    gramine_tyche = get_mean_std(lighttpd_gramine_tyche)
+
+    fig, ax = plt.subplots()
+    
+    # Plot the bars
+    width = 0.35
+    x = np.arange(len(lighttpd_sizes))
+
+    def plot_bar(data, shift, label):
+        val = [x[0] for x in data]
+        err = [x[1] for x in data]
+        ax.bar(x + shift, val, width, label=label)
+        ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None',)
+
+    plot_bar(gramine_sgx, -width/2, "Gramine SGX")
+    plot_bar(gramine_tyche, width/2, "Gramine Tyche")
+
+    plt.xticks(x, lighttpd_sizes)
+    ax.set(xlabel='HTTP payload size (bytes)', ylabel='Relative MiB/s',
+           title='lighttpd HTTP throughput')
+    ax.legend(loc='lower right')
+
+    # ax.grid()
+    
+    plt.show()
+
+
+# plot_relative_reqsec_bar()
+plot_throughput_bars()
