@@ -9,10 +9,12 @@ exp = [
     ("Anon VM", "../data/ubench/coremark_tyche_vm_1.txt"),
 ]
 
-NATIVE_PATH = "data-asplos/coremark-native-vm/"
+NATIVE_PATH = "data-asplos/coremark-native/"
 NATIVE = "native"
-THEMIS_PATH = "data-asplos/coremark-themis-vm/"
-THEMIS = "sdktyche"
+NATIVE_VM_PATH = "data-asplos/coremark-native-vm/"
+NATIVE_VM = "native-vm"
+THEMIS_VM_PATH = "data-asplos/coremark-themis-vm/"
+THEMIS_VM = "sdktyche"
 
 raw_data = {}
 
@@ -32,14 +34,16 @@ def parse_data(exp: str, path: str):
     raw_data[exp].sort(key = lambda x: x[0])
 
 parse_data(NATIVE, NATIVE_PATH)
-parse_data(THEMIS, THEMIS_PATH)
+parse_data(NATIVE_VM, NATIVE_VM_PATH)
+parse_data(THEMIS_VM, THEMIS_VM_PATH)
 
 print(raw_data)
 
-def compute_relative(referece, exp):
+def compute_relative(referece, exp, name: str):
     ref_scores = []
     exp_scores = []
     labels = []
+    print(f"Scores for {name}:")
     for (nb_cores, score) in exp:
         # Find the reference score for the same number of cores
         ref = None
@@ -56,18 +60,18 @@ def compute_relative(referece, exp):
         ref_scores.append((1., ref))
         exp_scores.append((relative_score, score))
         labels.append(nb_cores)
-        print(f"Scores {relative_score:.3f} for {nb_cores} cores")
+        print(f"  {relative_score:.3f} for {nb_cores} cores")
     return ref_scores, exp_scores, labels
 
 def plot_curve():
     fig, ax = plt.subplots()
     
-    x = [elt[0] for elt in raw_data[NATIVE]]
-    y = [elt[1] for elt in raw_data[NATIVE]]
+    x = [elt[0] for elt in raw_data[NATIVE_VM]]
+    y = [elt[1] for elt in raw_data[NATIVE_VM]]
     ax.plot(x, y, label="native")
     
-    x = [elt[0] for elt in raw_data[THEMIS]]
-    y = [elt[1] for elt in raw_data[THEMIS]]
+    x = [elt[0] for elt in raw_data[THEMIS_VM]]
+    y = [elt[1] for elt in raw_data[THEMIS_VM]]
     ax.plot(x, y, label="themis")
     
     ax.legend()
@@ -78,20 +82,22 @@ def plot_curve():
     plt.show()
 
 def plot_bar():
-    native, themis, labels = compute_relative(raw_data[NATIVE], raw_data[THEMIS])
+    native, native_vm, labels = compute_relative(raw_data[NATIVE], raw_data[NATIVE_VM], NATIVE_VM)
+    _, themis_vm, _ = compute_relative(raw_data[NATIVE], raw_data[THEMIS_VM], THEMIS_VM)
 
-    print(native)
-    print(themis)
+    print(native_vm)
+    print(themis_vm)
     print(labels)
 
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.35
+    width = 0.25
     x = np.arange(len(labels))
 
-    bars_native = ax.bar(x - width/2, [x[0] for x in native], width, label='Native')
-    bars_themis = ax.bar(x + width/2, [x[0] for x in themis], width, label='Themis')
+    bars_native    = ax.bar(x - width, [x[0] for x in native],    width, label='Native')
+    bars_native_vm = ax.bar(x,         [x[0] for x in native_vm], width, label='Native VM')
+    bars_themis_vm = ax.bar(x + width, [x[0] for x in themis_vm], width, label='Themis VM')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
@@ -107,10 +113,9 @@ def plot_bar():
             ax.annotate(f'{int(score)}',
                         xy=(bar.get_x() + bar.get_width() / 2, 1.02),
                         ha='center', va='bottom', rotation=90)
-    add_values(bars_themis, themis)
     add_values(bars_native, native)
-
-    # ax.grid()
+    add_values(bars_native_vm, native_vm)
+    add_values(bars_themis_vm, themis_vm)
     
     plt.show()
 
