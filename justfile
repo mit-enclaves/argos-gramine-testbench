@@ -10,6 +10,8 @@ GRAMINE_INSTALL := "/gramine/"
 GRAMINE_UTILS := "/gramine/utils/"
 GRAMINE_BENCHMARKS := "to-copy/gramine-benchmarks/"
 CUSTOM_BINARIES := "to-copy/my_bin/"
+MODEL_NAME := "llama-small.gguf"
+MODEL_URL := "https://huggingface.co/hugging-quants/Llama-3.2-1B-Instruct-Q4_K_M-GGUF/resolve/main/llama-3.2-1b-instruct-q4_k_m.gguf"
 
 
 ## ————————————————————————————— Setup for all —————————————————————————————— //
@@ -45,8 +47,8 @@ compile-gramine TYCHE_DEVEL:
   ABSOLUTE=$(realpath "{{TYCHE_DEVEL}}")
   sudo mkdir -p {{GRAMINE_INSTALL}}
   sudo chown $USER:$USER {{GRAMINE_INSTALL}}
-  sudo chmod 777 {{GRAMINE_INSTALL}}
   TYCHE_ROOT=$ABSOLUTE TARGET={{GRAMINE_INSTALL}} make -C {{ROOT_CLONES}}/gramine 
+  sudo chmod -R 777 {{GRAMINE_INSTALL}}
 
 compile-gramine-benchmarks:
   @just delete-gramine-benchmarks
@@ -55,6 +57,8 @@ compile-gramine-benchmarks:
   @just compile-gramine-benchmark lighttpd
   @just compile-gramine-benchmark rust
   @just compile-gramine-benchmark sqlite
+  @just compile-gramine-benchmark llama
+  @just download_model
   @just disable-debug-gramine-benchmarks
 
 delete-gramine-benchmarks:
@@ -85,6 +89,15 @@ copy-gramine-binaries:
   sudo cp -r {{GRAMINE_INSTALL}} {{INSTALL_FOLDER}}/gramine
   sudo cp -r {{ROOT_CLONES}}/gramine/CI-Examples/common_tools {{GRAMINE_BENCHMARKS}}/common_tools
   cp config/Makefile.gramine {{GRAMINE_BENCHMARKS}}/Makefile
+
+download_model:
+  #!/usr/bin/env bash
+  if [ ! -e {{INSTALL_FOLDER}}/{{MODEL_NAME}} ]; then
+    mkdir -p {{INSTALL_FOLDER}}
+    echo "Downloading the llama model, that might take a while..."
+    wget --show-progress -O {{INSTALL_FOLDER}}/{{MODEL_NAME}} {{MODEL_URL}}
+  fi
+
 
 ## ——————————————————————————————— lkvm setup ——————————————————————————————— //
 
