@@ -1,0 +1,86 @@
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   333.92ms  104.56ms   1.41s    81.29%
+    Req/Sec   101.35     80.06   330.00     60.99%
+  135645 requests in 2.00m, 12.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 924
+Requests/sec:   1129.48
+Transfer/sec:    110.75MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   335.69ms  113.40ms   1.54s    81.26%
+    Req/Sec   100.35     79.21   323.00     61.50%
+  135730 requests in 2.00m, 12.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 924
+Requests/sec:   1130.28
+Transfer/sec:    110.79MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.81ms  191.53ms   1.66s    87.27%
+    Req/Sec   107.81     84.80   626.00     66.72%
+  136266 requests in 2.00m, 13.03GB read
+Requests/sec:   1134.65
+Transfer/sec:    111.12MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   364.33ms  179.98ms   1.58s    86.48%
+    Req/Sec   105.24     73.46   676.00     69.54%
+  136173 requests in 2.00m, 13.03GB read
+Requests/sec:   1133.96
+Transfer/sec:    111.15MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   342.61ms  137.49ms   1.92s    90.17%
+    Req/Sec   113.83    100.71   666.00     57.30%
+  136273 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1112
+Requests/sec:   1134.93
+Transfer/sec:    111.21MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   342.73ms  137.84ms   1.91s    90.20%
+    Req/Sec   112.87     95.99   666.00     58.88%
+  136196 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1116
+Requests/sec:   1134.05
+Transfer/sec:    111.14MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   330.64ms   92.07ms   1.51s    80.36%
+    Req/Sec   104.49     91.35   373.00     66.27%
+  135810 requests in 2.00m, 12.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 924
+Requests/sec:   1130.88
+Transfer/sec:    110.79MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   342.95ms  140.56ms   1.94s    89.94%
+    Req/Sec   114.80     95.98   545.00     62.08%
+  136185 requests in 2.00m, 13.03GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1112
+Requests/sec:   1133.96
+Transfer/sec:    111.12MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   379.37ms  245.66ms   2.00s    87.84%
+    Req/Sec   110.57     94.24   757.00     60.39%
+  136109 requests in 2.00m, 13.03GB read
+Requests/sec:   1133.34
+Transfer/sec:    111.14MB
+Running 2m test @ http://128.178.116.130:8000/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   362.23ms  170.37ms   1.77s    86.78%
+    Req/Sec    99.92     82.16   626.00     72.97%
+  136113 requests in 2.00m, 13.03GB read
+Requests/sec:   1133.67
+Transfer/sec:    111.16MB
