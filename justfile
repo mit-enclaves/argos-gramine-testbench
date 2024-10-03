@@ -187,7 +187,7 @@ tokio-benchmark:
 	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000
 
 lighttpd-benchmark:
-	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000/random/100K.1.html
+	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000/random/1K.html
 
 # The following line gives highlighting on vim
 # vim: set ft=make :

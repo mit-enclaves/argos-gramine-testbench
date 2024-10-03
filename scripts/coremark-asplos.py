@@ -9,9 +9,9 @@ exp = [
     ("Anon VM", "../data/ubench/coremark_tyche_vm_1.txt"),
 ]
 
-NATIVE_PATH = "data-asplos/coremark-native/"
+NATIVE_PATH = "data-asplos/coremark-native-vm/"
 NATIVE = "native"
-THEMIS_PATH = "data-asplos/coremark-themis/"
+THEMIS_PATH = "data-asplos/coremark-themis-vm/"
 THEMIS = "sdktyche"
 
 raw_data = {}
