@@ -13,6 +13,8 @@ NATIVE_PATH = "data-asplos/coremark-native/"
 NATIVE = "native"
 NATIVE_VM_PATH = "data-asplos/coremark-native-vm/"
 NATIVE_VM = "native-vm"
+TYCHE_PATH = "data-asplos/coremark-tyche/"
+TYCHE = "tyche"
 THEMIS_VM_PATH = "data-asplos/coremark-themis-vm/"
 THEMIS_VM = "sdktyche"
 
@@ -35,6 +37,7 @@ def parse_data(exp: str, path: str):
 
 parse_data(NATIVE, NATIVE_PATH)
 parse_data(NATIVE_VM, NATIVE_VM_PATH)
+parse_data(TYCHE, TYCHE_PATH)
 parse_data(THEMIS_VM, THEMIS_VM_PATH)
 
 print(raw_data)
@@ -83,6 +86,7 @@ def plot_curve():
 
 def plot_bar():
     native, native_vm, labels = compute_relative(raw_data[NATIVE], raw_data[NATIVE_VM], NATIVE_VM)
+    _, tyche, _ = compute_relative(raw_data[NATIVE], raw_data[TYCHE], TYCHE)
     _, themis_vm, _ = compute_relative(raw_data[NATIVE], raw_data[THEMIS_VM], THEMIS_VM)
 
     print(native_vm)
@@ -92,12 +96,13 @@ def plot_bar():
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.25
+    width = 0.22
     x = np.arange(len(labels))
 
-    bars_native    = ax.bar(x - width, [x[0] for x in native],    width, label='Native')
-    bars_native_vm = ax.bar(x,         [x[0] for x in native_vm], width, label='Native VM')
-    bars_themis_vm = ax.bar(x + width, [x[0] for x in themis_vm], width, label='Themis VM')
+    bars_native    = ax.bar(x - 1.5 * width, [x[0] for x in native],    width, label='Native')
+    bars_native_vm = ax.bar(x - 0.5 * width, [x[0] for x in native_vm], width, label='Native VM')
+    bars_tyche     = ax.bar(x + 0.5 * width, [x[0] for x in tyche],     width, label='Anon')
+    bars_themis_vm = ax.bar(x + 1.5 * width, [x[0] for x in themis_vm], width, label='Anon VM')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
@@ -115,6 +120,7 @@ def plot_bar():
                         ha='center', va='bottom', rotation=90)
     add_values(bars_native, native)
     add_values(bars_native_vm, native_vm)
+    add_values(bars_tyche, tyche)
     add_values(bars_themis_vm, themis_vm)
     
     plt.show()
