@@ -57,6 +57,7 @@ compile-gramine-benchmarks:
   @just compile-gramine-benchmark lighttpd
   @just compile-gramine-benchmark rust
   @just compile-gramine-benchmark sqlite
+  @ just compile-gramine-benchmark speedsqlite
   @just compile-gramine-benchmark llama
   @just download_model
   @just disable-debug-gramine-benchmarks

@@ -86,6 +86,9 @@ llama: print_env
 	fi
 	cd llama && $(GRAMINE) llama-cli -m /llama-small.gguf -n 100 -t 1 --no-mmap --ctx-size 256 --prompt "Why is batman so special?"
 
+.PHONY: speedsqlite
+speedsqlite: print_env
+	cd speedsqlite && $(GRAMINE) speedtest1 --memdb --size 1000
 
 .PHONY: stop-server
 stop-server:
