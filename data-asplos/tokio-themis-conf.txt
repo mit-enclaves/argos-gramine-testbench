@@ -1,0 +1,80 @@
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.61ms  254.76us  18.97ms   84.57%
+    Req/Sec    20.40k     3.22k   48.12k    95.26%
+  7325367 requests in 30.10s, 614.77MB read
+Requests/sec: 243368.40
+Transfer/sec:     20.42MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.72ms    2.40ms 205.78ms   99.95%
+    Req/Sec    19.54k     2.61k   36.24k    95.21%
+  7020471 requests in 30.10s, 589.18MB read
+Requests/sec: 233236.92
+Transfer/sec:     19.57MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.68ms  320.51us  26.50ms   88.56%
+    Req/Sec    19.49k     2.77k   40.31k    94.76%
+  7000613 requests in 30.10s, 587.51MB read
+Requests/sec: 232579.01
+Transfer/sec:     19.52MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.67ms  623.21us  23.52ms   93.11%
+    Req/Sec    19.93k     4.07k   39.51k    88.36%
+  7157420 requests in 30.10s, 600.67MB read
+Requests/sec: 237788.09
+Transfer/sec:     19.96MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.73ms  182.97us  19.91ms   75.40%
+    Req/Sec    18.91k     1.22k   53.40k    94.95%
+  6784408 requests in 30.10s, 569.37MB read
+Requests/sec: 225400.26
+Transfer/sec:     18.92MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.62ms  299.90us  25.35ms   74.33%
+    Req/Sec    20.20k     3.78k   51.71k    89.11%
+  7255870 requests in 30.10s, 608.94MB read
+Requests/sec: 241056.15
+Transfer/sec:     20.23MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.67ms  235.07us   8.34ms   75.86%
+    Req/Sec    19.56k     2.41k   62.00k    96.37%
+  7029323 requests in 30.10s, 589.92MB read
+Requests/sec: 233531.50
+Transfer/sec:     19.60MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.66ms  259.61us   8.01ms   77.20%
+    Req/Sec    19.69k     2.91k   58.58k    93.35%
+  7071201 requests in 30.10s, 593.44MB read
+Requests/sec: 234923.68
+Transfer/sec:     19.72MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.45ms  342.90us  14.42ms   50.03%
+    Req/Sec    22.57k     5.30k   45.82k    69.61%
+  8097678 requests in 30.06s, 679.58MB read
+Requests/sec: 269380.85
+Transfer/sec:     22.61MB
+Running 30s test @ http://128.178.116.234:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.13ms    8.18ms 227.76ms   99.59%
+    Req/Sec    19.54k     3.14k   47.48k    93.01%
+  7013013 requests in 30.10s, 588.56MB read
+Requests/sec: 232995.85
+Transfer/sec:     19.55MB
