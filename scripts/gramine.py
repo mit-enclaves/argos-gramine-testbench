@@ -3,7 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 SGX_PATH = "data-asplos/gramine-sgx/"
-TYCHE_PATH = "data-asplos/gramine-tyche/"
+GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
+THEMIS_CONF_PATH = "data-asplos/themis-conf/"
+TYCHE_PATH = "data-asplos/tyche/"
 HYPER = "hyper.txt"
 
 REQUESTS_SECS = "Requests/sec:"
@@ -37,11 +39,11 @@ def parse_wrk(path: str, label: str):
     return data
 
 sgx_hyper = parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS)
-tyche_hyper = parse_wrk(TYCHE_PATH + HYPER, REQUESTS_SECS)
+tyche_gramine_hyper = parse_wrk(GRAMINE_TYCHE_PATH + HYPER, REQUESTS_SECS)
 
 print(f"SGX:   {np.mean(sgx_hyper):.2f} +/- {np.std(sgx_hyper):.2f} Req/Sec")
-print(f"Tyche: {np.mean(tyche_hyper):.2f} +/- {np.std(tyche_hyper):.2f} Req/Sec")
-print(f"  Tyche is {np.mean(tyche_hyper) / np.mean(sgx_hyper):.2f}x faster than SGX")
+print(f"Tyche: {np.mean(tyche_gramine_hyper):.2f} +/- {np.std(tyche_gramine_hyper):.2f} Req/Sec")
+print(f"  Tyche is {np.mean(tyche_gramine_hyper) / np.mean(sgx_hyper):.2f}x faster than SGX")
 
 
 lighttpd_sizes = ["100", "1K", "10K", "100K", "1M", "10M"]
@@ -72,7 +74,7 @@ def get_mean_std(data):
 
 def plot_relative_reqsec_bar():
     lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, REQUESTS_SECS)
-    lighttpd_gramine_tyche = get_lighttpd_data(TYCHE_PATH, REQUESTS_SECS)
+    lighttpd_gramine_tyche = get_lighttpd_data(GRAMINE_TYCHE_PATH, REQUESTS_SECS)
     
     gramine_sgx = normalize_lighttpd(lighttpd_gramine_sgx, lighttpd_gramine_sgx)
     gramine_tyche = normalize_lighttpd(lighttpd_gramine_sgx, lighttpd_gramine_tyche)
@@ -110,15 +112,19 @@ def plot_relative_reqsec_bar():
 
 def plot_throughput_bars():
     lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, BYTES_SECS)
-    lighttpd_gramine_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
+    lighttpd_gramine_tyche = get_lighttpd_data(GRAMINE_TYCHE_PATH, BYTES_SECS)
+    # lighttpd_themis_conf = get_lighttpd_data(THEMIS_CONF_PATH, BYTES_SECS)
+    lighttpd_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
     
     gramine_sgx = get_mean_std(lighttpd_gramine_sgx)
     gramine_tyche = get_mean_std(lighttpd_gramine_tyche)
+    tyche = get_mean_std(lighttpd_tyche)
+    # themis_conf = get_mean_std(lighttpd_themis_conf)
 
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.35
+    width = 0.20
     x = np.arange(len(lighttpd_sizes))
 
     def plot_bar(data, shift, label):
@@ -127,8 +133,10 @@ def plot_throughput_bars():
         ax.bar(x + shift, val, width, label=label)
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None',)
 
-    plot_bar(gramine_sgx, -width/2, "Gramine SGX")
-    plot_bar(gramine_tyche, width/2, "Gramine Tyche")
+    plot_bar(gramine_sgx, - width, "Gramine SGX")
+    plot_bar(tyche, 0, "Tyche")
+    plot_bar(gramine_tyche,  + width, "Gramine Tyche")
+    # plot_bar(themis_conf , + 2 * width, "Tyche CVM")
 
     plt.xticks(x, lighttpd_sizes)
     ax.set(xlabel='HTTP payload size (bytes)', ylabel='Relative MiB/s',

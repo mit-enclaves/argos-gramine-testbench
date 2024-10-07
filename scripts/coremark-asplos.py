@@ -94,7 +94,7 @@ def plot_bar():
     print(labels)
 
     fig, ax = plt.subplots()
-    
+
     # Plot the bars
     width = 0.22
     x = np.arange(len(labels))
