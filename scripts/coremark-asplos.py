@@ -16,7 +16,9 @@ NATIVE_VM = "native-vm"
 TYCHE_PATH = "data-asplos/coremark-tyche/"
 TYCHE = "tyche"
 THEMIS_VM_PATH = "data-asplos/coremark-themis-vm/"
-THEMIS_VM = "sdktyche"
+THEMIS_VM = "themis-vm"
+THEMIS_CONF_VM_PATH = "data-asplos/coremark-themis-conf-vm/"
+THEMIS_CONF_VM = "themis-conf-vm"
 
 raw_data = {}
 
@@ -39,6 +41,7 @@ parse_data(NATIVE, NATIVE_PATH)
 parse_data(NATIVE_VM, NATIVE_VM_PATH)
 parse_data(TYCHE, TYCHE_PATH)
 parse_data(THEMIS_VM, THEMIS_VM_PATH)
+parse_data(THEMIS_CONF_VM, THEMIS_CONF_VM_PATH)
 
 print(raw_data)
 
@@ -88,6 +91,7 @@ def plot_bar():
     native, native_vm, labels = compute_relative(raw_data[NATIVE], raw_data[NATIVE_VM], NATIVE_VM)
     _, tyche, _ = compute_relative(raw_data[NATIVE], raw_data[TYCHE], TYCHE)
     _, themis_vm, _ = compute_relative(raw_data[NATIVE], raw_data[THEMIS_VM], THEMIS_VM)
+    _, themis_conf_vm, _ = compute_relative(raw_data[NATIVE], raw_data[THEMIS_CONF_VM], THEMIS_CONF_VM)
 
     print(native_vm)
     print(themis_vm)
@@ -96,13 +100,14 @@ def plot_bar():
     fig, ax = plt.subplots()
 
     # Plot the bars
-    width = 0.22
+    width = 0.18
     x = np.arange(len(labels))
 
-    bars_native    = ax.bar(x - 1.5 * width, [x[0] for x in native],    width, label='Native')
-    bars_native_vm = ax.bar(x - 0.5 * width, [x[0] for x in native_vm], width, label='Native VM')
-    bars_tyche     = ax.bar(x + 0.5 * width, [x[0] for x in tyche],     width, label='Anon')
-    bars_themis_vm = ax.bar(x + 1.5 * width, [x[0] for x in themis_vm], width, label='Anon VM')
+    bars_native         = ax.bar(x - 2 * width, [x[0] for x in native],         width, label='Native')
+    bars_native_vm      = ax.bar(x - 1 * width, [x[0] for x in native_vm],      width, label='Native VM')
+    bars_tyche          = ax.bar(x + 0 * width, [x[0] for x in tyche],          width, label='Anon')
+    bars_themis_vm      = ax.bar(x + 1 * width, [x[0] for x in themis_vm],      width, label='Anon VM')
+    bars_themis_conf_vm = ax.bar(x + 2 * width, [x[0] for x in themis_conf_vm], width, label='Anon Conf VM')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
@@ -122,6 +127,7 @@ def plot_bar():
     add_values(bars_native_vm, native_vm)
     add_values(bars_tyche, tyche)
     add_values(bars_themis_vm, themis_vm)
+    add_values(bars_themis_conf_vm, themis_conf_vm)
     
     plt.show()
 
