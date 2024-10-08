@@ -1,0 +1,90 @@
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    17.15     17.47   200.00     88.18%
+  13068 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13068
+Requests/sec:    108.84
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    16.23     15.40   161.00     89.31%
+  13086 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13086
+Requests/sec:    108.98
+Transfer/sec:    111.38MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    15.63     14.68   180.00     88.54%
+  13086 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13086
+Requests/sec:    108.99
+Transfer/sec:    111.39MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    15.25     14.69   171.00     81.36%
+  13090 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13090
+Requests/sec:    109.02
+Transfer/sec:    111.39MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    16.04     15.80   200.00     88.61%
+  13094 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13094
+Requests/sec:    109.06
+Transfer/sec:    111.39MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    15.80     16.82   200.00     90.30%
+  13085 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13085
+Requests/sec:    108.99
+Transfer/sec:    111.40MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    15.52     15.98   191.00     90.45%
+  13091 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13091
+Requests/sec:    109.03
+Transfer/sec:    111.38MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    16.59     17.65   190.00     88.66%
+  13078 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13078
+Requests/sec:    108.91
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    15.66     15.00   131.00     89.15%
+  13085 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13085
+Requests/sec:    108.95
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.198:8000/random/1M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    17.30     18.12   230.00     87.56%
+  13066 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 0, write 0, timeout 13066
+Requests/sec:    108.82
+Transfer/sec:    111.38MB
