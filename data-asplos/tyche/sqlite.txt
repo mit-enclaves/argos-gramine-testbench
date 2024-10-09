@@ -1,35 +1,340 @@
-./speedtest1 --memdb --size 1000
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.223s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.350s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.494s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.521s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.657s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.494s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.557s
+ 150 - CREATE INDEX five times.....................................    1.011s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.716s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.748s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.168s
+ 180 - 500000 INSERTS with three indexes...........................    0.914s
+ 190 - DELETE and REFILL one table.................................    0.887s
+ 200 - VACUUM......................................................    0.667s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.590s
+ 240 - 500000 UPDATES of individual rows...........................    0.571s
+ 250 - One big UPDATE of the whole 500000-row table................    0.063s
+ 260 - Query added column after filling............................    0.024s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.892s
+ 280 - 500000 DELETEs of individual rows...........................    0.864s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.605s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.972s
+ 310 - 100000 four-ways joins......................................    2.405s
+ 320 - subquery in result set......................................    8.845s
+ 400 - 700000 REPLACE ops on an IPK................................    0.607s
+ 410 - 700000 SELECTS on an IPK....................................    0.398s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.830s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.640s
+ 520 - 700000 SELECT DISTINCT......................................    0.344s
+ 980 - PRAGMA integrity_check......................................    2.248s
+ 990 - ANALYZE.....................................................    0.182s
+       TOTAL.......................................................   35.512s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.227s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.359s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.504s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.530s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.660s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.457s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.565s
+ 150 - CREATE INDEX five times.....................................    1.031s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.709s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.735s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.169s
+ 180 - 500000 INSERTS with three indexes...........................    0.911s
+ 190 - DELETE and REFILL one table.................................    0.884s
+ 200 - VACUUM......................................................    0.657s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.576s
+ 240 - 500000 UPDATES of individual rows...........................    0.569s
+ 250 - One big UPDATE of the whole 500000-row table................    0.061s
+ 260 - Query added column after filling............................    0.025s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.890s
+ 280 - 500000 DELETEs of individual rows...........................    0.857s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.601s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    1.014s
+ 310 - 100000 four-ways joins......................................    3.022s
+ 320 - subquery in result set......................................    8.669s
+ 400 - 700000 REPLACE ops on an IPK................................    0.590s
+ 410 - 700000 SELECTS on an IPK....................................    0.383s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.815s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.792s
+ 520 - 700000 SELECT DISTINCT......................................    0.524s
+ 980 - PRAGMA integrity_check......................................    2.206s
+ 990 - ANALYZE.....................................................    0.179s
+       TOTAL.......................................................   36.196s
 -- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
  100 - 500000 INSERTs into table with no index.....................    0.222s
- 110 - 500000 ordered INSERTS with one index/PK....................    0.351s
- 120 - 500000 unordered INSERTS with one index/PK..................    0.494s
- 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.522s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.354s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.496s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.521s
  140 - 10 SELECTS, LIKE, unindexed.................................    0.656s
- 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.440s
- 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.551s
- 150 - CREATE INDEX five times.....................................    0.999s
- 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.691s
- 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.689s
- 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.129s
- 180 - 500000 INSERTS with three indexes...........................    0.886s
- 190 - DELETE and REFILL one table.................................    0.857s
- 200 - VACUUM......................................................    0.644s
- 210 - ALTER TABLE ADD COLUMN, and query...........................    0.026s
- 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.557s
- 240 - 500000 UPDATES of individual rows...........................    0.560s
- 250 - One big UPDATE of the whole 500000-row table................    0.063s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.484s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.557s
+ 150 - CREATE INDEX five times.....................................    1.009s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.722s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.750s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.173s
+ 180 - 500000 INSERTS with three indexes...........................    0.916s
+ 190 - DELETE and REFILL one table.................................    0.887s
+ 200 - VACUUM......................................................    0.665s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.588s
+ 240 - 500000 UPDATES of individual rows...........................    0.571s
+ 250 - One big UPDATE of the whole 500000-row table................    0.062s
  260 - Query added column after filling............................    0.025s
- 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.888s
- 280 - 500000 DELETEs of individual rows...........................    0.842s
- 290 - Refill two 500000-row tables using REPLACE..................    1.568s
- 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.968s
- 310 - 100000 four-ways joins......................................    2.389s
- 320 - subquery in result set......................................    8.683s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.892s
+ 280 - 500000 DELETEs of individual rows...........................    0.862s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.619s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.978s
+ 310 - 100000 four-ways joins......................................    2.398s
+ 320 - subquery in result set......................................    8.385s
  400 - 700000 REPLACE ops on an IPK................................    0.592s
- 410 - 700000 SELECTS on an IPK....................................    0.385s
- 500 - 700000 REPLACE on TEXT PK...................................    0.802s
- 510 - 700000 SELECTS on a TEXT PK.................................    0.624s
+ 410 - 700000 SELECTS on an IPK....................................    0.388s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.815s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.627s
+ 520 - 700000 SELECT DISTINCT......................................    0.338s
+ 980 - PRAGMA integrity_check......................................    2.221s
+ 990 - ANALYZE.....................................................    0.179s
+       TOTAL.......................................................   34.977s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.223s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.353s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.500s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.521s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.639s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.472s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.562s
+ 150 - CREATE INDEX five times.....................................    1.010s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.725s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.753s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.171s
+ 180 - 500000 INSERTS with three indexes...........................    0.917s
+ 190 - DELETE and REFILL one table.................................    0.886s
+ 200 - VACUUM......................................................    0.669s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.026s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.591s
+ 240 - 500000 UPDATES of individual rows...........................    0.571s
+ 250 - One big UPDATE of the whole 500000-row table................    0.062s
+ 260 - Query added column after filling............................    0.025s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.891s
+ 280 - 500000 DELETEs of individual rows...........................    0.860s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.609s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.975s
+ 310 - 100000 four-ways joins......................................    2.399s
+ 320 - subquery in result set......................................    8.451s
+ 400 - 700000 REPLACE ops on an IPK................................    0.593s
+ 410 - 700000 SELECTS on an IPK....................................    0.386s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.810s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.623s
  520 - 700000 SELECT DISTINCT......................................    0.337s
- 980 - PRAGMA integrity_check......................................    2.177s
- 990 - ANALYZE.....................................................    0.174s
-       TOTAL.......................................................   34.791
+ 980 - PRAGMA integrity_check......................................    2.215s
+ 990 - ANALYZE.....................................................    0.179s
+       TOTAL.......................................................   35.004s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.223s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.354s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.499s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.555s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.667s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.472s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.550s
+ 150 - CREATE INDEX five times.....................................    0.997s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.725s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.770s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.174s
+ 180 - 500000 INSERTS with three indexes...........................    0.916s
+ 190 - DELETE and REFILL one table.................................    0.886s
+ 200 - VACUUM......................................................    0.666s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.588s
+ 240 - 500000 UPDATES of individual rows...........................    0.570s
+ 250 - One big UPDATE of the whole 500000-row table................    0.062s
+ 260 - Query added column after filling............................    0.025s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.889s
+ 280 - 500000 DELETEs of individual rows...........................    0.862s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.607s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.984s
+ 310 - 100000 four-ways joins......................................    2.332s
+ 320 - subquery in result set......................................    8.077s
+ 400 - 700000 REPLACE ops on an IPK................................    0.590s
+ 410 - 700000 SELECTS on an IPK....................................    0.386s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.806s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.623s
+ 520 - 700000 SELECT DISTINCT......................................    0.339s
+ 980 - PRAGMA integrity_check......................................    2.226s
+ 990 - ANALYZE.....................................................    0.181s
+       TOTAL.......................................................   34.626s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.224s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.353s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.497s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.519s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.665s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.485s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.556s
+ 150 - CREATE INDEX five times.....................................    1.011s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.731s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.754s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.178s
+ 180 - 500000 INSERTS with three indexes...........................    0.916s
+ 190 - DELETE and REFILL one table.................................    0.885s
+ 200 - VACUUM......................................................    0.664s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.026s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.587s
+ 240 - 500000 UPDATES of individual rows...........................    0.568s
+ 250 - One big UPDATE of the whole 500000-row table................    0.065s
+ 260 - Query added column after filling............................    0.026s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.877s
+ 280 - 500000 DELETEs of individual rows...........................    0.832s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.607s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.973s
+ 310 - 100000 four-ways joins......................................    2.394s
+ 320 - subquery in result set......................................    8.159s
+ 400 - 700000 REPLACE ops on an IPK................................    0.612s
+ 410 - 700000 SELECTS on an IPK....................................    0.383s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.788s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.621s
+ 520 - 700000 SELECT DISTINCT......................................    0.337s
+ 980 - PRAGMA integrity_check......................................    2.237s
+ 990 - ANALYZE.....................................................    0.179s
+       TOTAL.......................................................   34.709s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.224s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.354s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.498s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.521s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.662s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.486s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.558s
+ 150 - CREATE INDEX five times.....................................    1.010s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.724s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.750s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.184s
+ 180 - 500000 INSERTS with three indexes...........................    0.923s
+ 190 - DELETE and REFILL one table.................................    0.861s
+ 200 - VACUUM......................................................    0.643s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.024s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.542s
+ 240 - 500000 UPDATES of individual rows...........................    0.557s
+ 250 - One big UPDATE of the whole 500000-row table................    0.061s
+ 260 - Query added column after filling............................    0.024s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.865s
+ 280 - 500000 DELETEs of individual rows...........................    0.836s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.558s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.949s
+ 310 - 100000 four-ways joins......................................    2.403s
+ 320 - subquery in result set......................................    8.532s
+ 400 - 700000 REPLACE ops on an IPK................................    0.577s
+ 410 - 700000 SELECTS on an IPK....................................    0.377s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.790s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.611s
+ 520 - 700000 SELECT DISTINCT......................................    0.337s
+ 980 - PRAGMA integrity_check......................................    2.221s
+ 990 - ANALYZE.....................................................    0.182s
+       TOTAL.......................................................   34.844s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.221s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.350s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.494s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.521s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.659s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.488s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.541s
+ 150 - CREATE INDEX five times.....................................    0.980s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.727s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.691s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.143s
+ 180 - 500000 INSERTS with three indexes...........................    0.888s
+ 190 - DELETE and REFILL one table.................................    0.874s
+ 200 - VACUUM......................................................    0.666s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.539s
+ 240 - 500000 UPDATES of individual rows...........................    0.552s
+ 250 - One big UPDATE of the whole 500000-row table................    0.060s
+ 260 - Query added column after filling............................    0.024s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.863s
+ 280 - 500000 DELETEs of individual rows...........................    0.835s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.559s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.950s
+ 310 - 100000 four-ways joins......................................    2.406s
+ 320 - subquery in result set......................................    8.752s
+ 400 - 700000 REPLACE ops on an IPK................................    0.590s
+ 410 - 700000 SELECTS on an IPK....................................    0.385s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.779s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.604s
+ 520 - 700000 SELECT DISTINCT......................................    0.327s
+ 980 - PRAGMA integrity_check......................................    2.190s
+ 990 - ANALYZE.....................................................    0.179s
+       TOTAL.......................................................   34.862s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.224s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.355s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.482s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.509s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.657s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.438s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.540s
+ 150 - CREATE INDEX five times.....................................    0.980s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.672s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.693s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.169s
+ 180 - 500000 INSERTS with three indexes...........................    0.911s
+ 190 - DELETE and REFILL one table.................................    0.858s
+ 200 - VACUUM......................................................    0.642s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.543s
+ 240 - 500000 UPDATES of individual rows...........................    0.553s
+ 250 - One big UPDATE of the whole 500000-row table................    0.060s
+ 260 - Query added column after filling............................    0.024s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.862s
+ 280 - 500000 DELETEs of individual rows...........................    0.855s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.605s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.943s
+ 310 - 100000 four-ways joins......................................    2.321s
+ 320 - subquery in result set......................................    8.058s
+ 400 - 700000 REPLACE ops on an IPK................................    0.591s
+ 410 - 700000 SELECTS on an IPK....................................    0.386s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.808s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.606s
+ 520 - 700000 SELECT DISTINCT......................................    0.329s
+ 980 - PRAGMA integrity_check......................................    2.183s
+ 990 - ANALYZE.....................................................    0.177s
+       TOTAL.......................................................   34.059s
+-- Speedtest1 for SQLite 3.47.0 2024-10-03 16:31:08 825f01d7e258ac7981f715fd1070
+ 100 - 500000 INSERTs into table with no index.....................    0.221s
+ 110 - 500000 ordered INSERTS with one index/PK....................    0.349s
+ 120 - 500000 unordered INSERTS with one index/PK..................    0.491s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.512s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.648s
+ 142 - 10 SELECTS w/ORDER BY, unindexed............................    1.459s
+ 145 - 10 SELECTS w/ORDER BY and LIMIT, unindexed..................    0.548s
+ 150 - CREATE INDEX five times.....................................    0.995s
+ 160 - 100000 SELECTS, numeric BETWEEN, indexed....................    1.738s
+ 161 - 100000 SELECTS, numeric BETWEEN, PK.........................    1.761s
+ 170 - 100000 SELECTS, text BETWEEN, indexed.......................    1.161s
+ 180 - 500000 INSERTS with three indexes...........................    0.901s
+ 190 - DELETE and REFILL one table.................................    0.873s
+ 200 - VACUUM......................................................    0.653s
+ 210 - ALTER TABLE ADD COLUMN, and query...........................    0.025s
+ 230 - 100000 UPDATES, numeric BETWEEN, indexed....................    1.579s
+ 240 - 500000 UPDATES of individual rows...........................    0.559s
+ 250 - One big UPDATE of the whole 500000-row table................    0.061s
+ 260 - Query added column after filling............................    0.024s
+ 270 - 100000 DELETEs, numeric BETWEEN, indexed....................    0.872s
+ 280 - 500000 DELETEs of individual rows...........................    0.845s
+ 290 - Refill two 500000-row tables using REPLACE..................    1.590s
+ 300 - Refill a 500000-row table using (b&1)==(a&1)................    0.961s
+ 310 - 100000 four-ways joins......................................    2.360s
+ 320 - subquery in result set......................................    8.148s
+ 400 - 700000 REPLACE ops on an IPK................................    0.583s
+ 410 - 700000 SELECTS on an IPK....................................    0.381s
+ 500 - 700000 REPLACE on TEXT PK...................................    0.799s
+ 510 - 700000 SELECTS on a TEXT PK.................................    0.619s
+ 520 - 700000 SELECT DISTINCT......................................    0.332s
+ 980 - PRAGMA integrity_check......................................    2.186s
+ 990 - ANALYZE.....................................................    0.177s
+       TOTAL.......................................................   34.411s
