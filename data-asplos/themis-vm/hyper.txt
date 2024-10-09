@@ -1,0 +1,80 @@
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.03ms  216.19us   6.22ms   87.73%
+    Req/Sec    31.83k     5.41k   52.86k    76.15%
+  38021990 requests in 1.67m, 3.12GB read
+Requests/sec: 379842.15
+Transfer/sec:     31.88MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.19ms  307.28us  10.18ms   74.52%
+    Req/Sec    27.53k     6.41k   82.84k    61.36%
+  32885801 requests in 1.67m, 2.70GB read
+Requests/sec: 328531.39
+Transfer/sec:     27.57MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.12ms  269.37us  18.48ms   84.84%
+    Req/Sec    29.39k     5.42k   91.26k    76.45%
+  35121265 requests in 1.67m, 2.88GB read
+Requests/sec: 350862.34
+Transfer/sec:     29.45MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.27ms  507.91us 210.92ms   93.12%
+    Req/Sec    25.79k     6.31k   52.35k    49.97%
+  30820841 requests in 1.67m, 2.53GB read
+Requests/sec: 307900.72
+Transfer/sec:     25.84MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.00ms   53.78us   6.87ms   77.55%
+    Req/Sec    32.87k   756.02    73.95k    94.49%
+  39284472 requests in 1.67m, 3.22GB read
+Requests/sec: 392452.11
+Transfer/sec:     32.94MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.05ms  253.53us  21.00ms   92.71%
+    Req/Sec    31.45k     4.11k   77.60k    88.49%
+  37590705 requests in 1.67m, 3.08GB read
+Requests/sec: 375531.81
+Transfer/sec:     31.52MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.00ms   53.75us   5.35ms   77.14%
+    Req/Sec    32.86k   653.84    63.86k    90.63%
+  39263888 requests in 1.67m, 3.22GB read
+Requests/sec: 392248.19
+Transfer/sec:     32.92MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.08ms  210.51us   7.97ms   88.13%
+    Req/Sec    30.48k     4.83k   63.38k    81.88%
+  36411882 requests in 1.67m, 2.98GB read
+Requests/sec: 363756.73
+Transfer/sec:     30.53MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.02ms  132.62us   4.13ms   94.20%
+    Req/Sec    32.07k     3.05k   64.49k    93.80%
+  38314510 requests in 1.67m, 3.14GB read
+Requests/sec: 382763.96
+Transfer/sec:     32.12MB
+Running 2m test @ http://128.178.116.199:6380
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.04ms  164.79us   9.05ms   93.24%
+    Req/Sec    31.51k     3.80k   71.87k    90.82%
+  37640183 requests in 1.67m, 3.08GB read
+Requests/sec: 376028.15
+Transfer/sec:     31.56MB
