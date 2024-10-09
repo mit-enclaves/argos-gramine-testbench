@@ -6,6 +6,7 @@ SGX_PATH = "data-asplos/gramine-sgx/"
 GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
 THEMIS_CONF_PATH = "data-asplos/themis-conf/"
 TYCHE_PATH = "data-asplos/tyche/"
+NATIVE_PATH = "data-asplos/native/"
 
 HYPER = "hyper.txt"
 LIGHTTPD = "lighttpd-1K.txt"
@@ -62,32 +63,37 @@ def parse_speedsqlite(path: str):
 
 labels = ["hyper", "lighttpd", "sqlite"]
 lower_is_better = [False, False, True]
-sgx = []
+
+native = []
+gramine_sgx = []
 themis_conf = []
-tyche_gramine = []
+gramine_tyche = []
 
 # —————————————————————————————————— Hyper ——————————————————————————————————— #
 
-sgx.append(parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS))
+native.append(parse_wrk(NATIVE_PATH + HYPER, REQUESTS_SECS))
+gramine_sgx.append(parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + HYPER, REQUESTS_SECS))
-tyche_gramine.append(parse_wrk(GRAMINE_TYCHE_PATH + HYPER, REQUESTS_SECS))
+gramine_tyche.append(parse_wrk(GRAMINE_TYCHE_PATH + HYPER, REQUESTS_SECS))
 
-print(f"SGX:           {sgx[0][0]:.2f} +/- {sgx[0][0]:.2f} Req/Sec")
-print(f"Gramine Tyche: {tyche_gramine[0][0]:.2f} +/- {tyche_gramine[0][0]:.2f} Req/Sec")
+print(f"SGX:           {gramine_sgx[0][0]:.2f} +/- {gramine_sgx[0][0]:.2f} Req/Sec")
+print(f"Gramine Tyche: {gramine_tyche[0][0]:.2f} +/- {gramine_tyche[0][0]:.2f} Req/Sec")
 print(f"THEMIS CVM:    {themis_conf[0][0]:.2f} +/- {themis_conf[0][0]:.2f} Req/Sec")
-print(f"  Tyche is {tyche_gramine[0][0] / sgx[0][0]:.2f}x faster than SGX")
+print(f"  Tyche is {gramine_tyche[0][0] / gramine_sgx[0][0]:.2f}x faster than SGX")
 
 # ————————————————————————————————— Lighttpd ————————————————————————————————— #
 
-sgx.append(parse_wrk(SGX_PATH + LIGHTTPD, BYTES_SECS))
+native.append(parse_wrk(NATIVE_PATH + LIGHTTPD, BYTES_SECS))
+gramine_sgx.append(parse_wrk(SGX_PATH + LIGHTTPD, BYTES_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + LIGHTTPD, BYTES_SECS))
-tyche_gramine.append(parse_wrk(GRAMINE_TYCHE_PATH + LIGHTTPD, BYTES_SECS))
+gramine_tyche.append(parse_wrk(GRAMINE_TYCHE_PATH + LIGHTTPD, BYTES_SECS))
 
 # —————————————————————————————————— Sqlite —————————————————————————————————— #
 
-sgx.append(parse_speedsqlite(SGX_PATH))
+native.append(parse_speedsqlite(NATIVE_PATH))
+gramine_sgx.append(parse_speedsqlite(SGX_PATH))
 themis_conf.append(parse_speedsqlite(THEMIS_CONF_PATH))
-tyche_gramine.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
+gramine_tyche.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
 
 # ——————————————————————————————————— Plot ——————————————————————————————————— #
 
@@ -103,29 +109,32 @@ def make_relative(ref, data):
     return scaled
 
 
-themis_conf = make_relative(sgx, themis_conf)
-tyche_gramine = make_relative(sgx, tyche_gramine)
-sgx = make_relative(sgx, sgx)
+themis_conf = make_relative(native, themis_conf)
+gramine_tyche = make_relative(native, gramine_tyche)
+gramine_sgx = make_relative(native, gramine_sgx)
+native = make_relative(native, native)
 
 print(themis_conf)
-print(tyche_gramine)
-print(sgx)
+print(gramine_tyche)
+print(gramine_sgx)
+print(native)
 
 def plot_comparison():
 
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.25
+    width = 0.2
     x = np.arange(len(labels))
 
-    ax.bar(x - width, [x[0] for x in sgx], width, label='Gramine SGX')
-    ax.bar(x + 0,     [x[0] for x in tyche_gramine], width, label='Gramine Anon')
-    ax.bar(x + width, [x[0] for x in themis_conf], width, label='Anon CVM')
+    ax.bar(x - 1.5 * width, [x[0] for x in native], width, label='Bare metal Linux')
+    ax.bar(x - 0.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX')
+    ax.bar(x + 0.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon')
+    ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='Anon CVM')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
-    ax.set_ylim(0, 2)
+    ax.set_ylim(0, 1.1)
     ax.set(xlabel='',
            title='Relative performance')
     ax.legend(loc='lower right')
