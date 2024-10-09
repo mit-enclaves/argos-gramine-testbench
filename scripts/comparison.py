@@ -43,10 +43,30 @@ def parse_wrk(path: str, label: str):
         print(f"WARNING: less than 10 samples in {path}")
     return get_mean_std(data)
 
-labels = ["hyper", "lighttpd"]
+def parse_speedsqlite(path: str):
+    data = []
+    with open(path + "sqlite.txt", 'r') as file:
+        for line in file:
+            if not line.strip().startswith("TOTAL"):
+                continue
+
+            raw_data = line.split()[1][:-1]
+            data.append(float(raw_data))
+
+            # We keep at most 10 samples
+            if len(data) >= 10:
+                break
+    if len(data) < 10:
+        print(f"WARNING: less than 10 samples in {path}")
+    return get_mean_std(data)
+
+labels = ["hyper", "lighttpd", "sqlite"]
+lower_is_better = [False, False, True]
 sgx = []
 themis_conf = []
 tyche_gramine = []
+
+# —————————————————————————————————— Hyper ——————————————————————————————————— #
 
 sgx.append(parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + HYPER, REQUESTS_SECS))
@@ -57,16 +77,29 @@ print(f"Gramine Tyche: {tyche_gramine[0][0]:.2f} +/- {tyche_gramine[0][0]:.2f} R
 print(f"THEMIS CVM:    {themis_conf[0][0]:.2f} +/- {themis_conf[0][0]:.2f} Req/Sec")
 print(f"  Tyche is {tyche_gramine[0][0] / sgx[0][0]:.2f}x faster than SGX")
 
+# ————————————————————————————————— Lighttpd ————————————————————————————————— #
+
 sgx.append(parse_wrk(SGX_PATH + LIGHTTPD, BYTES_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + LIGHTTPD, BYTES_SECS))
 tyche_gramine.append(parse_wrk(GRAMINE_TYCHE_PATH + LIGHTTPD, BYTES_SECS))
+
+# —————————————————————————————————— Sqlite —————————————————————————————————— #
+
+sgx.append(parse_speedsqlite(SGX_PATH))
+themis_conf.append(parse_speedsqlite(THEMIS_CONF_PATH))
+tyche_gramine.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
+
+# ——————————————————————————————————— Plot ——————————————————————————————————— #
 
 def make_relative(ref, data):
     scaled = []
     for i in range(len(ref)):
         r = ref[i]
         d = data[i]
-        scaled.append((d[0]/r[0], d[1]/r[0]))
+        if lower_is_better[i]:
+            scaled.append((r[0]/d[0], r[0]/d[1]))
+        else:
+            scaled.append((d[0]/r[0], d[1]/r[0]))
     return scaled
 
 
