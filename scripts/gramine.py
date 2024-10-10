@@ -2,9 +2,11 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
+NATIVE_PATH = "data-asplos/native/"
 SGX_PATH = "data-asplos/gramine-sgx/"
 GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
 THEMIS_CONF_PATH = "data-asplos/themis-conf/"
+THEMIC_VM_PATH = "data-asplos/themis-vm/"
 TYCHE_PATH = "data-asplos/tyche/"
 HYPER = "hyper.txt"
 
@@ -111,20 +113,24 @@ def plot_relative_reqsec_bar():
     plt.show()
 
 def plot_throughput_bars():
+    lighttpd_native = get_lighttpd_data(NATIVE_PATH, BYTES_SECS)
     lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, BYTES_SECS)
     lighttpd_gramine_tyche = get_lighttpd_data(GRAMINE_TYCHE_PATH, BYTES_SECS)
+    lighttpd_themis_vm = get_lighttpd_data(THEMIC_VM_PATH, BYTES_SECS)
     # lighttpd_themis_conf = get_lighttpd_data(THEMIS_CONF_PATH, BYTES_SECS)
     lighttpd_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
     
+    native = get_mean_std(lighttpd_native)
     gramine_sgx = get_mean_std(lighttpd_gramine_sgx)
     gramine_tyche = get_mean_std(lighttpd_gramine_tyche)
+    themis_vm = get_mean_std(lighttpd_themis_vm)
     tyche = get_mean_std(lighttpd_tyche)
     # themis_conf = get_mean_std(lighttpd_themis_conf)
 
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.20
+    width = 0.18
     x = np.arange(len(lighttpd_sizes))
 
     def plot_bar(data, shift, label):
@@ -133,9 +139,11 @@ def plot_throughput_bars():
         ax.bar(x + shift, val, width, label=label)
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None',)
 
-    plot_bar(gramine_sgx, - width, "Gramine SGX")
-    plot_bar(tyche, 0, "Tyche")
-    plot_bar(gramine_tyche,  + width, "Gramine Tyche")
+    plot_bar(native     ,   - 2 * width, "Linux Native")
+    plot_bar(gramine_sgx,   - 1 * width, "Gramine SGX")
+    plot_bar(tyche,         - 0 * width, "Tyche")
+    plot_bar(gramine_tyche, + 1 * width, "Gramine Tyche")
+    plot_bar(themis_vm,     + 2 * width, "Tyche VM")
     # plot_bar(themis_conf , + 2 * width, "Tyche CVM")
 
     plt.xticks(x, lighttpd_sizes)
