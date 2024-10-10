@@ -1,0 +1,9 @@
+Running 2m test @ http://128.178.116.199:6380/random/10M.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec     3.59      4.42    30.00     81.29%
+  1135 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 130, write 0, timeout 1135
+Requests/sec:      9.45
+Transfer/sec:    111.30MB
