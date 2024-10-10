@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 
 SGX_PATH = "data-asplos/gramine-sgx/"
 GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
+THEMIS_VM_PATH = "data-asplos/themis-vm/"
 THEMIS_CONF_PATH = "data-asplos/themis-conf/"
 TYCHE_PATH = "data-asplos/tyche/"
 NATIVE_PATH = "data-asplos/native/"
 
 HYPER = "hyper.txt"
-LIGHTTPD = "lighttpd-1K.txt"
+LIGHTTPD = "lighttpd-10K.txt"
 
 REQUESTS_SECS = "Requests/sec:"
 BYTES_SECS = "Transfer/sec:"
@@ -66,15 +67,19 @@ lower_is_better = [False, False, True]
 
 native = []
 gramine_sgx = []
+themis_vm = []
 themis_conf = []
 gramine_tyche = []
+tyche = []
 
 # —————————————————————————————————— Hyper ——————————————————————————————————— #
 
 native.append(parse_wrk(NATIVE_PATH + HYPER, REQUESTS_SECS))
 gramine_sgx.append(parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS))
+themis_vm.append(parse_wrk(THEMIS_VM_PATH + HYPER, REQUESTS_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + HYPER, REQUESTS_SECS))
 gramine_tyche.append(parse_wrk(GRAMINE_TYCHE_PATH + HYPER, REQUESTS_SECS))
+tyche.append(parse_wrk(TYCHE_PATH + HYPER, REQUESTS_SECS))
 
 print(f"SGX:           {gramine_sgx[0][0]:.2f} +/- {gramine_sgx[0][0]:.2f} Req/Sec")
 print(f"Gramine Tyche: {gramine_tyche[0][0]:.2f} +/- {gramine_tyche[0][0]:.2f} Req/Sec")
@@ -85,15 +90,19 @@ print(f"  Tyche is {gramine_tyche[0][0] / gramine_sgx[0][0]:.2f}x faster than SG
 
 native.append(parse_wrk(NATIVE_PATH + LIGHTTPD, BYTES_SECS))
 gramine_sgx.append(parse_wrk(SGX_PATH + LIGHTTPD, BYTES_SECS))
+themis_vm.append(parse_wrk(THEMIS_VM_PATH + LIGHTTPD, BYTES_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + LIGHTTPD, BYTES_SECS))
 gramine_tyche.append(parse_wrk(GRAMINE_TYCHE_PATH + LIGHTTPD, BYTES_SECS))
+tyche.append(parse_wrk(TYCHE_PATH + LIGHTTPD, BYTES_SECS))
 
 # —————————————————————————————————— Sqlite —————————————————————————————————— #
 
 native.append(parse_speedsqlite(NATIVE_PATH))
 gramine_sgx.append(parse_speedsqlite(SGX_PATH))
+themis_vm.append(parse_speedsqlite(THEMIS_VM_PATH))
 themis_conf.append(parse_speedsqlite(THEMIS_CONF_PATH))
 gramine_tyche.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
+tyche.append(parse_speedsqlite(TYCHE_PATH))
 
 # ——————————————————————————————————— Plot ——————————————————————————————————— #
 
@@ -110,8 +119,10 @@ def make_relative(ref, data):
 
 
 themis_conf = make_relative(native, themis_conf)
+themis_vm = make_relative(native, themis_vm)
 gramine_tyche = make_relative(native, gramine_tyche)
 gramine_sgx = make_relative(native, gramine_sgx)
+tyche = make_relative(native, tyche)
 native = make_relative(native, native)
 
 print(themis_conf)
@@ -124,13 +135,15 @@ def plot_comparison():
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.2
+    width = 0.15
     x = np.arange(len(labels))
 
-    ax.bar(x - 1.5 * width, [x[0] for x in native], width, label='Bare metal Linux')
-    ax.bar(x - 0.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX')
+    ax.bar(x - 2.5 * width, [x[0] for x in native], width, label='Bare metal Linux')
+    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX')
+    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='Tyche')
     ax.bar(x + 0.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon')
-    ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='Anon CVM')
+    ax.bar(x + 1.5 * width, [x[0] for x in themis_vm], width, label='Tyche VM')
+    ax.bar(x + 2.5 * width, [x[0] for x in themis_conf], width, label='Tyche CVM')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
