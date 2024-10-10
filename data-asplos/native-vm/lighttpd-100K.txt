@@ -1,0 +1,90 @@
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.32ms  225.11ms   2.00s    88.32%
+    Req/Sec    95.02     28.79   272.00     71.58%
+  136440 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 2, write 0, timeout 241
+Requests/sec:   1136.21
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   367.36ms  223.03ms   2.00s    88.31%
+    Req/Sec    95.02     27.85   272.00     73.62%
+  136442 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 2, write 0, timeout 214
+Requests/sec:   1136.42
+Transfer/sec:    111.39MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.15ms  224.23ms   2.00s    88.06%
+    Req/Sec    95.03     28.92   272.00     72.03%
+  136417 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 1, write 0, timeout 242
+Requests/sec:   1136.19
+Transfer/sec:    111.36MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.67ms  225.34ms   2.00s    88.29%
+    Req/Sec    95.00     29.04   252.00     72.24%
+  136428 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 2, write 0, timeout 260
+Requests/sec:   1136.21
+Transfer/sec:    111.36MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.55ms  221.24ms   2.00s    88.29%
+    Req/Sec    95.06     28.64   282.00     72.64%
+  136465 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 1, write 0, timeout 193
+Requests/sec:   1136.47
+Transfer/sec:    111.38MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.14ms  221.48ms   2.00s    88.15%
+    Req/Sec    95.05     29.11   230.00     71.67%
+  136446 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 1, write 0, timeout 205
+Requests/sec:   1136.32
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   365.67ms  218.29ms   2.00s    88.26%
+    Req/Sec    95.04     28.64   260.00     72.52%
+  136457 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 4, write 0, timeout 188
+Requests/sec:   1136.35
+Transfer/sec:    111.37MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   365.80ms  218.68ms   2.00s    88.33%
+    Req/Sec    95.02     28.33   262.00     73.11%
+  136406 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 0, write 0, timeout 238
+Requests/sec:   1135.94
+Transfer/sec:    111.33MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.89ms  227.85ms   2.00s    88.43%
+    Req/Sec    95.02     28.73   262.00     72.55%
+  136422 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 1, write 0, timeout 261
+Requests/sec:   1136.16
+Transfer/sec:    111.36MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.71ms  225.01ms   2.00s    88.27%
+    Req/Sec    95.02     28.21   272.00     72.77%
+  136394 requests in 2.00m, 13.06GB read
+  Socket errors: connect 0, read 2, write 0, timeout 231
+Requests/sec:   1135.80
+Transfer/sec:    111.33MB
