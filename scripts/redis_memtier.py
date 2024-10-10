@@ -2,12 +2,14 @@ import json
 import matplotlib.pyplot as plt
 
 DATA_PATH = "data-asplos/"
-NATIVE = "redis-native.json"
-GRAMINE_TYCHE = "redis-gramine-tyche.json"
-GRAMINE_SGX = "redis-gramine-sgx.json"
-THEMIS = "redis-themis.json"
-THEMIS_CONF = "redis-themis-conf.json"
-THEMIS_GRAMINE = "redis-themis-conf-gramine.json"
+REDIS_FILE = "redis.json"
+NATIVE = "native/"
+GRAMINE_TYCHE = "gramine-tyche/"
+GRAMINE_SGX = "gramine-sgx/"
+TYCHE = "tyche/"
+THEMIS = "themis-vm/"
+THEMIS_CONF = "themis-conf/"
+THEMIS_GRAMINE = "themis-conf-gramine/"
 
 
 def get_data(path):
@@ -28,13 +30,14 @@ def get_data(path):
 # plt.plot(tyche_latencies, tyche_percentiles, marker="", linestyle="-", label = "Gramine Tyche")
 
 def plot_one(path: str, label: str):
-    latencies, percentiles = get_data(DATA_PATH + path)
+    latencies, percentiles = get_data(DATA_PATH + path + REDIS_FILE)
     plt.plot(latencies, percentiles, marker="", linestyle="-", label = label)
 
 plot_one(NATIVE, "Bare Metal Linux")
 plot_one(THEMIS, "Tyche VM")
 plot_one(THEMIS_CONF, "Tyche CVM")
 plot_one(GRAMINE_SGX, "Gramine SGX")
+plot_one(TYCHE, "Tyche")
 plot_one(GRAMINE_TYCHE, "Gramine Tyche")
 plot_one(THEMIS_GRAMINE, "Tyche Nested")
 
