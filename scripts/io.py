@@ -1,10 +1,13 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import colors
 
 NATIVE_PATH = "data-asplos/native/"
+NATIVE_VM_PATH = "data-asplos/native-vm/"
 SGX_PATH = "data-asplos/gramine-sgx/"
 GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
+THEMIS_CONF_GRAMINE_PATH = "data-asplos/themis-conf-gramine/"
 THEMIS_CONF_PATH = "data-asplos/themis-conf/"
 THEMIC_VM_PATH = "data-asplos/themis-vm/"
 TYCHE_PATH = "data-asplos/tyche/"
@@ -18,6 +21,12 @@ def as_bytes(data: str):
         return data[:-2]
     else:
         print(f"ERROR: format not yet handled '{data}'")
+
+def remove_worst(data, lower_is_better: bool):
+    if lower_is_better:
+        data.remove(max(data))
+    else:
+        data.remove(min(data))
 
 def parse_wrk(path: str, label: str):
     data = []
@@ -38,6 +47,7 @@ def parse_wrk(path: str, label: str):
                 break
     if len(data) < 10:
         print(f"WARNING: less than 10 samples in {path}")
+    remove_worst(data, lower_is_better=False)
     return data
 
 sgx_hyper = parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS)
@@ -48,7 +58,7 @@ print(f"Tyche: {np.mean(tyche_gramine_hyper):.2f} +/- {np.std(tyche_gramine_hype
 print(f"  Tyche is {np.mean(tyche_gramine_hyper) / np.mean(sgx_hyper):.2f}x faster than SGX")
 
 
-lighttpd_sizes = ["100", "1K", "10K", "100K", "1M", "10M"]
+lighttpd_sizes = ["100", "1K", "10K", "100K", "1M"] # , "10M"
 def get_lighttpd_data(folder_path: str, label: str):
     lighttpd_data = []
     for size in lighttpd_sizes:
@@ -114,36 +124,47 @@ def plot_relative_reqsec_bar():
 
 def plot_throughput_bars():
     lighttpd_native = get_lighttpd_data(NATIVE_PATH, BYTES_SECS)
+    lighttpd_native_vm = get_lighttpd_data(NATIVE_VM_PATH, BYTES_SECS)
     lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, BYTES_SECS)
     lighttpd_gramine_tyche = get_lighttpd_data(GRAMINE_TYCHE_PATH, BYTES_SECS)
     lighttpd_themis_vm = get_lighttpd_data(THEMIC_VM_PATH, BYTES_SECS)
     # lighttpd_themis_conf = get_lighttpd_data(THEMIS_CONF_PATH, BYTES_SECS)
+    lighttpd_themis_conf_gramine = get_lighttpd_data(THEMIS_CONF_GRAMINE_PATH, BYTES_SECS)
     lighttpd_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
     
     native = get_mean_std(lighttpd_native)
+    native_vm = get_mean_std(lighttpd_native_vm)
     gramine_sgx = get_mean_std(lighttpd_gramine_sgx)
     gramine_tyche = get_mean_std(lighttpd_gramine_tyche)
     themis_vm = get_mean_std(lighttpd_themis_vm)
     tyche = get_mean_std(lighttpd_tyche)
     # themis_conf = get_mean_std(lighttpd_themis_conf)
+    themis_conf_gramine = get_mean_std(lighttpd_themis_conf_gramine)
+
 
     fig, ax = plt.subplots()
     
+    # colors
+    ctyche = colors.get_tyche()
+    cnative = colors.get_native()
+
     # Plot the bars
-    width = 0.18
+    width = 0.13
     x = np.arange(len(lighttpd_sizes))
 
-    def plot_bar(data, shift, label):
+    def plot_bar(data, shift, label, color, hatch=""):
         val = [x[0] for x in data]
         err = [x[1] for x in data]
-        ax.bar(x + shift, val, width, label=label)
+        ax.bar(x + shift, val, width, label=label, edgecolor='black', color=color, hatch=hatch)
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None',)
 
-    plot_bar(native     ,   - 2 * width, "Linux Native")
-    plot_bar(gramine_sgx,   - 1 * width, "Gramine SGX")
-    plot_bar(tyche,         - 0 * width, "Tyche")
-    plot_bar(gramine_tyche, + 1 * width, "Gramine Tyche")
-    plot_bar(themis_vm,     + 2 * width, "Tyche VM")
+    plot_bar(native     ,         - 3 * width, "Linux Native", cnative[0])
+    plot_bar(native_vm  ,         - 2 * width, "Linux VM", cnative[1], hatch='..')
+    plot_bar(gramine_sgx,         - 1 * width, "Gramine SGX", cnative[2], hatch='//')
+    plot_bar(tyche,               + 0 * width, "Tyche", ctyche[0])
+    plot_bar(themis_vm,           + 1 * width, "Tyche VM", ctyche[1], hatch="..")
+    plot_bar(gramine_tyche,       + 2 * width, "Gramine Tyche", ctyche[2], hatch='//')
+    plot_bar(themis_conf_gramine, + 3 * width, "Tyche Nested", ctyche[4], hatch='xx')
     # plot_bar(themis_conf , + 2 * width, "Tyche CVM")
 
     plt.xticks(x, lighttpd_sizes)
