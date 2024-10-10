@@ -8,6 +8,7 @@ THEMIS_VM_PATH = "data-asplos/themis-vm/"
 THEMIS_CONF_PATH = "data-asplos/themis-conf/"
 TYCHE_PATH = "data-asplos/tyche/"
 NATIVE_PATH = "data-asplos/native/"
+NATIVE_VM_PATH = "data-asplos/native-vm/"
 
 HYPER = "hyper.txt"
 LIGHTTPD = "lighttpd-10K.txt"
@@ -20,6 +21,12 @@ def as_bytes(data: str):
         return data[:-2]
     else:
         print(f"ERROR: format not yet handled '{data}'")
+
+def remove_worst(data, lower_is_better: bool):
+    if lower_is_better:
+        data.remove(max(data))
+    else:
+        data.remove(min(data))
 
 def get_mean_std(data):
     return (float(np.mean(data)), float(np.std(data)))
@@ -43,6 +50,7 @@ def parse_wrk(path: str, label: str):
                 break
     if len(data) < 10:
         print(f"WARNING: less than 10 samples in {path}")
+    remove_worst(data, lower_is_better = False)
     return get_mean_std(data)
 
 def parse_speedsqlite(path: str):
@@ -60,12 +68,14 @@ def parse_speedsqlite(path: str):
                 break
     if len(data) < 10:
         print(f"WARNING: less than 10 samples in {path}")
+    remove_worst(data, lower_is_better = True)
     return get_mean_std(data)
 
 labels = ["hyper", "lighttpd", "sqlite"]
 lower_is_better = [False, False, True]
 
 native = []
+native_vm = []
 gramine_sgx = []
 themis_vm = []
 themis_conf = []
@@ -75,6 +85,7 @@ tyche = []
 # —————————————————————————————————— Hyper ——————————————————————————————————— #
 
 native.append(parse_wrk(NATIVE_PATH + HYPER, REQUESTS_SECS))
+native_vm.append(parse_wrk(NATIVE_VM_PATH + HYPER, REQUESTS_SECS))
 gramine_sgx.append(parse_wrk(SGX_PATH + HYPER, REQUESTS_SECS))
 themis_vm.append(parse_wrk(THEMIS_VM_PATH + HYPER, REQUESTS_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + HYPER, REQUESTS_SECS))
@@ -89,6 +100,7 @@ print(f"  Tyche is {gramine_tyche[0][0] / gramine_sgx[0][0]:.2f}x faster than SG
 # ————————————————————————————————— Lighttpd ————————————————————————————————— #
 
 native.append(parse_wrk(NATIVE_PATH + LIGHTTPD, BYTES_SECS))
+native_vm.append(parse_wrk(NATIVE_VM_PATH + LIGHTTPD, BYTES_SECS))
 gramine_sgx.append(parse_wrk(SGX_PATH + LIGHTTPD, BYTES_SECS))
 themis_vm.append(parse_wrk(THEMIS_VM_PATH + LIGHTTPD, BYTES_SECS))
 themis_conf.append(parse_wrk(THEMIS_CONF_PATH + LIGHTTPD, BYTES_SECS))
@@ -98,6 +110,7 @@ tyche.append(parse_wrk(TYCHE_PATH + LIGHTTPD, BYTES_SECS))
 # —————————————————————————————————— Sqlite —————————————————————————————————— #
 
 native.append(parse_speedsqlite(NATIVE_PATH))
+native_vm.append(parse_speedsqlite(NATIVE_VM_PATH))
 gramine_sgx.append(parse_speedsqlite(SGX_PATH))
 themis_vm.append(parse_speedsqlite(THEMIS_VM_PATH))
 themis_conf.append(parse_speedsqlite(THEMIS_CONF_PATH))
@@ -123,6 +136,7 @@ themis_vm = make_relative(native, themis_vm)
 gramine_tyche = make_relative(native, gramine_tyche)
 gramine_sgx = make_relative(native, gramine_sgx)
 tyche = make_relative(native, tyche)
+native_vm = make_relative(native, native_vm)
 native = make_relative(native, native)
 
 print(themis_conf)
@@ -135,15 +149,16 @@ def plot_comparison():
     fig, ax = plt.subplots()
     
     # Plot the bars
-    width = 0.15
+    width = 0.12
     x = np.arange(len(labels))
 
-    ax.bar(x - 2.5 * width, [x[0] for x in native], width, label='Bare metal Linux')
-    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX')
-    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='Tyche')
-    ax.bar(x + 0.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon')
-    ax.bar(x + 1.5 * width, [x[0] for x in themis_vm], width, label='Tyche VM')
-    ax.bar(x + 2.5 * width, [x[0] for x in themis_conf], width, label='Tyche CVM')
+    ax.bar(x - 3 * width, [x[0] for x in native], width, label='Bare metal Linux', edgecolor='black')
+    ax.bar(x - 2 * width, [x[0] for x in native_vm], width, label='Linux VM', edgecolor='black', hatch='..')
+    ax.bar(x - 1 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX', edgecolor='black', hatch='//')
+    ax.bar(x - 0 * width, [x[0] for x in tyche], width, label='Tyche', edgecolor='black')
+    ax.bar(x + 1 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon', edgecolor='black', hatch='//')
+    ax.bar(x + 2 * width, [x[0] for x in themis_vm], width, label='Tyche VM', edgecolor='black', hatch='..')
+    ax.bar(x + 3 * width, [x[0] for x in themis_conf], width, label='Tyche CVM', edgecolor='black', hatch='\\\\')
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
