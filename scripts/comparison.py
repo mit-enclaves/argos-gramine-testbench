@@ -1,4 +1,4 @@
-import os
+import json
 import numpy as np
 import matplotlib.pyplot as plt
 import colors
@@ -13,6 +13,7 @@ NATIVE_PATH = "data-asplos/native/"
 NATIVE_VM_PATH = "data-asplos/native-vm/"
 
 HYPER = "hyper.txt"
+REDIS = "redis.json"
 LIGHTTPD = "lighttpd-10K.txt"
 
 REQUESTS_SECS = "Requests/sec:"
@@ -73,8 +74,16 @@ def parse_speedsqlite(path: str):
     remove_worst(data, lower_is_better = True)
     return get_mean_std(data)
 
-labels = ["hyper", "lighttpd", "sqlite"]
-lower_is_better = [False, False, True]
+def parse_redis(path: str):
+    data = None
+    with open(path + "redis.json", 'r') as file:
+        data = json.load(file)
+    # For now we don't have variance for Redis bench
+    return [data["ALL STATS"]["Totals"]["Ops/sec"], 0]
+
+
+labels = ["hyper", "lighttpd", "sqlite", "redis"]
+lower_is_better = [False, False, True, False]
 
 native = []
 native_vm = []
@@ -123,6 +132,17 @@ themis_conf_gramine.append(parse_speedsqlite(THEMIS_CONF_GRAMINE_PATH))
 gramine_tyche.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
 tyche.append(parse_speedsqlite(TYCHE_PATH))
 
+# —————————————————————————————————— Redis ——————————————————————————————————— #
+
+native.append(parse_redis(NATIVE_PATH))
+native_vm.append(parse_redis(NATIVE_VM_PATH))
+gramine_sgx.append(parse_redis(SGX_PATH))
+themis_vm.append(parse_redis(THEMIS_VM_PATH))
+themis_conf.append(parse_redis(THEMIS_CONF_PATH))
+themis_conf_gramine.append(parse_redis(THEMIS_CONF_GRAMINE_PATH))
+gramine_tyche.append(parse_redis(GRAMINE_TYCHE_PATH))
+tyche.append(parse_redis(TYCHE_PATH))
+
 # ——————————————————————————————————— Plot ——————————————————————————————————— #
 
 def make_relative(ref, data):
@@ -146,10 +166,10 @@ tyche = make_relative(native, tyche)
 native_vm = make_relative(native, native_vm)
 native = make_relative(native, native)
 
-print(themis_conf)
-print(gramine_tyche)
-print(gramine_sgx)
-print(native)
+# print(themis_conf)
+# print(gramine_tyche)
+# print(gramine_sgx)
+# print(native)
 
 def plot_comparison():
     fig, ax = plt.subplots()

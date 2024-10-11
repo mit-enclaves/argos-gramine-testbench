@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 DATA_PATH = "data-asplos/"
 REDIS_FILE = "redis.json"
 NATIVE = "native/"
+NATIVE_VM = "native-vm/"
 GRAMINE_TYCHE = "gramine-tyche/"
 GRAMINE_SGX = "gramine-sgx/"
 TYCHE = "tyche/"
@@ -34,6 +35,7 @@ def plot_one(path: str, label: str):
     plt.plot(latencies, percentiles, marker="", linestyle="-", label = label)
 
 plot_one(NATIVE, "Bare Metal Linux")
+plot_one(NATIVE_VM, "Linux VM")
 plot_one(THEMIS, "Tyche VM")
 plot_one(THEMIS_CONF, "Tyche CVM")
 plot_one(GRAMINE_SGX, "Gramine SGX")
