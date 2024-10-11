@@ -167,8 +167,8 @@ def plot_comparison():
     ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX', edgecolor='black', hatch='//', color=cnative[2])
     ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='Tyche', edgecolor='black', color=ctyche[0])
     ax.bar(x + 0.5 * width, [x[0] for x in themis_vm], width, label='Tyche VM', edgecolor='black', hatch='..', color=ctyche[1])
-    ax.bar(x + 1.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon', edgecolor='black', hatch='//', color=ctyche[2])
-    ax.bar(x + 2.5 * width, [x[0] for x in themis_conf], width, label='Tyche CVM', edgecolor='black', hatch='\\\\', color=ctyche[3])
+    ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='Tyche CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
+    ax.bar(x + 2.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon', edgecolor='black', hatch='//', color=ctyche[3])
     ax.bar(x + 3.5 * width, [x[0] for x in themis_conf_gramine], width, label='Tyche Nested', edgecolor='black', hatch='xx', color=ctyche[4])
 
     plt.xticks(x, labels)
