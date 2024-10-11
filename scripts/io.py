@@ -2,6 +2,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import colors
+import utils
 
 NATIVE_PATH = "data-asplos/native/"
 NATIVE_VM_PATH = "data-asplos/native-vm/"
@@ -172,9 +173,7 @@ def plot_throughput_bars():
            title='lighttpd HTTP throughput')
     ax.legend(loc='lower right')
 
-    # ax.grid()
-    
-    plt.show()
+    utils.plot_or_save("lighttpd")
 
 
 # plot_relative_reqsec_bar()

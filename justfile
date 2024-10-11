@@ -13,6 +13,13 @@ CUSTOM_BINARIES := "to-copy/my_bin/"
 MODEL_NAME := "llama-small.gguf"
 MODEL_URL := "https://huggingface.co/hugging-quants/Llama-3.2-1B-Instruct-Q4_K_M-GGUF/resolve/main/llama-3.2-1b-instruct-q4_k_m.gguf"
 
+# —————————————————————————————————— Graphs —————————————————————————————————— #
+
+graphs:
+	uv run ./scripts/comparison.py --save
+	uv run ./scripts/coremark-asplos.py --save
+	uv run ./scripts/io.py --save
+	uv run ./scripts/redis_memtier.py --save
 
 ## ————————————————————————————— Setup for all —————————————————————————————— //
 # TYCHE_DEVEL is the path to the tyche-devel folder.

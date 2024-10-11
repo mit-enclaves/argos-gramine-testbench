@@ -2,10 +2,10 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
-PATH = "../data/ubench/transitions.csv"
+PATH = "data/ubench/transitions.csv"
 
-save_as_pdf = "../figs/transitions.pdf"
-save_as_png = "../figs/transitions.png"
+save_as_pdf = "figs/transitions.pdf"
+save_as_png = "figs/transitions.png"
 
 tyche = []
 kvm = []

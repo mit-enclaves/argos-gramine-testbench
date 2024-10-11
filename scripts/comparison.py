@@ -2,6 +2,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import colors
+import utils
 
 SGX_PATH = "data-asplos/gramine-sgx/"
 GRAMINE_TYCHE_PATH = "data-asplos/gramine-tyche/"
@@ -200,6 +201,6 @@ def plot_comparison():
 
     # ax.grid()
     
-    plt.show()
+    utils.plot_or_save("comparison")
 
 plot_comparison()

@@ -2,6 +2,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import colors
+import utils
 
 exp = [
     ("Linux Native", "../data/ubench/coremark_linux.txt"),
@@ -134,7 +135,7 @@ def plot_bar():
     # add_values(bars_themis_vm, themis_vm)
     # add_values(bars_themis_conf_vm, themis_conf_vm)
     
-    plt.show()
+    utils.plot_or_save("coremark")
 
 # plot_curve()
 plot_bar()

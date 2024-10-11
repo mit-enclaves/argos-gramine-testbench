@@ -1,5 +1,6 @@
 import json
 import matplotlib.pyplot as plt
+import utils
 
 DATA_PATH = "data-asplos/"
 REDIS_FILE = "redis.json"
@@ -60,4 +61,4 @@ plt.ylim(0, 100)
 
 
 # Show the plot
-plt.show()
+utils.plot_or_save("redis_latency")
