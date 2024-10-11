@@ -161,10 +161,10 @@ def plot_throughput_bars():
     plot_bar(native     ,         - 3.5 * width, "Linux Native", cnative[0])
     plot_bar(native_vm  ,         - 2.5 * width, "Linux VM", cnative[1], hatch='..')
     plot_bar(gramine_sgx,         - 1.5 * width, "Gramine SGX", cnative[2], hatch='//')
-    plot_bar(tyche,               + 0.5 * width, "Tyche", ctyche[0])
+    plot_bar(tyche,               - 0.5 * width, "Tyche", ctyche[0])
     plot_bar(themis_vm,           + 0.5 * width, "Tyche VM", ctyche[1], hatch="..")
     plot_bar(gramine_tyche,       + 1.5 * width, "Gramine Tyche", ctyche[2], hatch='//')
-    plot_bar(themis_conf,         + 2.5 * width, "Tyche CVM", ctyche[3], hatch="\\")
+    plot_bar(themis_conf,         + 2.5 * width, "Tyche CVM", ctyche[3], hatch="\\\\")
     plot_bar(themis_conf_gramine, + 3.5 * width, "Tyche Nested", ctyche[4], hatch='xx')
 
     plt.xticks(x, lighttpd_sizes)
