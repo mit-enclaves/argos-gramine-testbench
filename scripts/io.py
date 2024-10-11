@@ -128,7 +128,7 @@ def plot_throughput_bars():
     lighttpd_gramine_sgx = get_lighttpd_data(SGX_PATH, BYTES_SECS)
     lighttpd_gramine_tyche = get_lighttpd_data(GRAMINE_TYCHE_PATH, BYTES_SECS)
     lighttpd_themis_vm = get_lighttpd_data(THEMIC_VM_PATH, BYTES_SECS)
-    # lighttpd_themis_conf = get_lighttpd_data(THEMIS_CONF_PATH, BYTES_SECS)
+    lighttpd_themis_conf = get_lighttpd_data(THEMIS_CONF_PATH, BYTES_SECS)
     lighttpd_themis_conf_gramine = get_lighttpd_data(THEMIS_CONF_GRAMINE_PATH, BYTES_SECS)
     lighttpd_tyche = get_lighttpd_data(TYCHE_PATH, BYTES_SECS)
     
@@ -138,7 +138,7 @@ def plot_throughput_bars():
     gramine_tyche = get_mean_std(lighttpd_gramine_tyche)
     themis_vm = get_mean_std(lighttpd_themis_vm)
     tyche = get_mean_std(lighttpd_tyche)
-    # themis_conf = get_mean_std(lighttpd_themis_conf)
+    themis_conf = get_mean_std(lighttpd_themis_conf)
     themis_conf_gramine = get_mean_std(lighttpd_themis_conf_gramine)
 
 
@@ -149,7 +149,7 @@ def plot_throughput_bars():
     cnative = colors.get_native()
 
     # Plot the bars
-    width = 0.13
+    width = 0.11
     x = np.arange(len(lighttpd_sizes))
 
     def plot_bar(data, shift, label, color, hatch=""):
@@ -158,14 +158,14 @@ def plot_throughput_bars():
         ax.bar(x + shift, val, width, label=label, edgecolor='black', color=color, hatch=hatch)
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None',)
 
-    plot_bar(native     ,         - 3 * width, "Linux Native", cnative[0])
-    plot_bar(native_vm  ,         - 2 * width, "Linux VM", cnative[1], hatch='..')
-    plot_bar(gramine_sgx,         - 1 * width, "Gramine SGX", cnative[2], hatch='//')
-    plot_bar(tyche,               + 0 * width, "Tyche", ctyche[0])
-    plot_bar(themis_vm,           + 1 * width, "Tyche VM", ctyche[1], hatch="..")
-    plot_bar(gramine_tyche,       + 2 * width, "Gramine Tyche", ctyche[2], hatch='//')
-    plot_bar(themis_conf_gramine, + 3 * width, "Tyche Nested", ctyche[4], hatch='xx')
-    # plot_bar(themis_conf , + 2 * width, "Tyche CVM")
+    plot_bar(native     ,         - 3.5 * width, "Linux Native", cnative[0])
+    plot_bar(native_vm  ,         - 2.5 * width, "Linux VM", cnative[1], hatch='..')
+    plot_bar(gramine_sgx,         - 1.5 * width, "Gramine SGX", cnative[2], hatch='//')
+    plot_bar(tyche,               + 0.5 * width, "Tyche", ctyche[0])
+    plot_bar(themis_vm,           + 0.5 * width, "Tyche VM", ctyche[1], hatch="..")
+    plot_bar(gramine_tyche,       + 1.5 * width, "Gramine Tyche", ctyche[2], hatch='//')
+    plot_bar(themis_conf,         + 2.5 * width, "Tyche CVM", ctyche[3], hatch="\\")
+    plot_bar(themis_conf_gramine, + 3.5 * width, "Tyche Nested", ctyche[4], hatch='xx')
 
     plt.xticks(x, lighttpd_sizes)
     ax.set(xlabel='HTTP payload size (bytes)', ylabel='Relative MiB/s',
