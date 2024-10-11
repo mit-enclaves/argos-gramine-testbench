@@ -1,0 +1,90 @@
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   367.16ms  279.21ms   2.00s    81.67%
+    Req/Sec    94.95     29.27   430.00     71.35%
+  136205 requests in 2.00m, 13.03GB read
+  Socket errors: connect 0, read 20, write 0, timeout 639
+Requests/sec:   1134.21
+Transfer/sec:    111.15MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   370.92ms  268.53ms   2.00s    81.54%
+    Req/Sec    94.88     28.14   222.00     72.49%
+  136248 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 6, write 0, timeout 380
+Requests/sec:   1134.46
+Transfer/sec:    111.18MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   365.04ms  275.13ms   2.00s    82.51%
+    Req/Sec    94.93     28.43   250.00     72.29%
+  136279 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 15, write 0, timeout 791
+Requests/sec:   1134.74
+Transfer/sec:    111.20MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   360.10ms  275.82ms   2.00s    82.17%
+    Req/Sec    95.11     30.72   363.00     69.71%
+  136310 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 14, write 0, timeout 697
+Requests/sec:   1135.02
+Transfer/sec:    111.23MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   365.15ms  277.94ms   2.00s    82.24%
+    Req/Sec    95.00     28.94   242.00     71.16%
+  136323 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 19, write 0, timeout 739
+Requests/sec:   1135.10
+Transfer/sec:    111.23MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   364.71ms  272.69ms   2.00s    81.99%
+    Req/Sec    94.92     28.51   290.00     72.56%
+  136313 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 20, write 0, timeout 759
+Requests/sec:   1135.07
+Transfer/sec:    111.24MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   366.07ms  277.61ms   2.00s    82.65%
+    Req/Sec    94.92     29.10   272.00     71.41%
+  136319 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 20, write 0, timeout 739
+Requests/sec:   1135.11
+Transfer/sec:    111.24MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   365.14ms  268.03ms   2.00s    82.56%
+    Req/Sec    94.94     27.92   212.00     72.38%
+  136267 requests in 2.00m, 13.04GB read
+  Socket errors: connect 0, read 28, write 0, timeout 642
+Requests/sec:   1135.24
+Transfer/sec:    111.25MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   357.59ms  267.26ms   2.00s    82.79%
+    Req/Sec    94.93     29.72   434.00     70.08%
+  136317 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 11, write 0, timeout 748
+Requests/sec:   1135.14
+Transfer/sec:    111.24MB
+Running 2m test @ http://128.178.116.199:6380/random/100K.1.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   362.13ms  265.56ms   2.00s    82.22%
+    Req/Sec    94.96     28.52   230.00     71.95%
+  136329 requests in 2.00m, 13.05GB read
+  Socket errors: connect 0, read 18, write 0, timeout 689
+Requests/sec:   1135.14
+Transfer/sec:    111.25MB
