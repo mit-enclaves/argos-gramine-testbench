@@ -201,6 +201,6 @@ def plot_comparison():
 
     # ax.grid()
     
-    utils.plot_or_save("comparison")
+    utils.plot_or_save("perf_comparison")
 
 plot_comparison()
