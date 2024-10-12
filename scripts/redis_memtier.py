@@ -35,14 +35,17 @@ def plot_one(path: str, label: str):
     latencies, percentiles = get_data(DATA_PATH + path + REDIS_FILE)
     plt.plot(latencies, percentiles, marker="", linestyle="-", label = label)
 
-plot_one(NATIVE, "Bare Metal Linux")
-plot_one(NATIVE_VM, "Linux VM")
-plot_one(THEMIS, "Tyche VM")
-plot_one(THEMIS_CONF, "Tyche CVM")
-plot_one(GRAMINE_SGX, "Gramine SGX")
-plot_one(TYCHE, "Tyche")
-plot_one(GRAMINE_TYCHE, "Gramine Tyche")
-plot_one(THEMIS_GRAMINE, "Tyche Nested")
+plt.figure(figsize=(6.4, 2.6))
+plt.subplots_adjust(bottom=0.18)
+
+plot_one(NATIVE,        "Native")
+plot_one(NATIVE_VM,     "Native VM")
+plot_one(GRAMINE_SGX,   "SGX enclave")
+plot_one(TYCHE,         "TD0")
+plot_one(THEMIS,        "TD1 VM")
+plot_one(THEMIS_CONF,   "TD1 CVM")
+plot_one(GRAMINE_TYCHE, "TD1 enclave")
+plot_one(THEMIS_GRAMINE, "TD2 enclave")
 
 # Set the chart title and labels
 plt.title("Redis GET Latency Distribution")

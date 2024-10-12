@@ -143,7 +143,7 @@ def plot_throughput_bars():
     themis_conf_gramine = get_mean_std(lighttpd_themis_conf_gramine)
 
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6.4, 3.2))
     
     # colors
     ctyche = colors.get_tyche()
@@ -159,14 +159,14 @@ def plot_throughput_bars():
         ax.bar(x + shift, val, width, label=label, edgecolor='black', color=color, hatch=hatch)
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None', color='black')
 
-    plot_bar(native     ,         - 3.5 * width, "Linux Native", cnative[0])
-    plot_bar(native_vm  ,         - 2.5 * width, "Linux VM", cnative[1], hatch='..')
-    plot_bar(gramine_sgx,         - 1.5 * width, "Gramine SGX", cnative[2], hatch='//')
-    plot_bar(tyche,               - 0.5 * width, "Tyche", ctyche[0])
-    plot_bar(themis_vm,           + 0.5 * width, "Tyche VM", ctyche[1], hatch="..")
-    plot_bar(themis_conf,         + 1.5 * width, "Tyche CVM", ctyche[2], hatch="\\\\")
-    plot_bar(gramine_tyche,       + 2.5 * width, "Gramine Tyche", ctyche[3], hatch='//')
-    plot_bar(themis_conf_gramine, + 3.5 * width, "Tyche Nested", ctyche[4], hatch='xx')
+    plot_bar(native     ,         - 3.5 * width, "Native", cnative[0])
+    plot_bar(native_vm  ,         - 2.5 * width, "Native VM", cnative[1], hatch='..')
+    plot_bar(gramine_sgx,         - 1.5 * width, "SGX enclave", cnative[2], hatch='//')
+    plot_bar(tyche,               - 0.5 * width, "TD0", ctyche[0])
+    plot_bar(themis_vm,           + 0.5 * width, "TD1 VM", ctyche[1], hatch="..")
+    plot_bar(themis_conf,         + 1.5 * width, "TD1 CVM", ctyche[2], hatch="\\\\")
+    plot_bar(gramine_tyche,       + 2.5 * width, "TD1 enclave", ctyche[3], hatch='//')
+    plot_bar(themis_conf_gramine, + 3.5 * width, "TD2 enclave", ctyche[4], hatch='xx')
 
     plt.xticks(x, lighttpd_sizes)
     ax.set(xlabel='HTTP payload size (bytes)', ylabel='Relative MiB/s',

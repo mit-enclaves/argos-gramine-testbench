@@ -1,18 +1,20 @@
+WORKLOAD RESULTS TABLE
+
                                                  MultiCore SingleCore
 Workload Name                                     (iter/s)   (iter/s)    Scaling
 ----------------------------------------------- ---------- ---------- ----------
-cjpeg-rose7-preset                                  451.67     226.42       1.99
-core                                                  5.61       2.81       2.00
-linear_alg-mid-100x100-sp                           494.90     248.22       1.99
-loops-all-mid-10k-sp                                 18.93       9.41       2.01
-nnet_test                                            25.22      12.61       2.00
-parser-125k                                          50.18      25.39       1.98
-radix2-big-64k                                     1430.21     721.40       1.98
-sha-test                                            577.48     289.37       2.00
-zip-test                                            394.61     198.97       1.98
+cjpeg-rose7-preset                                  455.68     227.97       2.00
+core                                                  5.65       2.83       2.00
+linear_alg-mid-100x100-sp                           497.36     249.07       2.00
+loops-all-mid-10k-sp                                 19.05       9.56       1.99
+nnet_test                                            25.43      12.72       2.00
+parser-125k                                          50.28      24.57       2.05
+radix2-big-64k                                     1486.77     711.14       2.09
+sha-test                                            581.96     291.26       2.00
+zip-test                                            394.74     200.97       1.96
 
 MARK RESULTS TABLE
 
 Mark Name                                        MultiCore SingleCore    Scaling
 ----------------------------------------------- ---------- ---------- ----------
-CoreMark-PRO                                      14824.29    7439.27       1.99
+CoreMark-PRO                                      14963.88    7448.53       2.01

@@ -173,7 +173,7 @@ native = make_relative(native, native)
 # print(native)
 
 def plot_comparison():
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6.4, 3.2))
     
     # Plot the bars
     width = 0.11
@@ -183,14 +183,14 @@ def plot_comparison():
     ctyche = colors.get_tyche()
     cnative = colors.get_native()
 
-    ax.bar(x - 3.5 * width, [x[0] for x in native], width, label='Bare metal Linux', edgecolor='black', color=cnative[0])
-    ax.bar(x - 2.5 * width, [x[0] for x in native_vm], width, label='Linux VM', edgecolor='black', hatch='..', color=cnative[1])
-    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='Gramine SGX', edgecolor='black', hatch='//', color=cnative[2])
-    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='Tyche', edgecolor='black', color=ctyche[0])
-    ax.bar(x + 0.5 * width, [x[0] for x in themis_vm], width, label='Tyche VM', edgecolor='black', hatch='..', color=ctyche[1])
-    ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='Tyche CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
-    ax.bar(x + 2.5 * width, [x[0] for x in gramine_tyche], width, label='Gramine Anon', edgecolor='black', hatch='//', color=ctyche[3])
-    ax.bar(x + 3.5 * width, [x[0] for x in themis_conf_gramine], width, label='Tyche Nested', edgecolor='black', hatch='xx', color=ctyche[4])
+    ax.bar(x - 3.5 * width, [x[0] for x in native], width, label='Native', edgecolor='black', color=cnative[0])
+    ax.bar(x - 2.5 * width, [x[0] for x in native_vm], width, label='Native VM', edgecolor='black', hatch='..', color=cnative[1])
+    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='SGX enclave', edgecolor='black', hatch='//', color=cnative[2])
+    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='TD0', edgecolor='black', color=ctyche[0])
+    ax.bar(x + 0.5 * width, [x[0] for x in themis_vm], width, label='TD1 VM', edgecolor='black', hatch='..', color=ctyche[1])
+    ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='TD1 CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
+    ax.bar(x + 2.5 * width, [x[0] for x in gramine_tyche], width, label='TD1 enclave', edgecolor='black', hatch='//', color=ctyche[3])
+    ax.bar(x + 3.5 * width, [x[0] for x in themis_conf_gramine], width, label='TD2 enclave', edgecolor='black', hatch='xx', color=ctyche[4])
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')

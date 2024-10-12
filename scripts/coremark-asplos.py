@@ -99,7 +99,7 @@ def plot_bar():
     print(themis_vm)
     print(labels)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6.4, 2.2))
 
     # Plot the bars
     width = 0.18
@@ -111,15 +111,17 @@ def plot_bar():
 
     bars_native         = ax.bar(x - 2 * width, [x[0] for x in native],         width, label='Native', edgecolor='black', hatch='', color=cnative[0])
     bars_native_vm      = ax.bar(x - 1 * width, [x[0] for x in native_vm],      width, label='Native VM', edgecolor='black', hatch='..', color=cnative[1])
-    bars_tyche          = ax.bar(x + 0 * width, [x[0] for x in tyche],          width, label='Anon', edgecolor='black', hatch='', color=ctyche[0])
-    bars_themis_vm      = ax.bar(x + 1 * width, [x[0] for x in themis_vm],      width, label='Anon VM', edgecolor='black', hatch='..', color=ctyche[1])
-    bars_themis_conf_vm = ax.bar(x + 2 * width, [x[0] for x in themis_conf_vm], width, label='Anon Conf VM', edgecolor='black', hatch='\\\\', color=ctyche[2])
+    bars_tyche          = ax.bar(x + 0 * width, [x[0] for x in tyche],          width, label='TD0', edgecolor='black', hatch='', color=ctyche[0])
+    bars_themis_vm      = ax.bar(x + 1 * width, [x[0] for x in themis_vm],      width, label='TD1 VM', edgecolor='black', hatch='..', color=ctyche[1])
+    bars_themis_conf_vm = ax.bar(x + 2 * width, [x[0] for x in themis_conf_vm], width, label='TD1 CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
-    ax.set_ylim(0, 1.09)
-    ax.set(xlabel='nb cpu', ylabel='CoreMark-Pro relative score',
-           title='Multicore VM scaling')
+    ax.set_ylim(0, 1.15)
+    ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score',
+           title='Relative CoreMark-Pro score')
+    # ax.xaxis.set_label_coords(x=0.985, y=-0.05)
+    plt.subplots_adjust(bottom=0.20)
     ax.legend(loc='lower right')
 
     def add_values(bars, scores):
