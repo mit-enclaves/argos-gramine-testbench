@@ -2,3 +2,5 @@ tmp/*
 !tmp/.gitkeep
 to-copy/*
 git-repos/*
+figs/*
+!figs/.gitignore

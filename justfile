@@ -21,6 +21,10 @@ graphs:
 	uv run ./scripts/io.py --save
 	uv run ./scripts/redis_memtier.py --save
 
+clean:
+	rm -f ./figs/*
+	touch ./figs/.gitignore
+
 ## ————————————————————————————— Setup for all —————————————————————————————— //
 # TYCHE_DEVEL is the path to the tyche-devel folder.
 # It is required for gramine.
