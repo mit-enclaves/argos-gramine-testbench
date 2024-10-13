@@ -16,6 +16,7 @@ NATIVE_VM_PATH = "data-asplos/native-vm/"
 HYPER = "hyper.txt"
 REDIS = "redis.json"
 LIGHTTPD = "lighttpd-10K.txt"
+LLAMA = "llama.txt"
 
 REQUESTS_SECS = "Requests/sec:"
 BYTES_SECS = "Transfer/sec:"
@@ -82,9 +83,26 @@ def parse_redis(path: str):
     # For now we don't have variance for Redis bench
     return [data["ALL STATS"]["Totals"]["Ops/sec"], 0]
 
+def parse_llama(path: str):
+    data = []
+    with open(path + "llama.txt", 'r') as file:
+        for line in file:
+            if "99 runs" in line:
+               time = float(line.split()[-4])
+               data.append(time)
 
-labels = ["hyper", "lighttpd", "sqlite", "redis"]
-lower_is_better = [False, False, True, False]
+            # We keep at most 10 samples
+            if len(data) >= 10:
+                break
+
+    if len(data) < 10:
+        print(f"WARNING: less than 10 samples in {path}")
+    remove_worst(data, lower_is_better = False)
+    return get_mean_std(data)
+
+
+labels = ["hyper", "lighttpd", "sqlite", "redis", "llama"]
+lower_is_better = [False, False, True, False, False]
 
 native = []
 native_vm = []
@@ -143,6 +161,17 @@ themis_conf.append(parse_redis(THEMIS_CONF_PATH))
 themis_conf_gramine.append(parse_redis(THEMIS_CONF_GRAMINE_PATH))
 gramine_tyche.append(parse_redis(GRAMINE_TYCHE_PATH))
 tyche.append(parse_redis(TYCHE_PATH))
+
+# —————————————————————————————————— Llama ——————————————————————————————————— #
+
+native.append(parse_llama(NATIVE_PATH))
+native_vm.append(parse_llama(NATIVE_VM_PATH))
+gramine_sgx.append(parse_llama(SGX_PATH))
+themis_vm.append(parse_llama(THEMIS_VM_PATH))
+themis_conf.append(parse_llama(THEMIS_CONF_PATH))
+themis_conf_gramine.append(parse_llama(THEMIS_CONF_GRAMINE_PATH))
+gramine_tyche.append(parse_llama(GRAMINE_TYCHE_PATH))
+tyche.append(parse_llama(TYCHE_PATH))
 
 # ——————————————————————————————————— Plot ——————————————————————————————————— #
 
