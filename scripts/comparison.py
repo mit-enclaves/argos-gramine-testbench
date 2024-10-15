@@ -102,6 +102,14 @@ def parse_llama(path: str):
 
 
 labels = ["hyper", "lighttpd", "sqlite", "redis", "llama"]
+units = ["req/s", "MiB/s", "s", "req/s", "token/s"]
+display = [
+    lambda x: f"{round(x/1000)}k",
+    lambda x: f"{x:.1f}",
+    lambda x: f"{x:.2f}",
+    lambda x: f"{round(x/1000)}k",
+    lambda x: f"{x:.2f}",
+]
 lower_is_better = [False, False, True, False, False]
 
 native = []
@@ -186,6 +194,7 @@ def make_relative(ref, data):
             scaled.append((d[0]/r[0], d[1]/r[0]))
     return scaled
 
+referece = native
 
 themis_conf_gramine = make_relative(native, themis_conf_gramine)
 themis_conf = make_relative(native, themis_conf)
@@ -228,7 +237,13 @@ def plot_comparison():
            title='Relative performance')
     ax.legend(loc='lower right')
 
-    # ax.grid()
+    
+    for i in range(len(referece)):
+        score = referece[i][0]
+        unit = units[i]
+        ax.annotate(f'{display[i](score)} {unit}',
+                    xy=(x[i], 1.02),
+                    ha='center', va='bottom')
     
     utils.plot_or_save("perf_comparison")
 
