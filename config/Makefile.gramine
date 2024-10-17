@@ -81,8 +81,8 @@ endif
 .PHONY: llama
 llama: print_env
 	if [ ! -e /models/llama-small.gguf ]; then \
-		@echo "file /models/llama-small.gguf does not exist!" ; \
-		@exit 1 ; \
+		echo "file /models/llama-small.gguf does not exist!" ; \
+		exit 1 ; \
 	fi
 	cd llama && $(GRAMINE) llama-cli -m /llama-small.gguf -n 100 -t 1 --no-mmap --ctx-size 256 --prompt "Why is batman so special?"
 

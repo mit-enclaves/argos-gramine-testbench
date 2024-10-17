@@ -123,12 +123,12 @@ lines = [
     Line2D([0], [0], label='manual line', marker="3", color=color_alias, linestyle='--'),
 ]
 labels = [
-    "Enclave creation",
-    "Enclave revocation",
-    "Carved creation",
-    "Carved revocation",
-    "Sandbox creation",
-    "Sandbox revocation"
+    "create carve+hash",
+    "revoke carve+cleanup",
+    "create carve",
+    "revoke carve",
+    "create alias",
+    "revoke alias"
 ]
 # ax1.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
 plt.legend(lines, labels, loc='lower center', bbox_to_anchor=(-0.15, -0.47), fancybox=False, ncol=3, labelspacing=-0.06, columnspacing=0.8, frameon=False)
@@ -156,3 +156,4 @@ ax1.set_xticklabels(labels)
 # plt.show()
 plt.savefig(save_as_pdf, bbox_inches='tight')
 plt.savefig(save_as_png, bbox_inches='tight')
+print("Done!")
