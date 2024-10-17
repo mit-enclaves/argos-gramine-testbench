@@ -22,7 +22,7 @@ REQUESTS_SECS = "Requests/sec:"
 BYTES_SECS = "Transfer/sec:"
 
 # Change the font
-plt.rcParams.update({'font.size': 12})
+plt.rcParams.update({'font.size': 16})
 
 def as_bytes(data: str):
     if data.endswith("MB"):
@@ -214,7 +214,7 @@ native = make_relative(native, native)
 # print(native)
 
 def plot_comparison():
-    fig, ax = plt.subplots(figsize=(6.4, 3.2))
+    fig, ax = plt.subplots(figsize=(9, 4.2))
     
     # Plot the bars
     width = 0.11
