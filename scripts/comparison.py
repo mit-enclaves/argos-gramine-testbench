@@ -101,16 +101,16 @@ def parse_llama(path: str):
     return get_mean_std(data)
 
 
-labels = ["hyper", "lighttpd", "sqlite", "redis", "llama"]
-units = ["req/s", "MiB/s", "s", "req/s", "token/s"]
+labels = ["redis", "hyper", "lighttpd", "sqlite", "llama"]
+units = ["req/s","req/s", "MiB/s", "s", "token/s"]
 display = [
+    lambda x: f"{round(x/1000)}k",
     lambda x: f"{round(x/1000)}k",
     lambda x: f"{x:.1f}",
     lambda x: f"{x:.2f}",
-    lambda x: f"{round(x/1000)}k",
     lambda x: f"{x:.2f}",
 ]
-lower_is_better = [False, False, True, False, False]
+lower_is_better = [False, False, False, True, False]
 
 native = []
 native_vm = []
@@ -120,6 +120,17 @@ themis_conf = []
 themis_conf_gramine = []
 gramine_tyche = []
 tyche = []
+
+# —————————————————————————————————— Redis ——————————————————————————————————— #
+
+native.append(parse_redis(NATIVE_PATH))
+native_vm.append(parse_redis(NATIVE_VM_PATH))
+gramine_sgx.append(parse_redis(SGX_PATH))
+themis_vm.append(parse_redis(THEMIS_VM_PATH))
+themis_conf.append(parse_redis(THEMIS_CONF_PATH))
+themis_conf_gramine.append(parse_redis(THEMIS_CONF_GRAMINE_PATH))
+gramine_tyche.append(parse_redis(GRAMINE_TYCHE_PATH))
+tyche.append(parse_redis(TYCHE_PATH))
 
 # —————————————————————————————————— Hyper ——————————————————————————————————— #
 
@@ -158,17 +169,6 @@ themis_conf.append(parse_speedsqlite(THEMIS_CONF_PATH))
 themis_conf_gramine.append(parse_speedsqlite(THEMIS_CONF_GRAMINE_PATH))
 gramine_tyche.append(parse_speedsqlite(GRAMINE_TYCHE_PATH))
 tyche.append(parse_speedsqlite(TYCHE_PATH))
-
-# —————————————————————————————————— Redis ——————————————————————————————————— #
-
-native.append(parse_redis(NATIVE_PATH))
-native_vm.append(parse_redis(NATIVE_VM_PATH))
-gramine_sgx.append(parse_redis(SGX_PATH))
-themis_vm.append(parse_redis(THEMIS_VM_PATH))
-themis_conf.append(parse_redis(THEMIS_CONF_PATH))
-themis_conf_gramine.append(parse_redis(THEMIS_CONF_GRAMINE_PATH))
-gramine_tyche.append(parse_redis(GRAMINE_TYCHE_PATH))
-tyche.append(parse_redis(TYCHE_PATH))
 
 # —————————————————————————————————— Llama ——————————————————————————————————— #
 
@@ -233,9 +233,8 @@ def plot_comparison():
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
     ax.set_ylim(0, 1.1)
-    ax.set(xlabel='',
-           title='Relative performance')
-    ax.legend(loc='lower right')
+    ax.set(ylabel='Performance relative to Native')
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.35), ncol=4)
 
     
     for i in range(len(referece)):
