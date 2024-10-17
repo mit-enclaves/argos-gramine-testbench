@@ -237,7 +237,7 @@ def plot_comparison():
     ax.axhline(y=1, color='black', linestyle='--')
     ax.set_ylim(0, 1.1)
     ax.set(ylabel='Performance relative to Native')
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.4), ncol=4)
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.4), frameon=False, ncol=4)
 
     
     for i in range(len(referece)):

@@ -173,7 +173,7 @@ def plot_throughput_bars():
 
     plt.xticks(x, lighttpd_sizes)
     ax.set(xlabel='HTTP payload size (bytes)', ylabel='lighttpd throughput in MiB/s')
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.5), ncol=4, fontsize=12)
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.5), frameon=False, ncol=4, fontsize=12)
 
     utils.plot_or_save("lighttpd")
 

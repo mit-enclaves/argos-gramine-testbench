@@ -128,7 +128,7 @@ def plot_bar():
     #ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score\nrelative to Native')
     # ax.xaxis.set_label_coords(x=0.985, y=-0.05)
     plt.subplots_adjust(bottom=0.20)
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.46, -0.6), ncol=5)
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.46, -0.6), frameon=False, ncol=5)
 
     def add_values(bars, scores):
         for i in range(len(scores)):
