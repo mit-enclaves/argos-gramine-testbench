@@ -22,6 +22,9 @@ THEMIS_VM = "themis-vm"
 THEMIS_CONF_VM_PATH = "data-asplos/coremark-themis-conf-vm/"
 THEMIS_CONF_VM = "themis-conf-vm"
 
+# Change the font
+plt.rcParams.update({'font.size': 16})
+
 raw_data = {}
 
 def parse_data(exp: str, path: str):
@@ -99,7 +102,7 @@ def plot_bar():
     print(themis_vm)
     print(labels)
 
-    fig, ax = plt.subplots(figsize=(6.4, 2.2))
+    fig, ax = plt.subplots(figsize=(10, 3))
 
     # Plot the bars
     width = 0.18
@@ -116,12 +119,16 @@ def plot_bar():
     bars_themis_conf_vm = ax.bar(x + 2 * width, [x[0] for x in themis_conf_vm], width, label='TD1 CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
 
     plt.xticks(x, labels)
+    plt.xlabel('core(s)', fontsize=14)
+    plt.ylabel('CoreMark-Pro score\nRelative to Native')
+    #plt.xticks(fontsize=14)                 # X-axis ticks font size
+    #plt.yticks(fontsize=14)
     ax.axhline(y=1, color='black', linestyle='--')
     ax.set_ylim(0, 1.15)
-    ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score\nrelative to Native')
+    #ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score\nrelative to Native')
     # ax.xaxis.set_label_coords(x=0.985, y=-0.05)
     plt.subplots_adjust(bottom=0.20)
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.46, -0.55), ncol=5)
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.46, -0.6), ncol=5)
 
     def add_values(bars, scores):
         for i in range(len(scores)):
