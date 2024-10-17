@@ -21,6 +21,9 @@ LLAMA = "llama.txt"
 REQUESTS_SECS = "Requests/sec:"
 BYTES_SECS = "Transfer/sec:"
 
+# Change the font
+plt.rcParams.update({'font.size': 12})
+
 def as_bytes(data: str):
     if data.endswith("MB"):
         return data[:-2]
@@ -222,25 +225,25 @@ def plot_comparison():
     cnative = colors.get_native()
 
     ax.bar(x - 3.5 * width, [x[0] for x in native], width, label='Native', edgecolor='black', color=cnative[0])
-    ax.bar(x - 2.5 * width, [x[0] for x in native_vm], width, label='Native VM', edgecolor='black', hatch='..', color=cnative[1])
-    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='SGX enclave', edgecolor='black', hatch='//', color=cnative[2])
-    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='TD0', edgecolor='black', color=ctyche[0])
     ax.bar(x + 0.5 * width, [x[0] for x in themis_vm], width, label='TD1 VM', edgecolor='black', hatch='..', color=ctyche[1])
+    ax.bar(x - 2.5 * width, [x[0] for x in native_vm], width, label='Native VM', edgecolor='black', hatch='..', color=cnative[1])
     ax.bar(x + 1.5 * width, [x[0] for x in themis_conf], width, label='TD1 CVM', edgecolor='black', hatch='\\\\', color=ctyche[2])
+    ax.bar(x - 1.5 * width, [x[0] for x in gramine_sgx], width, label='SGX enclave', edgecolor='black', hatch='//', color=cnative[2])
     ax.bar(x + 2.5 * width, [x[0] for x in gramine_tyche], width, label='TD1 enclave', edgecolor='black', hatch='//', color=ctyche[3])
+    ax.bar(x - 0.5 * width, [x[0] for x in tyche], width, label='TD0', edgecolor='black', color=ctyche[0])
     ax.bar(x + 3.5 * width, [x[0] for x in themis_conf_gramine], width, label='TD2 enclave', edgecolor='black', hatch='xx', color=ctyche[4])
 
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
     ax.set_ylim(0, 1.1)
     ax.set(ylabel='Performance relative to Native')
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.35), ncol=4)
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.4), ncol=4)
 
     
     for i in range(len(referece)):
         score = referece[i][0]
         unit = units[i]
-        ax.annotate(f'{display[i](score)} {unit}',
+        ax.annotate(f'{display[i](score)}{unit}',
                     xy=(x[i], 1.02),
                     ha='center', va='bottom')
     
