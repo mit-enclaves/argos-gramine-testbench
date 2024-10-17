@@ -2,10 +2,10 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
-PATH = "../data-asplos/ubench/transitions.csv"
+PATH = "data-asplos/ubench/transitions.csv"
 
-save_as_pdf = "../figs/transitions.pdf"
-save_as_png = "../figs/transitions.png"
+save_as_pdf = "figs/transitions.pdf"
+save_as_png = "figs/transitions.png"
 
 raw = []
 null = []
@@ -54,7 +54,7 @@ for label, val in data.items():
     bottom += val
 
 # ax.set_title("TD switch")
-ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+ax.legend(loc="center left", bbox_to_anchor=(0.5, 0.7))
 # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
 ax.set_xlabel("Elapsed time (µs)")
 # plt.xticks(rotation=25, ha='right')
