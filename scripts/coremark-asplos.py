@@ -118,11 +118,10 @@ def plot_bar():
     plt.xticks(x, labels)
     ax.axhline(y=1, color='black', linestyle='--')
     ax.set_ylim(0, 1.15)
-    ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score',
-           title='Relative CoreMark-Pro score')
+    ax.set(xlabel='core(s)', ylabel='CoreMark-Pro score\nrelative to Native')
     # ax.xaxis.set_label_coords(x=0.985, y=-0.05)
     plt.subplots_adjust(bottom=0.20)
-    ax.legend(loc='lower right')
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.46, -0.55), ncol=5)
 
     def add_values(bars, scores):
         for i in range(len(scores)):

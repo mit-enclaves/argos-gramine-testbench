@@ -169,9 +169,8 @@ def plot_throughput_bars():
     plot_bar(themis_conf_gramine, + 3.5 * width, "TD2 enclave", ctyche[4], hatch='xx')
 
     plt.xticks(x, lighttpd_sizes)
-    ax.set(xlabel='HTTP payload size (bytes)', ylabel='Relative MiB/s',
-           title='lighttpd HTTP throughput')
-    ax.legend(loc='lower right')
+    ax.set(xlabel='HTTP payload size (bytes)', ylabel='lighttpd throughput in MiB/s')
+    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.43), ncol=4)
 
     utils.plot_or_save("lighttpd")
 
