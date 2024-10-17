@@ -53,7 +53,7 @@ for label, val in data.items():
     p = ax.barh(sdk, val, width, label=label, left=bottom)
     bottom += val
 
-ax.set_title("TD switch")
+# ax.set_title("TD switch")
 ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
 ax.set_xlabel("Elapsed time (µs)")
