@@ -13,6 +13,9 @@ THEMIS = "themis-vm/"
 THEMIS_CONF = "themis-conf/"
 THEMIS_GRAMINE = "themis-conf-gramine/"
 
+# Change the font
+plt.rcParams.update({'font.size': 16})
+
 
 def get_data(path):
     # Load the JSON data
@@ -48,10 +51,10 @@ plot_one(GRAMINE_TYCHE, "TD1 enclave")
 plot_one(THEMIS_GRAMINE, "TD2 enclave")
 
 # Set the chart title and labels
-plt.title("Redis GET Latency Distribution")
+#plt.title("Redis GET Latency Distribution")
 plt.xlabel("Latency (ms)")
 plt.ylabel("Percentile")
-plt.legend()
+plt.legend(loc='center right', ncol=2, fontsize=12)
 
 # Customize the grid and axis limits
 plt.grid(True)
