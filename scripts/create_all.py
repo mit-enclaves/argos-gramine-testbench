@@ -134,9 +134,9 @@ labels = [
     "revoke alias"
 ]
 # ax1.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=False, ncol=3)
-plt.legend(lines, labels, loc='lower center', bbox_to_anchor=(-0.15, -0.7), fancybox=False, ncol=3, labelspacing=-0.06, columnspacing=0.8, frameon=False)
+plt.legend(lines, labels, loc='lower center', bbox_to_anchor=(-0.15, -0.7), fancybox=False, ncol=3, labelspacing=-0.06, columnspacing=0.8, frameon=False, fontsize=14)
 fig.subplots_adjust(bottom=0.25)
-plt.rc("legend", fontsize=20)
+plt.rc("legend")
 
 pow_min = 3
 pow_max = 10
