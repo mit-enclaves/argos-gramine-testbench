@@ -146,7 +146,7 @@ def plot_throughput_bars():
     themis_conf_gramine = get_mean_std(lighttpd_themis_conf_gramine)
 
 
-    fig, ax = plt.subplots(figsize=(6.4, 3.2))
+    fig, ax = plt.subplots(figsize=(6.4, 2.8))
     
     # colors
     ctyche = colors.get_tyche()
@@ -173,7 +173,8 @@ def plot_throughput_bars():
 
     plt.xticks(x, lighttpd_sizes)
     ax.set(xlabel='HTTP payload size (bytes)', ylabel='lighttpd throughput in MiB/s')
-    ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.5), frameon=False, ncol=4, fontsize=12)
+    # ax.legend(loc='lower center',  bbox_to_anchor=(0.5, -0.5), frameon=False, ncol=4, fontsize=12)
+    ax.legend(fontsize=11)
 
     utils.plot_or_save("lighttpd")
 
