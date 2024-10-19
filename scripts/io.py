@@ -163,12 +163,12 @@ def plot_throughput_bars():
         ax.errorbar(x + shift, val, yerr = err, fmt='', linestyle='None', color='black')
 
     plot_bar(native     ,         - 3.5 * width, "Native", cnative[0])
-    plot_bar(themis_vm,           + 0.5 * width, "TD1 VM", ctyche[1], hatch="..")
     plot_bar(native_vm  ,         - 2.5 * width, "Native VM", cnative[1], hatch='..')
-    plot_bar(themis_conf,         + 1.5 * width, "TD1 CVM", ctyche[2], hatch="\\\\")
     plot_bar(gramine_sgx,         - 1.5 * width, "SGX enclave", cnative[2], hatch='//')
-    plot_bar(gramine_tyche,       + 2.5 * width, "TD1 enclave", ctyche[3], hatch='//')
     plot_bar(tyche,               - 0.5 * width, "TD0", ctyche[0])
+    plot_bar(themis_vm,           + 0.5 * width, "TD1 VM", ctyche[1], hatch="..")
+    plot_bar(themis_conf,         + 1.5 * width, "TD1 CVM", ctyche[2], hatch="\\\\")
+    plot_bar(gramine_tyche,       + 2.5 * width, "TD1 enclave", ctyche[3], hatch='//')
     plot_bar(themis_conf_gramine, + 3.5 * width, "TD2 enclave", ctyche[4], hatch='xx')
 
     plt.xticks(x, lighttpd_sizes)
