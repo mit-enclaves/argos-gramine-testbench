@@ -1,0 +1,30 @@
+Dhrystone(1.1-mc), 10000000 passes, 950010 microseconds, 5978 DMIPS
+iruntime 950025281
+
+real    0m0.952s
+user    0m0.951s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 950010 microseconds, 5978 DMIPS
+iruntime 950022728
+
+real    0m0.952s
+user    0m0.951s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 950010 microseconds, 5978 DMIPS
+iruntime 950022976
+
+real    0m0.952s
+user    0m0.951s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 950010 microseconds, 5978 DMIPS
+iruntime 950022984
+
+real    0m0.952s
+user    0m0.951s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 950010 microseconds, 5978 DMIPS
+iruntime 950022992
+
+real    0m0.952s
+user    0m0.951s
+sys     0m0.000s

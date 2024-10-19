@@ -1,0 +1,75 @@
+Dhrystone(1.1-mc), 10000000 passes, 959414 microseconds, 5920 DMIPS
+iruntime 959475375
+[keystone-bench] Params:
+        untrusted: 4194304
+        freemem: 268435456
+        Performing internal timing
+        Running benchmark
+
+*********
+[keystone-bench] Init: 110013429 cycles
+[keystone-bench] Runtime: 964242833 cycles
+
+real    0m1.176s
+user    0m0.000s
+sys     0m1.114s
+Dhrystone(1.1-mc), 10000000 passes, 959414 microseconds, 5920 DMIPS
+iruntime 959472309
+[keystone-bench] Params:
+        untrusted: 4194304
+        freemem: 268435456
+        Performing internal timing
+        Running benchmark
+
+*********
+[keystone-bench] Init: 108653629 cycles
+[keystone-bench] Runtime: 964239163 cycles
+
+real    0m1.173s
+user    0m1.172s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 959414 microseconds, 5920 DMIPS
+iruntime 959472309
+[keystone-bench] Params:
+        untrusted: 4194304
+        freemem: 268435456
+        Performing internal timing
+        Running benchmark
+
+*********
+[keystone-bench] Init: 108776550 cycles
+[keystone-bench] Runtime: 964239163 cycles
+
+real    0m1.173s
+user    0m1.112s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 959414 microseconds, 5920 DMIPS
+iruntime 959472309
+[keystone-bench] Params:
+        untrusted: 4194304
+        freemem: 268435456
+        Performing internal timing
+        Running benchmark
+
+*********
+[keystone-bench] Init: 108847224 cycles
+[keystone-bench] Runtime: 964239163 cycles
+
+real    0m1.173s
+user    0m1.173s
+sys     0m0.000s
+Dhrystone(1.1-mc), 10000000 passes, 959414 microseconds, 5920 DMIPS
+iruntime 959472309
+[keystone-bench] Params:
+        untrusted: 4194304
+        freemem: 268435456
+        Performing internal timing
+        Running benchmark
+
+*********
+[keystone-bench] Init: 108885624 cycles
+[keystone-bench] Runtime: 964239163 cycles
+
+real    0m1.173s
+user    0m1.112s
+sys     0m0.001s

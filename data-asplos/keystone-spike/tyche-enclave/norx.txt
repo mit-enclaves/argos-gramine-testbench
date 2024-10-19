@@ -1,0 +1,60 @@
+0
+iruntime 2682498614
+
+real    0m2.747s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682800142
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682848486
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682862759
+
+real    0m2.748s
+user    0m2.748s
+sys     0m0.000s
+0
+iruntime 2682840465
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682860619
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682849721
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682860920
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682838463
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000s
+0
+iruntime 2682838800
+
+real    0m2.748s
+user    0m2.747s
+sys     0m0.000
