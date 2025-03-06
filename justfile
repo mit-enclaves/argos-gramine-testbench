@@ -51,7 +51,7 @@ download-gramine:
   #!/usr/bin/env bash
   mkdir -p {{ROOT_CLONES}} 
   rm -rf {{ROOT_CLONES}}/gramine 2>/dev/null
-  git clone git@github.com:epfl-dcsl/gramine.git --branch tyche {{ROOT_CLONES}}/gramine
+  git clone git@github.com:jdrean/gramine.git --branch tyche {{ROOT_CLONES}}/gramine
   
 compile-gramine TYCHE_DEVEL:
   #!/usr/bin/env bash
@@ -64,13 +64,10 @@ compile-gramine TYCHE_DEVEL:
 compile-gramine-benchmarks:
   @just delete-gramine-benchmarks
   @just compile-gramine-benchmark helloworld
-  @just compile-gramine-benchmark redis
-  @just compile-gramine-benchmark lighttpd
-  @just compile-gramine-benchmark rust
-  @just compile-gramine-benchmark sqlite
-  @ just compile-gramine-benchmark speedsqlite
-  @just compile-gramine-benchmark llama
-  @just download_model
+  @just compile-gramine-benchmark hellocpp
+  @just compile-gramine-benchmark seal
+  @just compile-gramine-benchmark sealPIR
+  @just compile-gramine-benchmark sealAPSI
   @just disable-debug-gramine-benchmarks
 
 delete-gramine-benchmarks:
