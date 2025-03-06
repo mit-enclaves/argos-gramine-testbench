@@ -54,6 +54,7 @@ compile-gramine-benchmarks:
   @just compile-gramine-benchmark hellocpp
   @just compile-gramine-benchmark seal
   @just compile-gramine-benchmark sealPIR
+  @just compile-gramine-benchmark sealAPSI
   @just disable-debug-gramine-benchmarks
 
 delete-gramine-benchmarks:
