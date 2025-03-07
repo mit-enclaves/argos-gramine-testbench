@@ -1,8 +1,0 @@
-Running 2m test @ http://128.178.116.124:8000
-  12 threads and 400 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.34ms    1.57ms 205.99ms   65.90%
-    Req/Sec     9.92k     1.24k   30.22k    64.74%
-  14211745 requests in 2.00m, 1.16GB read
-Requests/sec: 118332.87
-Transfer/sec:      9.93MB

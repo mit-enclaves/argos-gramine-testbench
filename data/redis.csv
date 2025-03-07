@@ -1,7 +1,0 @@
-Error opening redis.csv: Expecting value: line 1 column 1 (char 0)
-experiment      , get      , set      
-tcp-encr        , 2287.19  , 228.97   
-tcp-tyche       , 4252.98  , 425.77   
-tcp-enclave     , 4198.58  , 420.32   
-tcp-ssl         , 528.65   , 52.92    
-tcp-vanilla     , 4478.58  , 448.35   
