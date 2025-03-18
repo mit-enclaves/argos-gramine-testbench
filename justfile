@@ -19,12 +19,19 @@ setup-all ARGOS_MONITOR:
 ## ————————————————————————————— Gramine setup —————————————————————————————— //
 setup-gramine ARGOS_MONITOR:
   @just create-setup-target
+  @just download-gramine
   @just recompile-gramine {{ARGOS_MONITOR}}
 
 recompile-gramine ARGOS_MONITOR:
   @just compile-gramine {{ARGOS_MONITOR}}
   @just compile-gramine-benchmarks
   @just copy-gramine-binaries
+
+download-gramine:
+  #!/usr/bin/env bash
+  mkdir -p {{ROOT_CLONES}}
+  rm -rf {{ROOT_CLONES}}/gramine 2>/dev/null
+  git clone https://github.com/mit-enclaves/argos-gramine.git --branch master {{ROOT_CLONES}}/gramine
 
 compile-gramine ARGOS_MONITOR:
   #!/usr/bin/env bash
@@ -72,6 +79,67 @@ copy-gramine-binaries:
   sudo cp -r {{ROOT_CLONES}}/gramine/CI-Examples/common_tools {{GRAMINE_BENCHMARKS}}/common_tools
   cp config/Makefile.gramine {{GRAMINE_BENCHMARKS}}/Makefile
 
+
+## ——————————————————————————————— lkvm setup ——————————————————————————————— //
+
+setup-lkvm:
+  @just create-setup-target
+  @just download-lkvm
+  @just compile-lkvm
+
+download-lkvm:
+  #!/usr/bin/env bash
+  git clone https://github.com/epfl-dcsl/tyche-kvmtool.git {{ROOT_CLONES}}/lkvm
+
+compile-lkvm:
+  #!/usr/bin/env bash
+  make -C {{ROOT_CLONES}}/lkvm
+  mkdir -p {{CUSTOM_BINARIES}}
+  cp {{ROOT_CLONES}}/lkvm/lkvm {{CUSTOM_BINARIES}}
+
+## ————————————————————————————— Memtier setup —————————————————————————————— //
+
+setup-memtier:
+  @just download-memtier
+  @just compile-memtier
+  @just install-memtier
+
+download-memtier:
+  #!/usr/bin/env bash
+  git clone git@github.com:RedisLabs/memtier_benchmark.git --branch 2.1.1 {{ROOT_CLONES}}/memtier_benchmark
+
+compile-memtier:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/memtier_benchmark
+  autoreconf -ivf
+  ./configure
+  make
+
+install-memtier:
+  #!/usr/bin/env bash
+  mkdir -p {{CUSTOM_BINARIES}}
+  cp {{ROOT_CLONES}}/memtier_benchmark/memtier_benchmark {{CUSTOM_BINARIES}}
+
+## —————————————————————————————————— Wrk2 —————————————————————————————————— //
+
+setup-wrk:
+  @just download-wrk
+  @just compile-wrk
+  @just install-wrk
+
+download-wrk:
+  #!/usr/bin/env bash
+  git clone git@github.com:giltene/wrk2.git {{ROOT_CLONES}}/wrk2
+
+compile-wrk:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/wrk2
+  make
+
+install-wrk:
+  #!/usr/bin/env bash
+  cp {{ROOT_CLONES}}/wrk2/wrk {{CUSTOM_BINARIES}}/wrk
+
 ## —————————————————————————————— Dependencies —————————————————————————————— //
 
 # Create the folders to clone git repos and to produce final results.
@@ -94,3 +162,28 @@ install-dependencies:
 # Print the list of commands
 help:
 	@just --list --unsorted
+
+## ——————————————————————————— Running benchmarks ——————————————————————————— //
+
+# FISHER: This can all be gotten rid of I think
+
+# Run redis benchmark
+#redis-benchmark:
+#    redis-benchmark -h {{ip-addr}} -p {{tcp-port}} -c 1 -n {{n_reqs}} --csv > tmp/redis-benchmark.csv
+
+# Run memtier_benchmark with TLS
+#memtier-benchmark-tls:
+#    memtier_benchmark --host {{ip-addr}} -p {{tls-port}} --tls --tls-skip-verif --threads=1 --clients=1 --requests={{n_reqs}}  --tls --tls-skip-verif --json-out-file=tmp/memtier-benchmark-tls.json
+
+# Run memtier_benchmark
+#memtier-benchmark:
+#    memtier_benchmark --host {{ip-addr}} -p {{tcp-port}} --threads=1 --clients=1 --requests={{n_reqs}} --json-out-file=tmp/memtier-benchmark.json
+
+#tokio-benchmark:
+#	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000
+
+#lighttpd-benchmark:
+#	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000/random/1K.html
+
+# The following line gives highlighting on vim
+# vim: set ft=make :
