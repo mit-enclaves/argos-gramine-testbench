@@ -4,6 +4,8 @@ This repository is a fork of [Tyche Bench](https://github.com/epfl-dcsl/tyche-be
 
 This repository contains scripts and benchmarks for runing Argos with Gramine.
 
+**NOTE**: To use gramine, you must use the `argos_gramine` branch of [`argos_monitor`](https://github.com/mit-enclaves/argos-monitor/tree/argos_gramine).
+
 # General Setup
 
 ```bash
@@ -19,10 +21,6 @@ Folders to be copied to the argos machine are populated in `INSTALL_FOLDER=to-co
 just setup-all ARGOS_MONITOR
 ```
 args: ARGOS_MONITOR=path/to/argos-monitor/folder
-
-Download, compile, and copy gramine and its benchmarks.
-Download, compile, and copy executable for the modified lkvm.
-Download, compile, and copy memtier_benchmark and wrk2.
 
 If everything goes well, you should have the following content in `to-copy`:
 
@@ -49,9 +47,6 @@ to-copy
     └── Makefile
 ```
 
-The `my_bin` folder content can be copied anywhere on the machine as long as
-it is in the `$PATH`.
-
 The `gramine` folder needs to be copied at `/` on the machine.
 
 The `gramine-benchmark` can be placed anywhere.
@@ -76,12 +71,13 @@ This is a meta command that actually calls the following ones:
   @just compile-gramine {{ARGOS_MONITOR}}   # Compile gramine
   @just compile-gramine-benchmarks        # Compile individual benchmarks
   @just copy-gramine-binaries             # Copy all binaries to to-copy
+  @just setup-seal                        # Compiles and copies binaries for SEAL apps
 
 ```
 
 ## Setting up your machine
 
-To properly run graming on your machine, you will need to move some of the content
+To properly run gramine on your machine, you will need to move some of the content
 from `to-copy` to your machine.
 
 The `to-copy/gramine` should be copied to `/gramine`.
@@ -90,28 +86,15 @@ It is path sensitive and cannot be placed randomly.
 The `to-copy/gramine-benchmarks` contains the compiled benchmarks and utilities to
 run pre-defined workloads.
 
-## Running
+## Running Gramine SEAL benchmarks
 
-The `to-copy/gramine-benchmarks/Makefile` is copied from config/Makefile.gramine.
-It allows to run gramine benchmarks easily by spawning both client and server.
-It stores the results in the same folder under `results/NAME_OF_THE_APP/`.
-If the `TYCHE=1` environment variable is set, it runs with `gramine-tyche` (i.e. argos).
-Otherwise, it runs the benchmarks with `gramine-direct` (linux version).
+After properly copying the folders from the above section, navigate to a benchmark folder, e.g. `~/gramine-benchmarks/seal`.
 
-# Gramine Benchmarks
+Run the SEAL benchmark under gramine with the following command:
 
-The justfile clones (git) and compiles the argos gramine version.
+`$ sudo /gramine/gramine-tyche sealexamples`
 
-As gramine is very sensitive to absolute paths and to enable compiling locally
-and then copying binaries to, e.g., a dev machine, gramine install directory is located
-in `/gramine/`, which is copied into `to-copy/gramine`.
-
-The gramine binaries and libraries (including python) are generated into `/gramine`.
-
-The binaries used by applications that are path sensitive are installed inside `/gramine/utils`.
-(See Notes on ligttpd).
-
-Benchmarks are compiled and populated inside `to-copy/gramine-benchmarks`.
+Where `sealexamples` is base name of the `.manifest` file in the current folder.
 
 ## Benchmarks
 

@@ -15,13 +15,13 @@ setup-all ARGOS_MONITOR:
   @just setup-lkvm
   @just setup-memtier
   @just setup-wrk
-  @just setup-seal
 
 ## ————————————————————————————— Gramine setup —————————————————————————————— //
 setup-gramine ARGOS_MONITOR:
   @just create-setup-target
   @just download-gramine
   @just recompile-gramine {{ARGOS_MONITOR}}
+  @just setup-seal
 
 recompile-gramine ARGOS_MONITOR:
   @just compile-gramine {{ARGOS_MONITOR}}
