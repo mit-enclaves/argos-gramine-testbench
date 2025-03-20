@@ -15,6 +15,7 @@ setup-all ARGOS_MONITOR:
   @just setup-lkvm
   @just setup-memtier
   @just setup-wrk
+  @just setup-seal
 
 ## ————————————————————————————— Gramine setup —————————————————————————————— //
 setup-gramine ARGOS_MONITOR:
@@ -163,27 +164,57 @@ install-dependencies:
 help:
 	@just --list --unsorted
 
-## ——————————————————————————— Running benchmarks ——————————————————————————— //
+## ——————————————————————————— SEAL benchmarks ——————————————————————————— //
 
-# FISHER: This can all be gotten rid of I think
+setup-seal:
+  @just download-seal
+  @just build-seal
+  @just download-sealpir
+  @just build-sealpir
+  @just download-sealapsi
+  @just build-sealapsi
+  @just copy-seal-binaries
 
-# Run redis benchmark
-#redis-benchmark:
-#    redis-benchmark -h {{ip-addr}} -p {{tcp-port}} -c 1 -n {{n_reqs}} --csv > tmp/redis-benchmark.csv
+download-seal:
+  #!/usr/bin/env bash
+  mkdir -p {{ROOT_CLONES}}
+  rm -rf {{ROOT_CLONES}}/SEAL 2>/dev/null
+  git clone https://github.com/mit-enclaves/SEAL.git --branch no_tyche {{ROOT_CLONES}}/SEAL
 
-# Run memtier_benchmark with TLS
-#memtier-benchmark-tls:
-#    memtier_benchmark --host {{ip-addr}} -p {{tls-port}} --tls --tls-skip-verif --threads=1 --clients=1 --requests={{n_reqs}}  --tls --tls-skip-verif --json-out-file=tmp/memtier-benchmark-tls.json
+build-seal:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/SEAL
+  rm -rf build
+  cmake -S . -DCMAKE_TOOLCHAIN_FILE=seal-toolchain.cmake -B build -DSEAL_BUILD_EXAMPLES=ON -DSEAL_USE_INTRIN=ON -DSEAL_USE_INTEL_HEXL=ON -DSEAL_THROW_ON_TRANSPARENT_CIPHERTEXT=OFF
+  cmake --build build
 
-# Run memtier_benchmark
-#memtier-benchmark:
-#    memtier_benchmark --host {{ip-addr}} -p {{tcp-port}} --threads=1 --clients=1 --requests={{n_reqs}} --json-out-file=tmp/memtier-benchmark.json
+download-sealpir:
+  #!/usr/bin/env bash
+  mkdir -p {{ROOT_CLONES}}
+  rm -rf {{ROOT_CLONES}}/SealPIR 2>/dev/null
+  git clone https://github.com/mit-enclaves/SealPIR.git --branch no_tyche {{ROOT_CLONES}}/SealPIR
 
-#tokio-benchmark:
-#	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000
+build-sealpir:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/SealPIR
+  cmake . -DCMAKE_TOOLCHAIN_FILE=seal-toolchain.cmake
+  make
 
-#lighttpd-benchmark:
-#	wrk -t12 -c400 -d120s http://{{ip-addr}}:8000/random/1K.html
+download-sealapsi:
+  #!/usr/bin/env bash
+  mkdir -p {{ROOT_CLONES}}
+  rm -rf {{ROOT_CLONES}}/APSI 2>/dev/null
+  git clone https://github.com/mit-enclaves/APSI.git --branch single_threaded {{ROOT_CLONES}}/APSI
 
-# The following line gives highlighting on vim
-# vim: set ft=make :
+build-sealapsi:
+  #!/usr/bin/env bash
+  cd {{ROOT_CLONES}}/APSI
+  rm -rf build
+  cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=../seal-toolchain.cmake -DAPSI_BUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DAPSI_USE_LOG4CPLUS=OFF -DAPSI_USE_ZMQ=OFF
+  make -C build -j$(nproc)
+
+copy-seal-binaries:
+  #!/usr/bin/env bash
+  cp {{ROOT_CLONES}}/SEAL/build/bin/sealexamples {{GRAMINE_BENCHMARKS}}/seal/sealexamples
+  cp {{ROOT_CLONES}}/SealPIR/bin/main {{GRAMINE_BENCHMARKS}}/sealPIR/sealexamples
+  cp {{ROOT_CLONES}}/APSI/build/bin/integration_tests {{GRAMINE_BENCHMARKS}}/sealAPSI/sealAPSI
